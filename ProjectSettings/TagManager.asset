@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Scene
+    uniqueID: 3460935517
+    locked: 0
+  - name: Public1
+    uniqueID: 456810577
+    locked: 0
+  - name: Public2
+    uniqueID: 2077965449
+    locked: 0
+  - name: Public3
+    uniqueID: 3602270765
+    locked: 0
+  - name: Public4
+    uniqueID: 1700391629
+    locked: 0
+  - name: EcranMiniJeux
+    uniqueID: 3531522809
+    locked: 0
