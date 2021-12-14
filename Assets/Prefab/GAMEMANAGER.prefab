@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1962315595231921203}
   - component: {fileID: 2987286860908991080}
+  - component: {fileID: 3633276378781918813}
   m_Layer: 0
   m_Name: GAMEMANAGER
   m_TagString: Untagged
@@ -47,3 +48,20 @@ MonoBehaviour:
   allMiniGames:
   - SimonSays
   - SinusGame
+  tm: {fileID: 0}
+  objectsADesactiver:
+  - {fileID: 0}
+  - {fileID: 0}
+  enjaillement: 0
+--- !u!114 &3633276378781918813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465849842736893265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b753915043585c4e89258d7f51483cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

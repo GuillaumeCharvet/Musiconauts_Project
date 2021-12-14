@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI tm;
 
+    public GameObject[] objectsADesactiver;
+
     [Range(0f, 1f)]
     public float enjaillement = 0;
 
@@ -24,12 +26,25 @@ public class GameManager : MonoBehaviour
                 tm = _tm;
             }
         }
+
+        foreach (GameObject go in objectsADesactiver)
+        {
+            go.SetActive(false);
+        }
     }
 
     private void Update()
     {
         if (currentMiniGame == "")
         {
+            foreach (GameObject go in objectsADesactiver)
+            {
+                if (go.activeSelf)
+                {
+                    go.SetActive(false);
+                }
+            }
+
             int random = Random.Range(0, allMiniGames.Length);
             currentMiniGame = allMiniGames[random];
 
@@ -55,11 +70,29 @@ public class GameManager : MonoBehaviour
 
     private void playSimonSays()
     {
+        
+
+        foreach (GameObject go in objectsADesactiver)
+        {
+            if (go.transform.name == "SIMONSAYS")
+            {
+                go.SetActive(true);
+            }
+        }
+
         tm.text = currentMiniGame;
     }
 
     private void playSinusGame()
     {
+        foreach (GameObject go in objectsADesactiver)
+        {
+            if (go.transform.name == "SINUSGAME")
+            {
+                go.SetActive(true);
+            }
+        }
+
         tm.text = currentMiniGame;
     }
 
