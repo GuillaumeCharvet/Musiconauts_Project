@@ -59,6 +59,9 @@ TagManager:
   - name: EcranMiniJeux
     uniqueID: 3531522809
     locked: 0
+  - name: MiniJeu
+    uniqueID: 1199344967
+    locked: 0
   - name: MiniJeuText
     uniqueID: 2553055005
     locked: 0

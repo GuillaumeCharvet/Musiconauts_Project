@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
             int random = Random.Range(0, allMiniGames.Length);
             currentMiniGame = allMiniGames[random];
 
+            //FORCE A PRENDRE LE SIMON
+            currentMiniGame = "SimonSays";
+            //FORCE A PRENDRE LE SIMON
 
             switch (currentMiniGame)
             {
