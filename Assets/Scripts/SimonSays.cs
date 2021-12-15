@@ -17,9 +17,23 @@ public class SimonSays : MonoBehaviour
     }
 
 
-    public void Afficher(string truc)
+    public void AppuieBouton(string truc)
     {
+        GameObject[] gos = FindObjectsOfType<GameObject>();
+        foreach (GameObject go in gos)
+        {
+            if (go.transform.name.Contains("Bouton"))
+            {
+                switch (go.transform.name)
+                {
+                    case "Bouton1":
+                        //
 
+                        break;
+                }
+            }
+        }
         //srAffiche.sprite =  
     }
+
 }
