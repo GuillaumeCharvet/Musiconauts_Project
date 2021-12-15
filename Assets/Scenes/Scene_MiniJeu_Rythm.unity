@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdaedf1fe707c4f469d17a582ecfd536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfCircles: 0
+  sprite_ring: {fileID: 0}
 --- !u!1 &1279056423
 GameObject:
   m_ObjectHideFlags: 0
