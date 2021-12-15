@@ -704,7 +704,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394853529}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -1007,9 +1007,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parameter_a: 0
   parameter_b: 0
+  parameter_a0: 0
+  parameter_b0: 0
   random_start_value_a: 0
   random_start_value_b: 0
   circleSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  parameters_changed: 0
 --- !u!1 &1720165703
 GameObject:
   m_ObjectHideFlags: 0
