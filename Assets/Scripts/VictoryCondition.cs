@@ -11,7 +11,6 @@ public class VictoryCondition : MonoBehaviour
     public Text text;
     private Scrollbar scrollbar;
 
-    // Start is called before the first frame update
     void Start()
     {
         child = transform.Find("WindowGraph").GetComponent<FunctionDisplay>();
@@ -21,7 +20,6 @@ public class VictoryCondition : MonoBehaviour
         text.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!child.game_won)
