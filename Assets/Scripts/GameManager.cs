@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum colorTint
+{
+    red, green, blue, yellow, purple, orange, white
+}
+
+
 public class GameManager : MonoBehaviour
 {
     //VAR ETIENNE----------------------------
@@ -14,6 +20,11 @@ public class GameManager : MonoBehaviour
     public float enjaillement = 0;
     public int nvDifficulte = 1;
     public SimonSays simonsays;
+    public Color[] vectorMatchingTints;
+    public colorTint currentColorTint = colorTint.white;
+    public colorTint targetColorTint;
+    public Vector4 globalColorTint;
+    public ChangeColorTint[] cct;
 
     //VAR CORENTIN---------------------------
     public Cursormove cm;
@@ -27,6 +38,8 @@ public class GameManager : MonoBehaviour
     //FONCTIONS ETIENNE----------------------
     private void Awake()
     {
+        cct = FindObjectsOfType<ChangeColorTint>();
+
         TextMeshProUGUI[] _tms = FindObjectsOfType<TextMeshProUGUI>();
         foreach (TextMeshProUGUI _tm in _tms)
         {
@@ -43,6 +56,11 @@ public class GameManager : MonoBehaviour
 
         curseurs = FindObjectsOfType<Cursormove>();
         resetRectangles = FindObjectsOfType<PlacementWinZone>();
+
+        RandomColorTint();
+        Debug.Log(targetColorTint);
+        LerpToColor(targetColorTint, 0);
+
     }
 
     private void Update()
@@ -61,7 +79,7 @@ public class GameManager : MonoBehaviour
             currentMiniGame = allMiniGames[random];
 
             //FORCE A PRENDRE LE SIMON
-            currentMiniGame = "Equalizer";
+            //currentMiniGame = "SimonSays";
             //FORCE A PRENDRE LE SIMON
 
             switch (currentMiniGame)
@@ -85,8 +103,44 @@ public class GameManager : MonoBehaviour
         {
             interogeReboot = false;                     //COCO
         }
+
+        if (currentColorTint != targetColorTint)
+        {
+            bool tousFinis = true;
+            for (int i = 0; i < cct.Length; i++)
+            {
+                if (!cct[i].transitionCouleurFinie)
+                {
+                    tousFinis = false;
+                }
+            }
+            if (tousFinis)
+            {
+                currentColorTint = targetColorTint;
+                for (int i = 0; i < cct.Length; i++)
+                {
+                    cct[i].transitionCouleurFinie = false;
+                }
+            }
+        }
+
     }
 
+    public void RandomColorTint()
+    {
+        int randomIndex = Random.Range(0, System.Enum.GetValues(typeof(colorTint)).Length);
+        targetColorTint = (colorTint)randomIndex;
+    }
+
+    public void LerpToColor(colorTint colorTarget, float timer)
+    {
+        if (timer == 0)
+        {
+            int indexEnum = (int)colorTarget;
+            globalColorTint = vectorMatchingTints[indexEnum];
+        }
+
+    }
 
     private void playSimonSays()
     {
@@ -105,15 +159,17 @@ public class GameManager : MonoBehaviour
 
     private void playSinusGame()
     {
-        foreach (GameObject go in objectsADesactiver)
+        /*foreach (GameObject go in objectsADesactiver)
         {
             if (go.transform.name == "SINUSGAME")
             {
                 go.SetActive(true);
             }
-        }
+        }*/
 
+        currentMiniGame = "";           //reset
         tm.text = currentMiniGame;
+
     }
 
     private void playEqualizer()
@@ -137,6 +193,11 @@ public class GameManager : MonoBehaviour
         if (winCount >= 3)
         {
             currentMiniGame = "";
+            enjaillement += 0.1f;
+            if (enjaillement >= 1)
+            {
+                enjaillement = 1;
+            }
             Lose();
 
             for(int i = 0; i < resetRectangles.Length; i++)

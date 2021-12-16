@@ -12,10 +12,7 @@ public class SimonSays : MonoBehaviour
     private GameManager gm;
 
     public SpriteRenderer srAffiche;
-    public Sprite spriteBleu;
-    public Sprite spriteJaune;
-    public Sprite spriteRouge;
-    public Sprite spriteVert;
+    public Sprite spriteRouge, spriteVert, spriteBleu, spriteJaune;
 
     public bool peutAppuyer = false;
     public bool couleurCombiAffichee = false;
@@ -67,7 +64,7 @@ public class SimonSays : MonoBehaviour
 
     public IEnumerator AffichageCombinaison()
     {
-        gm.tm.text = "OBESERVE!";
+        gm.tm.text = "OBSERVE!";
 
         for (int i = 0; i < combinaison.Count; i++)
         {
@@ -102,21 +99,33 @@ public class SimonSays : MonoBehaviour
         {
             switch (truc)
             {
-                case "bleu":
-                    srAffiche.sprite = spriteBleu;
-                    reproduction.Add((colorCombi)0);
-                    break;
-                case "jaune":
-                    srAffiche.sprite = spriteJaune;
-                    reproduction.Add((colorCombi)1);
-                    break;
                 case "rouge":
                     srAffiche.sprite = spriteRouge;
-                    reproduction.Add((colorCombi)2);
+                    reproduction.Add((colorCombi)0);
+                    Debug.Log("rouge");
+                    gm.targetColorTint = colorTint.red;
+                    gm.LerpToColor(gm.targetColorTint, 0);
                     break;
                 case "vert":
                     srAffiche.sprite = spriteVert;
+                    reproduction.Add((colorCombi)1);
+                    Debug.Log("vert");
+                    gm.targetColorTint = colorTint.green;
+                    gm.LerpToColor(gm.targetColorTint, 0);
+                    break;
+                case "bleu":
+                    srAffiche.sprite = spriteBleu;
+                    reproduction.Add((colorCombi)2);
+                    Debug.Log("bleu");
+                    gm.targetColorTint = colorTint.blue;
+                    gm.LerpToColor(gm.targetColorTint, 0);
+                    break;
+                case "jaune":
+                    srAffiche.sprite = spriteJaune;
                     reproduction.Add((colorCombi)3);
+                    Debug.Log("jaune");
+                    gm.targetColorTint = colorTint.yellow;
+                    gm.LerpToColor(gm.targetColorTint, 0);
                     break;
                 default:
                     Debug.LogWarning("SimonSays AppuiBouton() - Couleur incorrecte");
@@ -124,10 +133,19 @@ public class SimonSays : MonoBehaviour
             }
             if (CheckCorrespondance() == -1)
             {
-                //PERDU
+                Debug.Log("PERDU");
+                reproduction.Clear();
+                peutAppuyer = false;
+                StartCoroutine(AffichageCombinaison());
             } else if(CheckCorrespondance() == 1)
             {
-                //GAGNE
+                peutAppuyer = false;
+                gm.currentMiniGame = "";
+                gm.enjaillement += 0.1f;
+                if (gm.enjaillement >= 1)
+                {
+                    gm.enjaillement = 1;
+                }
             }
         }
     }
@@ -137,14 +155,18 @@ public class SimonSays : MonoBehaviour
         int result = 0;                     // -1 PERDU; 0 RIEN; 1 GAGNE
         for (int i = 0; i < combinaison.Count; i++)
         {
-            Debug.Log(combinaison.Count);
-            if (combinaison[i] != reproduction[i])
+            if (result != -1)
             {
-                Debug.Log("PERDU");
-            }
-            else
-            {
-                Debug.Log("OUI");
+                if (i < reproduction.Count) {
+                    if (combinaison[i] != reproduction[i])
+                    {
+                        result = -1;
+                    }
+                    else if (i == combinaison.Count -1)
+                    {
+                        result = 1;
+                    }
+                }
             }
         }
         return result;
