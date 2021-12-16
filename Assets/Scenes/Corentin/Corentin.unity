@@ -329,9 +329,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 245057363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6215fe3d9bec41c498f736aa2b59c1f4, type: 3}
+  m_Script: {fileID: 11500000, guid: eb6e7774672e18b4a93b2887b5e22aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMiniGame: 
+  allMiniGames: []
+  tm: {fileID: 0}
+  objectsADesactiver: []
+  enjaillement: 0
+  nvDifficulte: 1
+  simonsays: {fileID: 0}
   cm: {fileID: 0}
   winCount: 0
   loseCount: 0
@@ -988,27 +995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63debfbfd7add44459012a366a27a7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1943122531}
-        m_TargetAssemblyTypeName: Cursormove, Assembly-CSharp
-        m_MethodName: Clicbouton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onEnterOver:
-    m_PersistentCalls:
-      m_Calls: []
-  _onExitOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!50 &1704499507
 Rigidbody2D:
   serializedVersion: 4
@@ -1144,27 +1130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63debfbfd7add44459012a366a27a7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 700788485}
-        m_TargetAssemblyTypeName: Cursormove, Assembly-CSharp
-        m_MethodName: Clicbouton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onEnterOver:
-    m_PersistentCalls:
-      m_Calls: []
-  _onExitOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!50 &1831196022
 Rigidbody2D:
   serializedVersion: 4

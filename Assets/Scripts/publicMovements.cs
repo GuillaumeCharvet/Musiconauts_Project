@@ -15,6 +15,8 @@ public class publicMovements : MonoBehaviour
     private float amplitude = 0.1f;
     private float timer = 0;
 
+
+
     // Start is called before the first frame update
     void Start()
     {

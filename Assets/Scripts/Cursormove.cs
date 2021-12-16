@@ -6,8 +6,8 @@ public class Cursormove : MonoBehaviour
 {
     public GameManager child;
 
-    [Range(0.000001f, 0.1f)]
-    public float speed = 0.01f;
+    [Range(100, 300)]
+    public float speed = 100;
 
 
     public Vector2 directionCursor;
@@ -18,6 +18,8 @@ public class Cursormove : MonoBehaviour
     public bool rebootcursor = false;
     public bool rebootAffect = false;
 
+    public Rigidbody2D rb;
+
 
 public void Start()
     {
@@ -27,19 +29,24 @@ public void Start()
 
 
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (transform.localPosition.y >= 2.15)
         {
-            directionCursor = Vector2.down * speed;
+            directionCursor = Vector2.down;
         }
         if (transform.localPosition.y <= -1.85)
         {
-            directionCursor = Vector2.up * speed;
+            directionCursor = Vector2.up;
         }
-        if (cursorStop == false)
+        if (!cursorStop)
         {
-            transform.Translate(directionCursor);
+            rb.velocity = directionCursor * speed * Time.deltaTime;
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -61,12 +68,15 @@ public void Start()
 
     public void Clicbouton()
     {
-        if (cursorCollid)
+        if (!cursorStop)
         {
-            cursorStop = true;
-            WinCursor();
+            if (cursorCollid)
+            {
+                cursorStop = true;
+                WinCursor();
+            }
+            else { LoseCursor(); }
         }
-        else { LoseCursor(); }
 
     }
 

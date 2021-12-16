@@ -5,23 +5,26 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    //VAR ETIENNE----------------------------
     public string currentMiniGame = "";
-
     public string[] allMiniGames;
-
     public TextMeshProUGUI tm;
-
     public GameObject[] objectsADesactiver;
-
     [Range(0f, 1f)]
     public float enjaillement = 0;
-
     public int nvDifficulte = 1;
-
     public SimonSays simonsays;
 
+    //VAR CORENTIN---------------------------
+    public Cursormove cm;
+    public int winCount = 0;
+    public int loseCount = 0;
+    public int rebootCount = 0;
+    public bool interogeReboot = false;
+    public Cursormove[] curseurs;
+    public PlacementWinZone[] resetRectangles;
 
-
+    //FONCTIONS ETIENNE----------------------
     private void Awake()
     {
         TextMeshProUGUI[] _tms = FindObjectsOfType<TextMeshProUGUI>();
@@ -37,6 +40,9 @@ public class GameManager : MonoBehaviour
         {
             go.SetActive(false);
         }
+
+        curseurs = FindObjectsOfType<Cursormove>();
+        resetRectangles = FindObjectsOfType<PlacementWinZone>();
     }
 
     private void Update()
@@ -55,7 +61,7 @@ public class GameManager : MonoBehaviour
             currentMiniGame = allMiniGames[random];
 
             //FORCE A PRENDRE LE SIMON
-            currentMiniGame = "SimonSays";
+            currentMiniGame = "Equalizer";
             //FORCE A PRENDRE LE SIMON
 
             switch (currentMiniGame)
@@ -66,10 +72,18 @@ public class GameManager : MonoBehaviour
                 case "SinusGame":
                     playSinusGame();
                     break;
+                case "Equalizer":
+                    playEqualizer();
+                    break;
                 default:
                     Debug.LogWarning("GAMEMANAGER INCORRECT MINIGAME NAME");
                     break;
             }
+        }
+
+        else if (currentMiniGame == "Equalizer")
+        {
+            interogeReboot = false;                     //COCO
         }
     }
 
@@ -100,6 +114,46 @@ public class GameManager : MonoBehaviour
         }
 
         tm.text = currentMiniGame;
+    }
+
+    private void playEqualizer()
+    {
+        foreach (GameObject go in objectsADesactiver)
+        {
+            if (go.transform.name == "EQUALIZER")
+            {
+                go.SetActive(true);
+            }
+        }
+
+        Debug.Log("On lance l'equalizer");
+    }
+
+    //FONCTIONS CORENTIN----------------------
+
+    public void WinCount()
+    {
+        winCount++;
+        if (winCount >= 3)
+        {
+            currentMiniGame = "";
+            Lose();
+
+            for(int i = 0; i < resetRectangles.Length; i++)
+            {
+                resetRectangles[i].Reset();
+            }
+        }
+    }
+
+    public void Lose()
+    {
+        Debug.Log("Reboot");
+        winCount = 0;
+        for (var i = 0; i < curseurs.Length; i++)
+        {
+            curseurs[i].cursorStop = false;
+        }
     }
 
 }
