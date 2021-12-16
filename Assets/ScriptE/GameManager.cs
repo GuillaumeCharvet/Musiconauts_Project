@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
     [Range(0f, 1f)]
     public float enjaillement = 0;
 
+    public int nvDifficulte = 1;
+
+    public SimonSays simonsays;
+
+
+
     private void Awake()
     {
         TextMeshProUGUI[] _tms = FindObjectsOfType<TextMeshProUGUI>();
@@ -80,7 +86,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        tm.text = currentMiniGame;
+        simonsays.GameStart();
     }
 
     private void playSinusGame()
