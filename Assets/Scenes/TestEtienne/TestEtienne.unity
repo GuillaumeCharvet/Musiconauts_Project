@@ -349,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314257959}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.86, y: 1.4900001, z: 0}
+  m_LocalPosition: {x: 0.86, y: 1.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 344598915}
@@ -964,7 +964,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1199344967
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c656f35f64e087f4ba2342f00d5dc12f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1007,16 +1007,16 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1599233695}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 593331728173130790}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuieBouton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: bleu
           m_BoolArgument: 0
         m_CallState: 2
   _onEnterOver:
@@ -1223,7 +1223,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1199344967
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4d8f0ed6f84fdd14b93203fb89ecdb1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1250,16 +1250,16 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1599233695}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 593331728173130790}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuieBouton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: rouge
           m_BoolArgument: 0
         m_CallState: 2
   _onEnterOver:
@@ -1522,7 +1522,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1199344967
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2007,7 +2007,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1199344967
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2438840a198921840b5e58d360f884bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2034,16 +2034,16 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1599233695}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 593331728173130790}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuieBouton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: jaune
           m_BoolArgument: 0
         m_CallState: 2
   _onEnterOver:
@@ -2141,7 +2141,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1199344967
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e86592212637e2a40a08d6901e71b92f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2168,16 +2168,16 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1599233695}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 593331728173130790}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuieBouton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: vert
           m_BoolArgument: 0
         m_CallState: 2
   _onEnterOver:
@@ -2186,11 +2186,6 @@ MonoBehaviour:
   _onExitOver:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1599233695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 465849842736893265, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
-  m_PrefabInstance: {fileID: 593331728173130789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1661096693
 GameObject:
   m_ObjectHideFlags: 0
@@ -3199,7 +3194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1199344967
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3267,6 +3262,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: simonsays
+      value: 
+      objectReference: {fileID: 593331728173130790}
+    - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: nvDifficulte
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: objectsADesactiver.Array.data[0]
       value: 
       objectReference: {fileID: 237845453}
@@ -3274,5 +3277,60 @@ PrefabInstance:
       propertyPath: objectsADesactiver.Array.data[1]
       value: 
       objectReference: {fileID: 683603966}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: srAffiche
+      value: 
+      objectReference: {fileID: 2042284465}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: spriteBleu
+      value: 
+      objectReference: {fileID: 21300000, guid: c656f35f64e087f4ba2342f00d5dc12f, type: 3}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: spriteVert
+      value: 
+      objectReference: {fileID: 21300000, guid: e86592212637e2a40a08d6901e71b92f, type: 3}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: spriteJaune
+      value: 
+      objectReference: {fileID: 21300000, guid: 2438840a198921840b5e58d360f884bb, type: 3}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: spriteRouge
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d8f0ed6f84fdd14b93203fb89ecdb1c, type: 3}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: couleurs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: couleurs.Array.data[0]
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: couleurs.Array.data[1]
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: couleurs.Array.data[2]
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: couleurs.Array.data[3]
+      value: 121
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: couleursEnum.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+--- !u!114 &593331728173130790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3633276378781918813, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+  m_PrefabInstance: {fileID: 593331728173130789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b753915043585c4e89258d7f51483cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
