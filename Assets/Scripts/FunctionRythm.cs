@@ -49,7 +49,7 @@ public class FunctionRythm : MonoBehaviour
             SpriteRenderer renderer_o_t = o_t.AddComponent<SpriteRenderer>();
             BoxCollider2D box_collider_o_t = o_t.AddComponent<BoxCollider2D>();
             OnClick onclick = o_t.AddComponent<OnClick>();
-            //onclick._onClick
+            //._onClick.AddListener()
             renderer_o_t.sprite = sprite_ring;
             GameObject o_m = new GameObject("ring");
             SpriteRenderer renderer_om = o_m.AddComponent<SpriteRenderer>();
