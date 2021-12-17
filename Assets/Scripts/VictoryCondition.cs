@@ -32,4 +32,11 @@ public class VictoryCondition : MonoBehaviour
             }
         }
     }
+
+    private void Reset()
+    {
+        child.game_won = false;
+        text.enabled = false;
+        scrollbar.enabled = true;
+    }
 }
