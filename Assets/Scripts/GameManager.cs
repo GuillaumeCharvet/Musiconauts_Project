@@ -248,13 +248,13 @@ public class GameManager : MonoBehaviour
 
     public void AssignationMiniGame()
     {
-        while (lastMiniGame == currentMiniGame)
-        {
-            Debug.Log("ITERATION BOUCLE WHILE");
+        /*while (lastMiniGame == currentMiniGame)
+        {*/
+            //Debug.Log("ITERATION BOUCLE WHILE");
             int random = Random.Range(0, allMiniGames.Length);
             currentMiniGame = allMiniGames[random];
-            lastMiniGame = currentMiniGame;
-        }
+        //}
+        lastMiniGame = currentMiniGame;
     }
 
     //FONCTIONS CORENTIN----------------------

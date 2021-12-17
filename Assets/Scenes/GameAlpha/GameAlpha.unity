@@ -2867,7 +2867,7 @@ SpriteRenderer:
   m_SortingLayerID: 1700391629
   m_SortingLayer: 5
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4c6de9528d64b194385b6843eca7e532, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 127b1d83f0cf9364a878d9d3b8b7a425, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3633,7 +3633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: enjaDecreFactor
-      value: 0.03
+      value: 0.0005
       objectReference: {fileID: 0}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: objectsADesactiver.Array.data[0]
