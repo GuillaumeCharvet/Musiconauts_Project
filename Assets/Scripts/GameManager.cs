@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public colorTint targetColorTint;
     public Vector4 globalColorTint;
     public ChangeColorTint[] cct;
+    public publicMovements[] foules;
 
     //VAR CORENTIN---------------------------
     public Cursormove cm;
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         RandomColorTint();
         LerpToColor(targetColorTint, 0);
 
+        foules = FindObjectsOfType<publicMovements>();
     }
 
     private void Update()
@@ -257,6 +259,14 @@ public class GameManager : MonoBehaviour
         lastMiniGame = currentMiniGame;
     }
 
+    public void FouleEnDelire()
+    {
+        for (int i = 0; i < foules.Length; i++)
+        {
+            foules[i].coupDeFolie = true;
+        }
+    }
+
     //FONCTIONS CORENTIN----------------------
 
     public void WinCount()
@@ -269,6 +279,7 @@ public class GameManager : MonoBehaviour
             {
                 enjaillement = 1;
             }
+            FouleEnDelire();
 
             for (int i = 0; i < resetRectangles.Length; i++)
             {

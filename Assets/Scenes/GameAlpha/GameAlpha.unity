@@ -255,9 +255,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   offset: 1.6
+  offsetFolie: 0.015
   sr: {fileID: 0}
   spriteCalme: {fileID: 21300000, guid: ecf524e8b2006cc42a1df645bfe309a5, type: 3}
   spriteJoie: {fileID: 21300000, guid: 85013181e1297224e82027b8de17b3ff, type: 3}
+  coupDeFolie: 0
 --- !u!114 &166876308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,9 +440,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   offset: 0
+  offsetFolie: 0.06
   sr: {fileID: 0}
   spriteCalme: {fileID: 21300000, guid: 4c6de9528d64b194385b6843eca7e532, type: 3}
   spriteJoie: {fileID: 21300000, guid: b1435db21bcc76b43b84b8a9ec6e98b3, type: 3}
+  coupDeFolie: 0
 --- !u!114 &314257963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2183,9 +2187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   offset: 0
+  offsetFolie: 0
   sr: {fileID: 0}
   spriteCalme: {fileID: 21300000, guid: 52ebb315235d4f94fb13d1d358e48cf6, type: 3}
   spriteJoie: {fileID: 21300000, guid: 952879f77a8347f42b82c78dbfe15df1, type: 3}
+  coupDeFolie: 0
 --- !u!114 &1398980025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2823,9 +2829,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   offset: 0.4
+  offsetFolie: 0.075
   sr: {fileID: 0}
   spriteCalme: {fileID: 0}
   spriteJoie: {fileID: 21300000, guid: 127b1d83f0cf9364a878d9d3b8b7a425, type: 3}
+  coupDeFolie: 0
 --- !u!212 &1659662356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3213,9 +3221,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   offset: 1.6
+  offsetFolie: 0.03
   sr: {fileID: 0}
   spriteCalme: {fileID: 21300000, guid: ecf524e8b2006cc42a1df645bfe309a5, type: 3}
   spriteJoie: {fileID: 21300000, guid: 85013181e1297224e82027b8de17b3ff, type: 3}
+  coupDeFolie: 0
 --- !u!212 &1877634794
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3367,9 +3377,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   offset: 0.3
+  offsetFolie: 0.045
   sr: {fileID: 0}
   spriteCalme: {fileID: 21300000, guid: a0594a369e3b90e4b95853f5462026e4, type: 3}
   spriteJoie: {fileID: 21300000, guid: 971705ec59a3a054aa7ad9a45829fc03, type: 3}
+  coupDeFolie: 0
 --- !u!114 &1904727097
 MonoBehaviour:
   m_ObjectHideFlags: 0

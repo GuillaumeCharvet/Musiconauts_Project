@@ -163,6 +163,7 @@ public class SimonSays : MonoBehaviour
                 {
                     gm.enjaillement = 1;
                 }
+                gm.FouleEnDelire();
             }
         }
     }
