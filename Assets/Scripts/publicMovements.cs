@@ -15,11 +15,16 @@ public class publicMovements : MonoBehaviour
     private float amplitude = 0.1f;
     private float timer = 0;
 
+    public SpriteRenderer sr;
+    public Sprite spriteCalme;
+    public Sprite spriteJoie;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         gm = FindObjectOfType<GameManager>();
         baseY = transform.position.y;
         baseX = transform.position.x;
@@ -33,5 +38,14 @@ public class publicMovements : MonoBehaviour
         float newX = baseX + Mathf.Sin(timer * frequency*2) * amplitude/3 * gm.enjaillement;
         transform.position = new Vector3(newX, newY, transform.position.z);
         timer += Time.deltaTime;
+
+        if (gm.enjaillement > 0.8f)
+        {
+            sr.sprite = spriteJoie;
+        }
+        else
+        {
+            sr.sprite = spriteCalme;
+        }
     }
 }

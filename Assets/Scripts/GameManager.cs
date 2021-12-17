@@ -12,9 +12,13 @@ public enum colorTint
 public class GameManager : MonoBehaviour
 {
     //VAR ETIENNE----------------------------
+    public bool transition = false;
+    public float enjaDecreFactor = 0.03f;
     public string currentMiniGame = "";
+    public string lastMiniGame;
     public string[] allMiniGames;
     public TextMeshProUGUI tm;
+    public TextMeshProUGUI tmGG;
     public GameObject[] objectsADesactiver;
     [Range(0f, 1f)]
     public float enjaillement = 0;
@@ -41,11 +45,18 @@ public class GameManager : MonoBehaviour
         cct = FindObjectsOfType<ChangeColorTint>();
 
         TextMeshProUGUI[] _tms = FindObjectsOfType<TextMeshProUGUI>();
+
+        curseurs = FindObjectsOfType<Cursormove>();
+        resetRectangles = FindObjectsOfType<PlacementWinZone>();
+
         foreach (TextMeshProUGUI _tm in _tms)
         {
             if(_tm.name == "MiniJeuText")
             {
                 tm = _tm;
+            } else if (_tm.name == "MiniJeuTextGG")
+            {
+                tmGG = _tm;
             }
         }
 
@@ -54,49 +65,20 @@ public class GameManager : MonoBehaviour
             go.SetActive(false);
         }
 
-        curseurs = FindObjectsOfType<Cursormove>();
-        resetRectangles = FindObjectsOfType<PlacementWinZone>();
-
         RandomColorTint();
-        Debug.Log(targetColorTint);
         LerpToColor(targetColorTint, 0);
 
     }
 
     private void Update()
     {
-        if (currentMiniGame == "")
+        NiveauDifficulteChanger();
+
+        EnjaillementDecrementation();
+
+        if (currentMiniGame == "" && !transition)
         {
-            foreach (GameObject go in objectsADesactiver)
-            {
-                if (go.activeSelf)
-                {
-                    go.SetActive(false);
-                }
-            }
-
-            int random = Random.Range(0, allMiniGames.Length);
-            currentMiniGame = allMiniGames[random];
-
-            //FORCE A PRENDRE LE SIMON
-            //currentMiniGame = "SimonSays";
-            //FORCE A PRENDRE LE SIMON
-
-            switch (currentMiniGame)
-            {
-                case "SimonSays":
-                    playSimonSays();
-                    break;
-                case "SinusGame":
-                    playSinusGame();
-                    break;
-                case "Equalizer":
-                    playEqualizer();
-                    break;
-                default:
-                    Debug.LogWarning("GAMEMANAGER INCORRECT MINIGAME NAME");
-                    break;
-            }
+            StartCoroutine(Transition());
         }
 
         else if (currentMiniGame == "Equalizer")
@@ -181,8 +163,98 @@ public class GameManager : MonoBehaviour
                 go.SetActive(true);
             }
         }
+    }
 
-        Debug.Log("On lance l'equalizer");
+    public IEnumerator Transition()
+    {
+        transition = true;
+        foreach (GameObject go in objectsADesactiver)
+        {
+            if (go.activeSelf)
+            {
+                go.SetActive(false);
+            }
+        }
+
+        AssignationMiniGame();
+
+
+        Debug.Log("last mini game : " + lastMiniGame + " current mini game : " + currentMiniGame);        
+
+        if (enjaillement > 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            tmGG.text = "WELL DONE !";
+
+            RandomColorTint();
+            LerpToColor(targetColorTint, 0);
+        }  
+
+        yield return new WaitForSeconds(0.5f);
+
+        if (enjaillement > 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            tmGG.text = "";
+        }
+
+        switch (currentMiniGame)
+        {
+            case "SimonSays":
+                playSimonSays();
+                break;
+            case "SinusGame":
+                playSinusGame();
+                break;
+            case "Equalizer":
+                playEqualizer();
+                break;
+            default:
+                Debug.LogWarning("GAMEMANAGER INCORRECT MINIGAME NAME" + currentMiniGame);
+                break;
+        }
+        transition = false;
+    }
+
+    public void NiveauDifficulteChanger()
+    {
+        if(enjaillement < 0.4f)
+        {
+            nvDifficulte = 1;
+        } else if (enjaillement < 0.8f)
+        {
+            nvDifficulte = 2;
+        }
+        else
+        {
+            nvDifficulte = 3;
+        }
+    }
+
+    public void EnjaillementDecrementation()
+    {
+        if (enjaillement > 0)
+        {
+            enjaillement -= enjaDecreFactor * Time.deltaTime;
+
+            if (enjaillement < 0)
+            {
+                enjaillement = 0;
+            }
+        } 
+    }
+
+    public void AssignationMiniGame()
+    {
+        while (lastMiniGame == currentMiniGame)
+        {
+            Debug.Log("ITERATION BOUCLE WHILE");
+            int random = Random.Range(0, allMiniGames.Length);
+            currentMiniGame = allMiniGames[random];
+            lastMiniGame = currentMiniGame;
+        }
     }
 
     //FONCTIONS CORENTIN----------------------
@@ -192,24 +264,28 @@ public class GameManager : MonoBehaviour
         winCount++;
         if (winCount >= 3)
         {
-            currentMiniGame = "";
             enjaillement += 0.1f;
             if (enjaillement >= 1)
             {
                 enjaillement = 1;
             }
-            Lose();
 
-            for(int i = 0; i < resetRectangles.Length; i++)
+            for (int i = 0; i < resetRectangles.Length; i++)
             {
                 resetRectangles[i].Reset();
+                curseurs[i].cursorStop = false;
             }
+
+            Lose();
+
+            currentMiniGame = "";
+
+
         }
     }
 
     public void Lose()
     {
-        Debug.Log("Reboot");
         winCount = 0;
         for (var i = 0; i < curseurs.Length; i++)
         {

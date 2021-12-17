@@ -84,10 +84,32 @@ public class SimonSays : MonoBehaviour
                     break;
             }
             couleurCombiAffichee = true;
-            yield return new WaitForSeconds(1.2f);             //ATTEND N SECONDES
+            switch (gm.nvDifficulte)
+            {
+                case 1:
+                    yield return new WaitForSeconds(1.2f);
+                    break;
+                case 2:
+                    yield return new WaitForSeconds(0.9f);
+                    break;
+                case 3:
+                    yield return new WaitForSeconds(0.6f);
+                    break;
+            }
             srAffiche.sprite = null;
             couleurCombiAffichee = true;
-            yield return new WaitForSeconds(0.3f);
+            switch (gm.nvDifficulte)
+            {
+                case 1:
+                    yield return new WaitForSeconds(0.3f);
+                    break;
+                case 2:
+                    yield return new WaitForSeconds(0.2f);
+                    break;
+                case 3:
+                    yield return new WaitForSeconds(0.1f);
+                    break;
+            }
         }
         gm.tm.text = "DO THE SAME!";
         peutAppuyer = true;
@@ -102,28 +124,24 @@ public class SimonSays : MonoBehaviour
                 case "rouge":
                     srAffiche.sprite = spriteRouge;
                     reproduction.Add((colorCombi)0);
-                    Debug.Log("rouge");
                     gm.targetColorTint = colorTint.red;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
                 case "vert":
                     srAffiche.sprite = spriteVert;
                     reproduction.Add((colorCombi)1);
-                    Debug.Log("vert");
                     gm.targetColorTint = colorTint.green;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
                 case "bleu":
                     srAffiche.sprite = spriteBleu;
                     reproduction.Add((colorCombi)2);
-                    Debug.Log("bleu");
                     gm.targetColorTint = colorTint.blue;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
                 case "jaune":
                     srAffiche.sprite = spriteJaune;
                     reproduction.Add((colorCombi)3);
-                    Debug.Log("jaune");
                     gm.targetColorTint = colorTint.yellow;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
@@ -133,7 +151,6 @@ public class SimonSays : MonoBehaviour
             }
             if (CheckCorrespondance() == -1)
             {
-                Debug.Log("PERDU");
                 reproduction.Clear();
                 peutAppuyer = false;
                 StartCoroutine(AffichageCombinaison());

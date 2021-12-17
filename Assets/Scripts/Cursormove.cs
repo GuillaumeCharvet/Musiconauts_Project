@@ -50,6 +50,22 @@ public void Start()
         }
     }
 
+    private void Update()
+    {
+        switch (child.nvDifficulte)
+        {
+            case 1:
+                speed = 100;
+                break;
+            case 2:
+                speed = 170;
+                break;
+            case 3:
+                speed = 240;
+                break;
+        }
+    }
+
 
     public void OnTriggerEnter2D(Collider2D collisionEnter)
     {
@@ -82,13 +98,12 @@ public void Start()
 
     public void WinCursor()
     {
-        Debug.Log("Win");
+        
 
         child.WinCount() ;
     }
     public void LoseCursor()
     {
-        Debug.Log("Loose");
         child.Lose();
     }
 }
