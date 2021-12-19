@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WinZone
+  - Cursor
   layers:
   - Default
   - TransparentFX
@@ -64,4 +66,7 @@ TagManager:
     locked: 0
   - name: MiniJeuText
     uniqueID: 2553055005
+    locked: 0
+  - name: CacheBords
+    uniqueID: 563609779
     locked: 0

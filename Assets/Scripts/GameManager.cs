@@ -74,11 +74,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        NiveauDifficulteChanger();
+        NiveauDifficulteChanger();                      //Change nvDifficulte en fonction de enjaillement
 
-        EnjaillementDecrementation();
+        EnjaillementDecrementation();                   // enjaillement -= Time.deltaTime * facteur
 
-        if (currentMiniGame == "" && !transition)
+        if (currentMiniGame == "" && !transition)       // si aucun minijeu n'est sélectionné et la transition n'a pas commencé
         {
             StartCoroutine(Transition());
         }
@@ -180,6 +180,10 @@ public class GameManager : MonoBehaviour
 
         AssignationMiniGame();
 
+        if(currentMiniGame == "")
+        {
+            Debug.LogWarning("CURRENT MINI GAME VIDE");
+        }
 
         Debug.Log("last mini game : " + lastMiniGame + " current mini game : " + currentMiniGame);        
 
@@ -197,9 +201,9 @@ public class GameManager : MonoBehaviour
 
         if (enjaillement > 0)
         {
-            yield return new WaitForSeconds(0.2f);
-
             tmGG.text = "";
+
+            yield return new WaitForSeconds(0.2f);
         }
 
         switch (currentMiniGame)
@@ -250,12 +254,12 @@ public class GameManager : MonoBehaviour
 
     public void AssignationMiniGame()
     {
-        /*while (lastMiniGame == currentMiniGame)
-        {*/
-            //Debug.Log("ITERATION BOUCLE WHILE");
+        while (lastMiniGame == currentMiniGame)
+        {
+            Debug.Log("ITERATION BOUCLE WHILE");
             int random = Random.Range(0, allMiniGames.Length);
             currentMiniGame = allMiniGames[random];
-        //}
+        }
         lastMiniGame = currentMiniGame;
     }
 

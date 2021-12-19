@@ -3648,17 +3648,33 @@ PrefabInstance:
       value: 0.0005
       objectReference: {fileID: 0}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: allMiniGames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: allMiniGames.Array.data[1]
+      value: Equalizer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: allMiniGames.Array.data[2]
+      value: SinusGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
+      propertyPath: objectsADesactiver.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: objectsADesactiver.Array.data[0]
       value: 
       objectReference: {fileID: 237845453}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: objectsADesactiver.Array.data[1]
       value: 
-      objectReference: {fileID: 683603966}
+      objectReference: {fileID: 1250536862}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: objectsADesactiver.Array.data[2]
       value: 
-      objectReference: {fileID: 1250536862}
+      objectReference: {fileID: 683603966}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: vectorMatchingTints.Array.data[0].b
       value: 0.7721806
