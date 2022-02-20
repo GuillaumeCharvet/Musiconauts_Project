@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baad3df027a912f45a574263af62e82d, type: 3}
+  m_Name: 3_FollyGroup
+  m_EditorClassIdentifier: 
+  levelNumber: 3
+  music: {fileID: 8300000, guid: a02a04f505102c04897393bb9b23732d, type: 3}
+  musicName: Butt No Rifle
+  artistName: Folly Group
+  albumName: Awake and Hungry
+  mainColors: []
+  difficultyMin: 2
+  difficultyMax: 6
+  albumImage: {fileID: 21300000, guid: eccbcf8bde9216147955888322e495cf, type: 3}
+  sceneSprite: {fileID: 0}
+  artistsSprite: {fileID: 0}
