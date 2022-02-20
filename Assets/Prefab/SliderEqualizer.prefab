@@ -28,10 +28,10 @@ Transform:
   m_GameObject: {fileID: 8215879548743530208}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8215879550775046806}
-  m_RootOrder: 2
+  m_Father: {fileID: 8215879550134200846}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8215879548743530210
 SpriteRenderer:
@@ -123,8 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19015da5966d8cf4dbc043cbb992d77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementZone: {x: 0, y: 0}
-  randomVar: 0
 --- !u!1 &8215879549721022221
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +261,7 @@ MonoBehaviour:
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8215879550306240399}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Cursormove, Assembly-CSharp
         m_MethodName: Clicbouton
         m_Mode: 1
@@ -308,9 +306,11 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.14000006, z: 0.4375601}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8215879550306240402}
+  - {fileID: 8215879548743530211}
   m_Father: {fileID: 8215879550775046806}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8215879550134200847
 SpriteRenderer:
@@ -375,8 +375,8 @@ GameObject:
   - component: {fileID: 8215879550306240402}
   - component: {fileID: 8215879550306240401}
   - component: {fileID: 8215879550306240400}
-  - component: {fileID: 8215879550306240399}
   - component: {fileID: 8215879550306240398}
+  - component: {fileID: 7626347432733113802}
   m_Layer: 0
   m_Name: Cursor1
   m_TagString: Cursor
@@ -392,11 +392,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8215879550306240397}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.163, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.4375601}
+  m_LocalScale: {x: 1.3333335, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8215879550775046806}
-  m_RootOrder: 1
+  m_Father: {fileID: 8215879550134200846}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8215879550306240401
 SpriteRenderer:
@@ -474,30 +474,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.89, y: 0.45}
+  m_Size: {x: 2.89, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &8215879550306240399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8215879550306240397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7fa30a4ea5f79649a0d795247bbf567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  child: {fileID: 0}
-  speed: 100
-  directionCursor: {x: 0, y: 0}
-  cursorStop: 0
-  cursorCollid: 0
-  winCursor: 0
-  loseCursor: 0
-  rebootcursor: 0
-  rebootAffect: 0
-  rb: {fileID: 8215879550306240398}
 --- !u!50 &8215879550306240398
 Rigidbody2D:
   serializedVersion: 4
@@ -519,6 +497,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7626347432733113802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215879550306240397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d1c584638cb7949a8e79b1fd81b77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  eq: {fileID: 0}
+  upwards: 0
+  cursorCollid: 0
+  cursorStop: 0
 --- !u!1 &8215879550775046805
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,8 +542,6 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 8215879549721022222}
-  - {fileID: 8215879550306240402}
-  - {fileID: 8215879548743530211}
   - {fileID: 8215879550134200846}
   m_Father: {fileID: 0}
   m_RootOrder: 0

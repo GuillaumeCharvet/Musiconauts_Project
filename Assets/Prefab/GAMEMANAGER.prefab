@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1962315595231921203}
   - component: {fileID: 2987286860908991080}
-  - component: {fileID: 3633276378781918813}
   m_Layer: 0
   m_Name: GAMEMANAGER
   m_TagString: Untagged
@@ -44,56 +43,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6e7774672e18b4a93b2887b5e22aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMiniGame: 
-  allMiniGames:
-  - SimonSays
-  - SinusGame
-  - Equalizer
-  tm: {fileID: 0}
-  objectsADesactiver:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  enjaillement: 0
-  nvDifficulte: 1
-  simonsays: {fileID: 3633276378781918813}
+  currentMiniGame: 0
+  lastMiniGame: 0
+  allMiniGames: 0000000000000000
+  currentColorTint: 6
+  targetColorTint: 0
   vectorMatchingTints:
-  - {r: 1, g: 0.48584908, b: 0.56336427, a: 1}
-  - {r: 0.7849114, g: 1, b: 0.654902, a: 1}
+  - {r: 1, g: 0.7311321, b: 0.7721806, a: 1}
+  - {r: 0.60784316, g: 1, b: 0.37254903, a: 1}
   - {r: 0.504717, g: 1, b: 0.9848293, a: 1}
   - {r: 1, g: 0.9781253, b: 0.4198113, a: 1}
   - {r: 0.8104208, g: 0.654902, b: 1, a: 1}
   - {r: 1, g: 0.7529412, b: 0.654902, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  currentColorTint: 6
-  targetColorTint: 0
   globalColorTint: {x: 0, y: 0, z: 0, w: 0}
+  mgSpawner: {fileID: 0}
   cct: []
+  simonsays: {fileID: 0}
+  foules: []
+  tm: {fileID: 0}
+  tmGG: {fileID: 0}
+  enjaillement: 0
+  enjaDecreFactor: 0.0005
+  nvDifficulte: 1
+  transition: 0
   cm: {fileID: 0}
+  curseurs: []
+  resetRectangles: []
   winCount: 0
   loseCount: 0
   rebootCount: 0
   interogeReboot: 0
-  curseurs: []
-  resetRectangles: []
---- !u!114 &3633276378781918813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465849842736893265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b753915043585c4e89258d7f51483cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  srAffiche: {fileID: 0}
-  spriteRouge: {fileID: 21300000, guid: 4d8f0ed6f84fdd14b93203fb89ecdb1c, type: 3}
-  spriteVert: {fileID: 21300000, guid: e86592212637e2a40a08d6901e71b92f, type: 3}
-  spriteBleu: {fileID: 21300000, guid: c656f35f64e087f4ba2342f00d5dc12f, type: 3}
-  spriteJaune: {fileID: 21300000, guid: 2438840a198921840b5e58d360f884bb, type: 3}
-  peutAppuyer: 0
-  couleurCombiAffichee: 0
-  combinaison: 
-  reproduction: 

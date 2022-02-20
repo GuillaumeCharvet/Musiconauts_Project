@@ -10,18 +10,14 @@ public enum colorCombi
 public class SimonSays : MonoBehaviour
 {
     private GameManager gm;
-
     public SpriteRenderer srAffiche;
     public Sprite spriteRouge, spriteVert, spriteBleu, spriteJaune;
-
-    public bool peutAppuyer = false;
-    public bool couleurCombiAffichee = false;
-
     public List<colorCombi> combinaison;
     public List<colorCombi> reproduction;
 
+    public bool peutAppuyer = false;
 
-    public void GameStart()
+    public void Start()
     {
         if (gm == null) gm = FindObjectOfType<GameManager>();
         combinaison = new List<colorCombi>();
@@ -30,8 +26,6 @@ public class SimonSays : MonoBehaviour
         CreationCombinaison();
 
         StartCoroutine(AffichageCombinaison());
-
-        
     }
 
     public void CreationCombinaison()
@@ -45,6 +39,7 @@ public class SimonSays : MonoBehaviour
                     combinaison.Add((colorCombi)randomIndex);
                 }
                 break;
+
             case 2:
                 for (int i = 0; i < 4; i++)
                 {
@@ -52,6 +47,7 @@ public class SimonSays : MonoBehaviour
                     combinaison.Add((colorCombi)randomIndex);
                 }
                 break;
+
             case 3:
                 for (int i = 0; i < 5; i++)
                 {
@@ -73,39 +69,44 @@ public class SimonSays : MonoBehaviour
                 case (colorCombi)0:
                     srAffiche.sprite = spriteRouge;
                     break;
+
                 case (colorCombi)1:
                     srAffiche.sprite = spriteVert;
                     break;
+
                 case (colorCombi)2:
                     srAffiche.sprite = spriteBleu;
                     break;
+
                 case (colorCombi)3:
                     srAffiche.sprite = spriteJaune;
                     break;
             }
-            couleurCombiAffichee = true;
             switch (gm.nvDifficulte)
             {
                 case 1:
                     yield return new WaitForSeconds(1.2f);
                     break;
+
                 case 2:
                     yield return new WaitForSeconds(0.9f);
                     break;
+
                 case 3:
                     yield return new WaitForSeconds(0.6f);
                     break;
             }
             srAffiche.sprite = null;
-            couleurCombiAffichee = true;
             switch (gm.nvDifficulte)
             {
                 case 1:
                     yield return new WaitForSeconds(0.3f);
                     break;
+
                 case 2:
                     yield return new WaitForSeconds(0.2f);
                     break;
+
                 case 3:
                     yield return new WaitForSeconds(0.1f);
                     break;
@@ -115,36 +116,40 @@ public class SimonSays : MonoBehaviour
         peutAppuyer = true;
     }
 
-    public void AppuiBouton(string truc)
+    public void AppuiBouton(string couleurAppuyee)
     {
         if (peutAppuyer)
         {
-            switch (truc)
+            switch (couleurAppuyee)
             {
-                case "rouge":
+                case "r":
                     srAffiche.sprite = spriteRouge;
                     reproduction.Add((colorCombi)0);
                     gm.targetColorTint = colorTint.red;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
-                case "vert":
+
+                case "g":
                     srAffiche.sprite = spriteVert;
                     reproduction.Add((colorCombi)1);
                     gm.targetColorTint = colorTint.green;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
-                case "bleu":
+
+                case "b":
                     srAffiche.sprite = spriteBleu;
                     reproduction.Add((colorCombi)2);
                     gm.targetColorTint = colorTint.blue;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
-                case "jaune":
+
+                case "y":
                     srAffiche.sprite = spriteJaune;
                     reproduction.Add((colorCombi)3);
                     gm.targetColorTint = colorTint.yellow;
                     gm.LerpToColor(gm.targetColorTint, 0);
                     break;
+
                 default:
                     Debug.LogWarning("SimonSays AppuiBouton() - Couleur incorrecte");
                     break;
@@ -154,16 +159,18 @@ public class SimonSays : MonoBehaviour
                 reproduction.Clear();
                 peutAppuyer = false;
                 StartCoroutine(AffichageCombinaison());
-            } else if(CheckCorrespondance() == 1)
+            }
+            else if (CheckCorrespondance() == 1)
             {
                 peutAppuyer = false;
-                gm.currentMiniGame = "";
+                gm.currentMiniGame = miniGame.none;
                 gm.enjaillement += 0.1f;
                 if (gm.enjaillement >= 1)
                 {
                     gm.enjaillement = 1;
                 }
                 gm.FouleEnDelire();
+                gm.mgSpawner.DestroyMiniGame();
             }
         }
     }
@@ -175,12 +182,13 @@ public class SimonSays : MonoBehaviour
         {
             if (result != -1)
             {
-                if (i < reproduction.Count) {
+                if (i < reproduction.Count)
+                {
                     if (combinaison[i] != reproduction[i])
                     {
                         result = -1;
                     }
-                    else if (i == combinaison.Count -1)
+                    else if (i == combinaison.Count - 1)
                     {
                         result = 1;
                     }
@@ -189,5 +197,4 @@ public class SimonSays : MonoBehaviour
         }
         return result;
     }
-
 }
