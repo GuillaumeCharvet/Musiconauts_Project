@@ -64,6 +64,7 @@ public class SimonSays : MonoBehaviour
 
         for (int i = 0; i < combinaison.Count; i++)
         {
+            srAffiche.GetComponent<AnimTransform>().SetCanGo();
             switch (combinaison[i])
             {
                 case (colorCombi)0:
@@ -112,7 +113,6 @@ public class SimonSays : MonoBehaviour
                     break;
             }
         }
-        //gm.tm.text = "DO THE SAME!";
         peutAppuyer = true;
     }
 
@@ -124,30 +124,30 @@ public class SimonSays : MonoBehaviour
             {
                 case "r":
                     srAffiche.sprite = spriteRouge;
+                    srAffiche.GetComponent<AnimTransform>().SetCanGo();
                     reproduction.Add((colorCombi)0);
                     gm.targetColorTint = colorTint.red;
-                    gm.LerpToColor(gm.targetColorTint, 0);
                     break;
 
                 case "g":
                     srAffiche.sprite = spriteVert;
+                    srAffiche.GetComponent<AnimTransform>().SetCanGo();
                     reproduction.Add((colorCombi)1);
                     gm.targetColorTint = colorTint.green;
-                    gm.LerpToColor(gm.targetColorTint, 0);
                     break;
 
                 case "b":
                     srAffiche.sprite = spriteBleu;
+                    srAffiche.GetComponent<AnimTransform>().SetCanGo();
                     reproduction.Add((colorCombi)2);
                     gm.targetColorTint = colorTint.blue;
-                    gm.LerpToColor(gm.targetColorTint, 0);
                     break;
 
                 case "y":
                     srAffiche.sprite = spriteJaune;
+                    srAffiche.GetComponent<AnimTransform>().SetCanGo();
                     reproduction.Add((colorCombi)3);
                     gm.targetColorTint = colorTint.yellow;
-                    gm.LerpToColor(gm.targetColorTint, 0);
                     break;
 
                 default:
@@ -164,7 +164,7 @@ public class SimonSays : MonoBehaviour
             {
                 peutAppuyer = false;
 
-                gm.Win();
+                StartCoroutine(gm.Win());
             }
         }
     }

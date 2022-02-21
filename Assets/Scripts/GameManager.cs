@@ -15,7 +15,10 @@ public enum colorTint
 
 public class GameManager : MonoBehaviour
 {
-    //VAR ETIENNE----------------------------
+    public Level_SO currentLevel;
+
+    [SerializeField]
+    private PlayMusic playMusic;
 
     public miniGame currentMiniGame;                        //Mini-jeu actuel. Si vide alors un mini-jeu va être choisir aléatoirement
     public miniGame lastMiniGame;                           //Dernier mini-jeu sélectionné. Empêche d'avoir le même deux fois d'affilé
@@ -23,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     public colorTint currentColorTint = colorTint.white;    //Teinte de couleur actuelle
     public colorTint targetColorTint;                       //Teinte de couleur vers laquelle on va se diriger
+    private Color oldColor;
+    private bool oldColorSet;
+    private float colorLerpT;
     public Color[] vectorMatchingTints;                     //Les différentes couleurs pour le changement de Tints du niveau (A remplir dans l'inspector)
     public Vector4 globalColorTint;                         //Vector 4 de la couleur actuelle. Ses valeurs peuvent être lerpées vers la celle de la couleur cible
 
@@ -71,6 +77,11 @@ public class GameManager : MonoBehaviour
         LerpToColor(targetColorTint, 0);
     }
 
+    private void Start()
+    {
+        AdaptationLevel();
+    }
+
     private void Update()
     {
         NiveauDifficulteChanger();                                      //Change nvDifficulte en fonction de enjaillement
@@ -102,6 +113,11 @@ public class GameManager : MonoBehaviour
         }
 
         AnimationsManagement();
+
+        if (currentColorTint != targetColorTint)
+        {
+            LerpToColor(targetColorTint, 1);
+        }
     }
 
     public void RandomColorTint()
@@ -112,10 +128,29 @@ public class GameManager : MonoBehaviour
 
     public void LerpToColor(colorTint colorTarget, float timer)
     {
+        if (!oldColorSet)
+        {
+            oldColorSet = true;
+            oldColor = globalColorTint;
+            colorLerpT = 0;
+        }
         if (timer == 0)
         {
             int indexEnum = (int)colorTarget;
             globalColorTint = vectorMatchingTints[indexEnum];
+            oldColorSet = false;
+            currentColorTint = colorTarget;
+        }
+        else if (colorLerpT < 1)
+        {
+            int indexEnum = (int)colorTarget;
+            globalColorTint = Color.Lerp(oldColor, vectorMatchingTints[indexEnum], colorLerpT);
+            colorLerpT += Time.deltaTime * 15;
+        }
+        else if (colorLerpT >= 1)
+        {
+            oldColorSet = false;
+            currentColorTint = colorTarget;
         }
     }
 
@@ -140,21 +175,11 @@ public class GameManager : MonoBehaviour
 
         AssignationMiniGame();
 
-        if (currentMiniGame == miniGame.none)
-        {
-            Debug.LogWarning("CURRENT MINI GAME VIDE");
-        }
-
-        Debug.Log("last mini game : " + lastMiniGame + " current mini game : " + currentMiniGame);
-
         if (enjaillement > 0)
         {
             yield return new WaitForSeconds(0.2f);
 
             tmGG.text = "WELL DONE !";
-
-            RandomColorTint();
-            LerpToColor(targetColorTint, 0);
         }
 
         switch (nvDifficulte)
@@ -172,12 +197,9 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        if (enjaillement > 0)
-        {
-            tmGG.text = "";
+        tmGG.text = "";
 
-            yield return new WaitForSeconds(0.2f);
-        }
+        yield return new WaitForSeconds(0.2f);
 
         switch (currentMiniGame)
         {
@@ -261,15 +283,16 @@ public class GameManager : MonoBehaviour
 
     public void FouleEnDelire()
     {
+        RandomColorTint();
         for (int i = 0; i < foules.Length; i++)
         {
             foules[i].coupDeFolie = true;
         }
     }
 
-    public void Win()
+    public IEnumerator Win()
     {
-        animVictory.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
 
         currentMiniGame = miniGame.none;
         enjaillement += 0.1f;
@@ -283,19 +306,31 @@ public class GameManager : MonoBehaviour
 
     private void AnimationsManagement()
     {
-        animVictory = animatorVictory.GetComponent<Animation>();
-        animFail = animatorFail.GetComponent<Animation>();
-
-        if (animVictory["Victory_anim"].normalizedTime >= 1)
+        /*if (animatorVictory.gameObject.activeInHierarchy)
         {
-            animVictory["Victory_anim"].normalizedTime = 0;
-            animVictory.gameObject.SetActive(false);
+            animVictory = animatorVictory.GetComponent<Animation>();
+            Debug.Log(animVictory["Victory_anim"].normalizedTime);
+            if (animVictory["Victory_anim"].normalizedTime >= 1)
+            {
+                animVictory["Victory_anim"].normalizedTime = 0;
+                animVictory.gameObject.SetActive(false);
+            }
         }
 
-        if (animFail["Fail_anim"].normalizedTime >= 1)
+        if (animatorFail.gameObject.activeInHierarchy)
         {
-            animFail["Fail_anim"].normalizedTime = 0;
-            animFail.gameObject.SetActive(false);
-        }
+            animFail = animatorFail.GetComponent<Animation>();
+            if (animFail["Fail_anim"].normalizedTime >= 1)
+            {
+                animFail["Fail_anim"].normalizedTime = 0;
+                animFail.gameObject.SetActive(false);
+            }
+        }*/
+    }
+
+    private void AdaptationLevel()
+    {
+        playMusic.audioSource.clip = currentLevel.music;
+        enjaDecreFactor = currentLevel.enjaillementDecrement;
     }
 }

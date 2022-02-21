@@ -77,7 +77,7 @@ public class Equalizer : MonoBehaviour
 
         if (winCount == 3)                                  //si le nombre de bons curseurs = 3
         {
-            gm.Win();                                       //on gagne
+            StartCoroutine(gm.Win());                       //on gagne
         }
         else if (lose)                                      //sinon
         {

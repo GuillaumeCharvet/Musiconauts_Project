@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 5
   music: {fileID: 8300000, guid: 23d6e2e1ca4dcfe48a08e1724fac6ad7, type: 3}
-  musicName: Hertz
   artistName: Amyl and the Sniffers
+  musicName: Hertz
   albumName: Comfort to Me
+  genre: 
   mainColors: []
   difficultyMin: 4
   difficultyMax: 8
-  enjaillementDecrement: 0.17
+  enjaillementDecrement: 0.011
   albumImage: {fileID: 21300000, guid: e3b421a548e844f4397e92fb23eb1bd0, type: 3}
   sceneSprite: {fileID: 0}
   artistsSprite: {fileID: 0}
+  description: 
