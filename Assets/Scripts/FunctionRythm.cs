@@ -225,6 +225,6 @@ public class FunctionRythm : MonoBehaviour
 
     public void ChangeVictoryValue()
     {
-
+        Debug.Log("test");
     }
 }
