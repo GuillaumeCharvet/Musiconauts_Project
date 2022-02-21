@@ -46,10 +46,6 @@ public class Equalizer : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-    }
-
     public void ResetWinZone()
     {
         for (int i = 0; i < winZones.Length; i++)
@@ -61,31 +57,35 @@ public class Equalizer : MonoBehaviour
 
     public void CursorSituation()
     {
-        int winCount = 0;
-        bool lose = false;
+        int winCount = 0;                                   //initialise le compte de bons curseurs à 0
+        bool lose = false;                                  //victoire par défaut. Au moindre mauvais cursuer, on passe défaite à true
 
-        for (int i = 0; i < cursors.Length; i++)
+        for (int i = 0; i < cursors.Length; i++)            //pour chaque curseur
         {
-            if (cursors[i].cursorStop)
+            if (cursors[i].cursorStop)                      //vérifie sur le curseur est arrêté
             {
-                if (cursors[i].cursorCollid)
+                if (cursors[i].cursorCollid)                //s'il est arrêté et qu'il est dans la zone
                 {
-                    winCount++;
+                    winCount++;                             //-> on augmente la valeur de compte de bons curseur
                 }
                 else
                 {
-                    lose = true;
+                    lose = true;                            //sinon on passe le bool de défaite à true
                 }
             }
         }
 
-        if (winCount == 3)
+        if (winCount == 3)                                  //si le nombre de bons curseurs = 3
         {
-            //GAGNE
+            gm.Win();                                       //on gagne
         }
-        else if (lose)
+        else if (lose)                                      //sinon
         {
-            //PERDU
+            for (int i = 0; i < cursors.Length; i++)
+            {
+                cursors[i].cursorStop = false;              //on remet tous les curseurs en marche
+            }
+            ResetWinZone();                                 //on perd et ça réinitialise les jauges
         }
     }
 }

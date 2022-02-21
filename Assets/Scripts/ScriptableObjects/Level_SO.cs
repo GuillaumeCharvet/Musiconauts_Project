@@ -10,5 +10,6 @@ public class Level_SO : ScriptableObject
     public string musicName, artistName, albumName;
     public List<Color> mainColors;
     public int difficultyMin, difficultyMax;
+    public float enjaillementDecrement;
     public Sprite albumImage, sceneSprite, artistsSprite;
 }

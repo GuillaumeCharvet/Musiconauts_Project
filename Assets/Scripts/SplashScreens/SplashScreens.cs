@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class SplashScreens : MonoBehaviour
 {
     [SerializeField]
-    public Transform menu;
-
-    [SerializeField]
     private SplashScreensSquare square;
 
     [SerializeField]
@@ -34,7 +31,6 @@ public class SplashScreens : MonoBehaviour
 
     private void Start()
     {
-        square._menu = menu;
         alphaSpeedFactor = 1 / timeToAlpha;
     }
 
@@ -71,7 +67,7 @@ public class SplashScreens : MonoBehaviour
             case 1:
                 if (timer < timeToAlpha)
                 {
-                    alphaEtpa = timer * alphaSpeedFactor;
+                    alphaEtpa = timer * alphaSpeedFactor * timeFactor;
                     srEtpa.color = new Vector4(1, 1, 1, alphaEtpa);
                     timer += Time.deltaTime * timeFactor;
                 }
@@ -81,7 +77,7 @@ public class SplashScreens : MonoBehaviour
                 }
                 else if (timer < timeToAlpha + timeToStay + timeToAlpha)
                 {
-                    alphaEtpa -= Time.deltaTime * alphaSpeedFactor;
+                    alphaEtpa -= Time.deltaTime * alphaSpeedFactor * timeFactor;
                     srEtpa.color = new Vector4(1, 1, 1, alphaEtpa);
                     timer += Time.deltaTime * timeFactor;
                 }
@@ -107,7 +103,7 @@ public class SplashScreens : MonoBehaviour
             case 3:
                 if (timer < timeToAlpha)
                 {
-                    alphaTrans = timer * alphaSpeedFactor;
+                    alphaTrans = timer * alphaSpeedFactor * timeFactor;
                     srTrans.color = new Vector4(1, 1, 1, alphaTrans);
                     timer += Time.deltaTime * timeFactor;
                 }
@@ -117,7 +113,7 @@ public class SplashScreens : MonoBehaviour
                 }
                 else if (timer < timeToAlpha + timeToStay + timeToAlpha)
                 {
-                    alphaTrans -= Time.deltaTime * alphaSpeedFactor;
+                    alphaTrans -= Time.deltaTime * alphaSpeedFactor * timeFactor;
                     srTrans.color = new Vector4(1, 1, 1, alphaTrans);
                     timer += Time.deltaTime * timeFactor;
                 }
@@ -143,7 +139,7 @@ public class SplashScreens : MonoBehaviour
             case 5:
                 if (timer < timeToAlpha)
                 {
-                    alphaMusiconauts = timer * alphaSpeedFactor;
+                    alphaMusiconauts = timer * alphaSpeedFactor * timeFactor;
                     srMusiconauts.color = new Vector4(1, 1, 1, alphaMusiconauts);
                     timer += Time.deltaTime * timeFactor;
                 }
@@ -153,7 +149,7 @@ public class SplashScreens : MonoBehaviour
                 }
                 else if (timer < timeToAlpha + timeToStay + timeToAlpha)
                 {
-                    alphaMusiconauts -= Time.deltaTime * alphaSpeedFactor;
+                    alphaMusiconauts -= Time.deltaTime * alphaSpeedFactor * timeFactor;
                     srMusiconauts.color = new Vector4(1, 1, 1, alphaMusiconauts);
                     timer += Time.deltaTime * timeFactor;
                 }
@@ -186,7 +182,7 @@ public class SplashScreens : MonoBehaviour
     {
         if (audioVolume < 0.5)
         {
-            audioVolume += Time.deltaTime * 0.05f;
+            audioVolume += Time.deltaTime * 0.02f;
 
             audioS.volume = audioVolume;
         }

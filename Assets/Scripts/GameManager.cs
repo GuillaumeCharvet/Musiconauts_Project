@@ -50,11 +50,12 @@ public class GameManager : MonoBehaviour
         TextMeshProUGUI[] _tms = FindObjectsOfType<TextMeshProUGUI>();
         foreach (TextMeshProUGUI _tm in _tms)
         {
-            if (_tm.name == "MiniJeuText")
+            /*if (_tm.name == "MiniJeuText")
             {
                 tm = _tm;
             }
-            else if (_tm.name == "MiniJeuTextGG")
+            else */
+            if (_tm.name == "MiniJeuTextGG")
             {
                 tmGG = _tm;
             }
@@ -257,5 +258,17 @@ public class GameManager : MonoBehaviour
         {
             foules[i].coupDeFolie = true;
         }
+    }
+
+    public void Win()
+    {
+        currentMiniGame = miniGame.none;
+        enjaillement += 0.1f;
+        if (enjaillement >= 1)
+        {
+            enjaillement = 1;
+        }
+        FouleEnDelire();
+        mgSpawner.DestroyMiniGame();
     }
 }

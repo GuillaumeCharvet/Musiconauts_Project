@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SplashScreensSquare : MonoBehaviour
 {
-    public Transform _menu;
+    [SerializeField]
+    private Transform _menu;
 
     [SerializeField]
     private Transform square;

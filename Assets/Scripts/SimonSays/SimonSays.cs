@@ -60,7 +60,7 @@ public class SimonSays : MonoBehaviour
 
     public IEnumerator AffichageCombinaison()
     {
-        gm.tm.text = "OBSERVE!";
+        //gm.tm.text = "OBSERVE!";
 
         for (int i = 0; i < combinaison.Count; i++)
         {
@@ -112,7 +112,7 @@ public class SimonSays : MonoBehaviour
                     break;
             }
         }
-        gm.tm.text = "DO THE SAME!";
+        //gm.tm.text = "DO THE SAME!";
         peutAppuyer = true;
     }
 
@@ -163,14 +163,8 @@ public class SimonSays : MonoBehaviour
             else if (CheckCorrespondance() == 1)
             {
                 peutAppuyer = false;
-                gm.currentMiniGame = miniGame.none;
-                gm.enjaillement += 0.1f;
-                if (gm.enjaillement >= 1)
-                {
-                    gm.enjaillement = 1;
-                }
-                gm.FouleEnDelire();
-                gm.mgSpawner.DestroyMiniGame();
+
+                gm.Win();
             }
         }
     }
