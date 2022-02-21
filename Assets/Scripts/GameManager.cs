@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI tmGG;                            //TextMesh qui dit Well Done ou autre
     private GameObject spawnedMiniGame;
 
+    [SerializeField]
+    private Animator animatorVictory, animatorFail;
+
+    private Animation animVictory, animFail;
+
     [Range(0f, 1f)]
     public float enjaillement = 0;                          //Niveau d'enjaillement allant de 0 à 1
 
@@ -95,6 +100,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        AnimationsManagement();
     }
 
     public void RandomColorTint()
@@ -262,6 +269,8 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
+        animVictory.gameObject.SetActive(true);
+
         currentMiniGame = miniGame.none;
         enjaillement += 0.1f;
         if (enjaillement >= 1)
@@ -270,5 +279,23 @@ public class GameManager : MonoBehaviour
         }
         FouleEnDelire();
         mgSpawner.DestroyMiniGame();
+    }
+
+    private void AnimationsManagement()
+    {
+        animVictory = animatorVictory.GetComponent<Animation>();
+        animFail = animatorFail.GetComponent<Animation>();
+
+        if (animVictory["Victory_anim"].normalizedTime >= 1)
+        {
+            animVictory["Victory_anim"].normalizedTime = 0;
+            animVictory.gameObject.SetActive(false);
+        }
+
+        if (animFail["Fail_anim"].normalizedTime >= 1)
+        {
+            animFail["Fail_anim"].normalizedTime = 0;
+            animFail.gameObject.SetActive(false);
+        }
     }
 }
