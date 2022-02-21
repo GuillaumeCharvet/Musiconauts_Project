@@ -5,12 +5,26 @@ using UnityEngine;
 public class FunctionRythm : MonoBehaviour
 {
     public int numberOfCircles;
-    public List<Cible> listCibles = new List<Cible>();
+    //public List<Cible> listCibles = new List<Cible>();
     public Sprite sprite_ring;
     public float time = 0f;
     public float reflex_time = 10f;
 
-    public class Cible
+    public List<Button> listButtons = new List<Button>();
+    public int numberOfButtons;
+    public int numberOfColumns;
+    private float widthInPixels = 0.9f;
+    private float heightInPixels = 1f;
+    private int numberOfSwitches = 8;
+    private float min_diff_timing = 0.4f;
+    private float random_diff_timing = 0.5f;
+
+    [SerializeField]
+    private GameObject go;
+
+    private float global_timing = 0f;
+
+    /*public class Cible
     {
         public Vector2 position;
         public GameObject object_target;
@@ -24,6 +38,23 @@ public class FunctionRythm : MonoBehaviour
             position = _position; starting_time = _starting_time; lerp_value = _lerp_value; isActive = _isActive; object_target = _object_target; object_moving = _object_moving;
         }
 
+    }*/
+
+    [System.Serializable]
+    public class Button
+    {
+        public Vector2 position;
+        public GameObject clickable_button;
+        public GameObject effect;
+        public bool isActive;
+        public float switch_timings;
+        public bool isSwitching;
+        public float lerp_value;
+
+        public Button(Vector2 _position, GameObject _clickable_button, GameObject _effect, bool _isActive, float _switch_timings)
+        {
+            position = _position; clickable_button = _clickable_button; effect = _effect; isActive = _isActive; switch_timings = _switch_timings; lerp_value = 0f; isSwitching = false;
+        }
     }
 
     private void Awake()
@@ -32,6 +63,94 @@ public class FunctionRythm : MonoBehaviour
     }
 
     private void Start()
+    {
+        numberOfButtons = 16;
+        numberOfColumns = 4;
+        for(int i = 0; i < numberOfButtons; i++)
+        {
+            float xPos = -1.35f + widthInPixels * (i % numberOfColumns);
+            float yPos = -3.5f + heightInPixels * (i / numberOfColumns);
+
+            GameObject clickable_button = new GameObject("button");
+            SpriteRenderer renderer_cb = clickable_button.AddComponent<SpriteRenderer>();
+            //BoxCollider2D box_collider_cb = clickable_button.AddComponent<BoxCollider2D>();
+            Component comp_boxcollider2d = go.GetComponent<BoxCollider2D>();
+            CopyComponent(comp_boxcollider2d, clickable_button);
+            Component comp_onclick = go.GetComponent<OnClick>();
+            CopyComponent(comp_onclick, clickable_button);
+            //OnClick onclick = clickable_button.AddComponent<OnClick>();
+            renderer_cb.sprite = sprite_ring;
+
+            GameObject effect = new GameObject("effect");
+            SpriteRenderer renderer_e = effect.AddComponent<SpriteRenderer>();
+            renderer_e.sprite = sprite_ring;
+
+            int rand = Random.Range(0, 2);
+            bool isActive = rand == 0 ? true : false ;
+
+            Button button = new Button(new Vector2(xPos, yPos), clickable_button, effect, isActive, -1f);
+            listButtons.Add(button);
+        }
+        for (int i = 0; i < numberOfSwitches; i++)
+        {
+            global_timing += min_diff_timing + Random.Range(0f, 1f) * random_diff_timing;
+            Debug.Log(global_timing);
+            bool button_not_found = true;
+            while (button_not_found)
+            {
+                int rand_button = Random.Range(0, 16);
+                if (listButtons[rand_button].switch_timings < 0)
+                {
+                    button_not_found = false;
+                    listButtons[rand_button].switch_timings = global_timing;
+                    listButtons[rand_button].isSwitching = true;
+                }
+            }
+        }
+        foreach (Button button in listButtons)
+        {
+            SpriteRenderer sp = button.effect.GetComponent<SpriteRenderer>();
+            sp.color = new Color(1f, 1f, 1f, 0f);
+            Transform tr1 = button.clickable_button.transform;
+            tr1.position = new Vector3(button.position.x, button.position.y, 0);
+            tr1.localScale = new Vector3(0.08f, 0.08f, 1f);
+            Transform tr2 = button.effect.transform;
+            tr2.position = new Vector3(button.position.x, button.position.y, 0);
+        }
+    }
+    private void Update()
+    {
+        time += Time.deltaTime;
+
+        foreach (Button button in listButtons)
+        {
+            if (button.isSwitching && time >= button.switch_timings)
+            {
+                button.lerp_value = (time - button.switch_timings) / reflex_time;
+                //cible.object_moving.transform.localScale = new Vector3(1f - cible.lerp_value, 1f - cible.lerp_value, 1f);
+                button.effect.transform.localScale = new Vector3(Mathf.Lerp(1f, 0.08f, button.lerp_value), Mathf.Lerp(1f, 0.08f, button.lerp_value), 1f);
+                button.effect.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, Mathf.Lerp(0f, 1f, button.lerp_value));
+            }
+            if (button.isSwitching && button.lerp_value > 1f)
+            {
+                button.isSwitching = false;
+                button.isActive = button.isActive ? false : true;
+            }
+        }
+            /*if (button.isActive && time >= button.starting_time)
+            {
+                button.lerp_value = (time - button.starting_time) / reflex_time;
+                //cible.object_moving.transform.localScale = new Vector3(1f - cible.lerp_value, 1f - cible.lerp_value, 1f);
+                button.object_moving.transform.localScale = new Vector3(Mathf.Lerp(1f, 0.08f, button.lerp_value), Mathf.Lerp(1f, 0.08f, button.lerp_value), 1f);
+                button.object_moving.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, Mathf.Lerp(0f, 1f, button.lerp_value));
+            }
+            if (button.lerp_value > 1f)
+            {
+                button.isActive = false;
+            }*/
+    }
+
+    /*private void Start()
     {
         numberOfCircles = Random.Range(3, 5);
         for( int i = 0; i < numberOfCircles; i++)
@@ -70,6 +189,7 @@ public class FunctionRythm : MonoBehaviour
             tr2.position = new Vector3(cible.position.x, cible.position.y, 0);
         }
     }
+
     private void Update()
     {
         time += Time.deltaTime;
@@ -88,6 +208,19 @@ public class FunctionRythm : MonoBehaviour
                 cible.isActive = false;
             }
         }
+    }*/
+
+    Component CopyComponent(Component original, GameObject destination)
+    {
+        System.Type type = original.GetType();
+        Component copy = destination.AddComponent(type);
+        // Copied fields can be restricted with BindingFlags
+        System.Reflection.FieldInfo[] fields = type.GetFields();
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            field.SetValue(copy, field.GetValue(original));
+        }
+        return copy;
     }
 
     public void ChangeVictoryValue()
