@@ -7,7 +7,7 @@ public class Level_SO : ScriptableObject
 {
     public int levelNumber;
     public AudioClip music;
-    public string artistName, musicName, albumName, genre;
+    public string artistName, musicName, albumName, genre, origine;
     public List<Color> mainColors;
     public int difficultyMin, difficultyMax;
     public float enjaillementDecrement;

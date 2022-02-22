@@ -10,10 +10,22 @@ public enum colorCombi
 public class SimonSays : MonoBehaviour
 {
     private GameManager gm;
+
+    [SerializeField]
+    private SpriteRenderer bouton1, bouton2, bouton3, bouton4;
+
+    [SerializeField]
+    private Sprite bouton1oui, bouton2oui, bouton3oui, bouton4oui, bouton1non, bouton2non, bouton3non, bouton4non;
+
+    private bool spriteHasChanged;
+
     public SpriteRenderer srAffiche;
     public Sprite spriteRouge, spriteVert, spriteBleu, spriteJaune;
     public List<colorCombi> combinaison;
     public List<colorCombi> reproduction;
+
+    [SerializeField]
+    private AnimTransform animOpen, animClose;
 
     public bool peutAppuyer = false;
 
@@ -26,6 +38,32 @@ public class SimonSays : MonoBehaviour
         CreationCombinaison();
 
         StartCoroutine(AffichageCombinaison());
+    }
+
+    private void Update()
+    {
+        if (peutAppuyer)
+        {
+            if (!spriteHasChanged)
+            {
+                spriteHasChanged = true;
+                bouton1.sprite = bouton1oui;
+                bouton2.sprite = bouton2oui;
+                bouton3.sprite = bouton3oui;
+                bouton4.sprite = bouton4oui;
+            }
+        }
+        else
+        {
+            if (!spriteHasChanged)
+            {
+                spriteHasChanged = true;
+                bouton1.sprite = bouton1non;
+                bouton2.sprite = bouton2non;
+                bouton3.sprite = bouton3non;
+                bouton4.sprite = bouton4non;
+            }
+        }
     }
 
     public void CreationCombinaison()
@@ -60,11 +98,12 @@ public class SimonSays : MonoBehaviour
 
     public IEnumerator AffichageCombinaison()
     {
+        spriteHasChanged = false;
         //gm.tm.text = "OBSERVE!";
 
         for (int i = 0; i < combinaison.Count; i++)
         {
-            srAffiche.GetComponent<AnimTransform>().SetCanGo();
+            animOpen.SetCanGo();
             switch (combinaison[i])
             {
                 case (colorCombi)0:
@@ -86,15 +125,21 @@ public class SimonSays : MonoBehaviour
             switch (gm.nvDifficulte)
             {
                 case 1:
-                    yield return new WaitForSeconds(1.2f);
+                    yield return new WaitForSeconds(.8f);
+                    animClose.SetCanGo();
+                    yield return new WaitForSeconds(.2f);
                     break;
 
                 case 2:
-                    yield return new WaitForSeconds(0.9f);
+                    yield return new WaitForSeconds(0.7f);
+                    animClose.SetCanGo();
+                    yield return new WaitForSeconds(.2f);
                     break;
 
                 case 3:
-                    yield return new WaitForSeconds(0.6f);
+                    yield return new WaitForSeconds(0.5f);
+                    animClose.SetCanGo();
+                    yield return new WaitForSeconds(.2f);
                     break;
             }
             srAffiche.sprite = null;
@@ -114,6 +159,7 @@ public class SimonSays : MonoBehaviour
             }
         }
         peutAppuyer = true;
+        spriteHasChanged = false;
     }
 
     public void AppuiBouton(string couleurAppuyee)

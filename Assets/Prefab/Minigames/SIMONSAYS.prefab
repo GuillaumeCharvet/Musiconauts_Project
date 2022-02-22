@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 5946444582129748242}
   - component: {fileID: 5946444582129748243}
   - component: {fileID: 8756386935448226114}
+  - component: {fileID: 4626435518553882379}
   m_Layer: 0
   m_Name: TrucAffiche
   m_TagString: Untagged
@@ -262,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedae15cadc9a8e4995b5b35dc91bd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationName: 
+  animationName: open
   squareScales:
   - {x: 0.1, y: 0.1, z: 1}
   - {x: 0.43, y: 0.43, z: 1}
@@ -272,6 +273,30 @@ MonoBehaviour:
   - 0
   - 0.1
   - 0.2
+  - 10
+  canGo: 0
+--- !u!114 &4626435518553882379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444582129748237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bedae15cadc9a8e4995b5b35dc91bd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationName: close
+  squareScales:
+  - {x: 0.4169661, y: 0.4169661, z: 1}
+  - {x: 0.43, y: 0.43, z: 1}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 1}
+  scaleTimes:
+  - 0
+  - 0.05
+  - 0.1
   - 10
   canGo: 0
 --- !u!1 &5946444582637269982
@@ -287,6 +312,7 @@ GameObject:
   - component: {fileID: 5946444582637269980}
   - component: {fileID: 5946444582637269794}
   - component: {fileID: 1799013101000402406}
+  - component: {fileID: 5463067628886996974}
   m_Layer: 0
   m_Name: Bouton2
   m_TagString: Untagged
@@ -302,7 +328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5946444582637269982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.91, y: -3.38, z: 0}
+  m_LocalPosition: {x: 2.17, y: -3.67, z: 0}
   m_LocalScale: {x: 0.3568646, y: 0.35686463, z: 0.4460808}
   m_Children: []
   m_Father: {fileID: 5946444584068594540}
@@ -403,9 +429,9 @@ MonoBehaviour:
           m_StringArgument: y
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1799013101000402406}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 5463067628886996974}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -447,6 +473,19 @@ MonoBehaviour:
   - 0.3
   - 10
   canGo: 0
+--- !u!114 &5463067628886996974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444582637269982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36110c7d3e1e5d43b3e5637aa6bfab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ss: {fileID: 5589798231925243145}
 --- !u!1 &5946444582717396936
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +499,7 @@ GameObject:
   - component: {fileID: 5946444582717396942}
   - component: {fileID: 5946444582717396940}
   - component: {fileID: 7630817821289110703}
+  - component: {fileID: 3503778393666628568}
   m_Layer: 0
   m_Name: Bouton4
   m_TagString: Untagged
@@ -475,7 +515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5946444582717396936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: -5.5, z: 0}
+  m_LocalPosition: {x: -1.25, y: -5.61, z: 0}
   m_LocalScale: {x: 0.3568646, y: 0.35686463, z: 0.4460808}
   m_Children: []
   m_Father: {fileID: 5946444584068594540}
@@ -576,9 +616,9 @@ MonoBehaviour:
           m_StringArgument: g
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7630817821289110703}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 3503778393666628568}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -620,6 +660,19 @@ MonoBehaviour:
   - 0.3
   - 10
   canGo: 0
+--- !u!114 &3503778393666628568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444582717396936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36110c7d3e1e5d43b3e5637aa6bfab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ss: {fileID: 5589798231925243145}
 --- !u!1 &5946444582770129868
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5946444582770129868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.38, z: 0}
+  m_LocalPosition: {x: 0, y: -3.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5946444582129748242}
@@ -693,8 +746,8 @@ SpriteRenderer:
   m_SortingLayerID: 1199344967
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 260af9c91d292604da3a54ac9091e493, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -717,6 +770,7 @@ GameObject:
   - component: {fileID: 5946444583157884094}
   - component: {fileID: 5946444583157884092}
   - component: {fileID: 6289029426335552932}
+  - component: {fileID: 7625236421338049282}
   m_Layer: 0
   m_Name: Bouton3
   m_TagString: Untagged
@@ -732,7 +786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5946444583157884088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: -5.5, z: 0}
+  m_LocalPosition: {x: 1.25, y: -5.61, z: 0}
   m_LocalScale: {x: 0.3568646, y: 0.35686463, z: 0.4460808}
   m_Children: []
   m_Father: {fileID: 5946444584068594540}
@@ -833,9 +887,9 @@ MonoBehaviour:
           m_StringArgument: r
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6289029426335552932}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 7625236421338049282}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -877,6 +931,19 @@ MonoBehaviour:
   - 0.3
   - 10
   canGo: 0
+--- !u!114 &7625236421338049282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444583157884088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36110c7d3e1e5d43b3e5637aa6bfab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ss: {fileID: 5589798231925243145}
 --- !u!1 &5946444583395172767
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +957,7 @@ GameObject:
   - component: {fileID: 5946444583395172834}
   - component: {fileID: 5946444583395172835}
   - component: {fileID: 3217975931727373891}
+  - component: {fileID: 5480821565596187317}
   m_Layer: 0
   m_Name: Bouton1
   m_TagString: Untagged
@@ -905,7 +973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5946444583395172767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.91, y: -3.38, z: 0}
+  m_LocalPosition: {x: -2.17, y: -3.67, z: 0}
   m_LocalScale: {x: 0.3568646, y: 0.35686463, z: 0.4460808}
   m_Children: []
   m_Father: {fileID: 5946444584068594540}
@@ -1006,9 +1074,9 @@ MonoBehaviour:
           m_StringArgument: b
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3217975931727373891}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 5480821565596187317}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1050,6 +1118,19 @@ MonoBehaviour:
   - 0.3
   - 10
   canGo: 0
+--- !u!114 &5480821565596187317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444583395172767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36110c7d3e1e5d43b3e5637aa6bfab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ss: {fileID: 5589798231925243145}
 --- !u!1 &5946444584068594543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1181,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b753915043585c4e89258d7f51483cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bouton1: {fileID: 5946444583395172765}
+  bouton2: {fileID: 5946444582637269981}
+  bouton3: {fileID: 5946444583157884095}
+  bouton4: {fileID: 5946444582717396943}
+  bouton1oui: {fileID: 21300000, guid: c656f35f64e087f4ba2342f00d5dc12f, type: 3}
+  bouton2oui: {fileID: 21300000, guid: 2438840a198921840b5e58d360f884bb, type: 3}
+  bouton3oui: {fileID: 21300000, guid: 4d8f0ed6f84fdd14b93203fb89ecdb1c, type: 3}
+  bouton4oui: {fileID: 21300000, guid: e86592212637e2a40a08d6901e71b92f, type: 3}
+  bouton1non: {fileID: 21300000, guid: d2683d9dc486d5e48b39ed0abc753e82, type: 3}
+  bouton2non: {fileID: 21300000, guid: 3a81975964e302e45a71e1c2d15a2075, type: 3}
+  bouton3non: {fileID: 21300000, guid: da10cf643fbc57e4db29867402a20463, type: 3}
+  bouton4non: {fileID: 21300000, guid: d5f82de471b053844b6b25e91b5fb553, type: 3}
   srAffiche: {fileID: 5946444582129748243}
   spriteRouge: {fileID: 21300000, guid: ce60ab385997bf84da10e49163bfdcff, type: 3}
   spriteVert: {fileID: 21300000, guid: 3e535ad0db76dd14ca894c1f5a13be9e, type: 3}
@@ -1107,4 +1200,6 @@ MonoBehaviour:
   spriteJaune: {fileID: 21300000, guid: 60c4591789b56bb428b4a9e22b7242cf, type: 3}
   combinaison: 
   reproduction: 
+  animOpen: {fileID: 8756386935448226114}
+  animClose: {fileID: 4626435518553882379}
   peutAppuyer: 0
