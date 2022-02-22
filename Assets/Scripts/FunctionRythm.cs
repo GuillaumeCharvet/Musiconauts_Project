@@ -13,11 +13,12 @@ public class FunctionRythm : MonoBehaviour
     public List<Button> listButtons = new List<Button>();
     public int numberOfButtons;
     public int numberOfColumns;
-    private float widthInPixels = 0.9f;
-    private float heightInPixels = 1f;
-    private int numberOfSwitches = 8;
-    private float min_diff_timing = 0.4f;
-    private float random_diff_timing = 0.5f;
+    private float widthInPixels = 1.2f;
+    private float heightInPixels = 1.2f;
+    private int numberOfSwitches = 6;
+    private float min_diff_timing = 0.5f;
+    private float random_diff_timing = 0.7f;
+    private float epsilon_input = 0.2f;
 
     [SerializeField]
     private GameObject go;
@@ -43,6 +44,7 @@ public class FunctionRythm : MonoBehaviour
     [System.Serializable]
     public class Button
     {
+        public int index;
         public Vector2 position;
         public GameObject clickable_button;
         public GameObject effect;
@@ -51,9 +53,9 @@ public class FunctionRythm : MonoBehaviour
         public bool isSwitching;
         public float lerp_value;
 
-        public Button(Vector2 _position, GameObject _clickable_button, GameObject _effect, bool _isActive, float _switch_timings)
+        public Button(int _index, Vector2 _position, GameObject _clickable_button, GameObject _effect, bool _isActive, float _switch_timings)
         {
-            position = _position; clickable_button = _clickable_button; effect = _effect; isActive = _isActive; switch_timings = _switch_timings; lerp_value = 0f; isSwitching = false;
+            index = _index; position = _position; clickable_button = _clickable_button; effect = _effect; isActive = _isActive; switch_timings = _switch_timings; lerp_value = 0f; isSwitching = false;
         }
     }
 
@@ -64,41 +66,47 @@ public class FunctionRythm : MonoBehaviour
 
     private void Start()
     {
-        numberOfButtons = 16;
-        numberOfColumns = 4;
+        numberOfButtons = 9;
+        numberOfColumns = 3;
         for(int i = 0; i < numberOfButtons; i++)
         {
-            float xPos = -1.35f + widthInPixels * (i % numberOfColumns);
-            float yPos = -3.5f + heightInPixels * (i / numberOfColumns);
+            float xPos = -1.2f + widthInPixels * (i % numberOfColumns);
+            float yPos = -1f - heightInPixels * (i / numberOfColumns);
 
-            GameObject clickable_button = new GameObject("button");
+            GameObject clickable_button = new GameObject("button"+i);
             SpriteRenderer renderer_cb = clickable_button.AddComponent<SpriteRenderer>();
             //BoxCollider2D box_collider_cb = clickable_button.AddComponent<BoxCollider2D>();
             Component comp_boxcollider2d = go.GetComponent<BoxCollider2D>();
             CopyComponent(comp_boxcollider2d, clickable_button);
             Component comp_onclick = go.GetComponent<OnClick>();
             CopyComponent(comp_onclick, clickable_button);
+
+
+
+            /*int x = i;
+            clickable_button.onClick.AddListener(delegate { ChangeVictoryValue(x); });*/
+
             //OnClick onclick = clickable_button.AddComponent<OnClick>();
             renderer_cb.sprite = sprite_ring;
 
-            GameObject effect = new GameObject("effect");
+            GameObject effect = new GameObject("effect"+i);
             SpriteRenderer renderer_e = effect.AddComponent<SpriteRenderer>();
             renderer_e.sprite = sprite_ring;
 
             int rand = Random.Range(0, 2);
             bool isActive = rand == 0 ? true : false ;
 
-            Button button = new Button(new Vector2(xPos, yPos), clickable_button, effect, isActive, -1f);
+            Button button = new Button(i, new Vector2(xPos, yPos), clickable_button, effect, isActive, -1f);
             listButtons.Add(button);
         }
         for (int i = 0; i < numberOfSwitches; i++)
         {
             global_timing += min_diff_timing + Random.Range(0f, 1f) * random_diff_timing;
-            Debug.Log(global_timing);
+            //Debug.Log(global_timing);
             bool button_not_found = true;
             while (button_not_found)
             {
-                int rand_button = Random.Range(0, 16);
+                int rand_button = Random.Range(0, numberOfButtons);
                 if (listButtons[rand_button].switch_timings < 0)
                 {
                     button_not_found = false;
@@ -133,6 +141,7 @@ public class FunctionRythm : MonoBehaviour
             }
             if (button.isSwitching && button.lerp_value > 1f)
             {
+                //Debug.Log("TOP "+ ((time - button.switch_timings) - reflex_time));
                 button.isSwitching = false;
                 button.isActive = button.isActive ? false : true;
             }
@@ -223,8 +232,28 @@ public class FunctionRythm : MonoBehaviour
         return copy;
     }
 
-    public void ChangeVictoryValue()
+    public void ChangeVictoryValue(int i)
     {
-        Debug.Log("test");
+        float diff = Mathf.Abs((time - listButtons[i].switch_timings) - reflex_time);
+        if (diff <= epsilon_input)
+        {
+            Debug.Log("Oui "+ i +" --- " + diff);
+        }
+        else
+        {
+            Debug.Log("Non " + i + " --- " + diff);
+        }
+        /*
+        foreach (Button button in listButtons)
+        {
+            if ((time - button.switch_timings + reflex_time) <= epsilon_input)
+            {
+                Debug.Log("Oui");
+            }
+            else
+            {
+                Debug.Log("Non");
+            }
+        }*/
     }
 }
