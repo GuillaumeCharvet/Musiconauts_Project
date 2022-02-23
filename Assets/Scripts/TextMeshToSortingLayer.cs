@@ -9,6 +9,9 @@ public class TextMeshToSortingLayer : MonoBehaviour
     private TextMesh TM;
 
     [SerializeField]
+    private int orderInLayer;
+
+    [SerializeField]
     private string sortingLayer;
 
     private void Start()
@@ -16,10 +19,12 @@ public class TextMeshToSortingLayer : MonoBehaviour
         if (TM != null)
         {
             TM.GetComponent<Renderer>().sortingLayerName = sortingLayer;
+            TM.GetComponent<Renderer>().sortingOrder = orderInLayer;
         }
         else
         {
             GetComponent<Renderer>().sortingLayerName = sortingLayer;
+            GetComponent<Renderer>().sortingOrder = orderInLayer;
         }
     }
 }

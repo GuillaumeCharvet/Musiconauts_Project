@@ -7,7 +7,7 @@ using TMPro;
 
 public enum miniGame
 {
-    none, simonSays, equalizer//, sinusGame
+    none, simonSays, equalizer, duo//, sinusGame
 }
 
 public enum colorTint
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 {
     #region Variables
 
-    public int simonSaysTemps, equalizerTemps;
+    public int simonSaysTemps, equalizerTemps, duoTemps;
 
     public Level_SO currentLevel;
 
@@ -284,6 +284,10 @@ public class GameManager : MonoBehaviour
                 PlayEqualizer();
                 break;
 
+            case miniGame.duo:
+                PlayDuo();
+                break;
+
             default:
                 Debug.LogWarning("GAMEMANAGER INCORRECT MINIGAME NAME" + currentMiniGame);
                 break;
@@ -426,6 +430,10 @@ public class GameManager : MonoBehaviour
                 baseScoreByMiniGame = 0.85f;
                 break;
 
+            case miniGame.duo:
+                baseScoreByMiniGame = 0.7f;
+                break;
+
             default:
                 Debug.LogError("GameManager.ScoreCalculator - MiniGame non compris dans le switch - " + currentMiniGame.ToString());
                 break;
@@ -474,6 +482,12 @@ public class GameManager : MonoBehaviour
     private void PlayEqualizer()
     {
         spawnedMiniGame = mgSpawner.SpawnEqualizer();
+        timerGauge.TimerStart();
+    }
+
+    private void PlayDuo()
+    {
+        spawnedMiniGame = mgSpawner.SpawnDuo();
         timerGauge.TimerStart();
     }
 

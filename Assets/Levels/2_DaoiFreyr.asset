@@ -18,9 +18,10 @@ MonoBehaviour:
   musicName: Think About Things
   albumName: Welcome
   genre: 
+  origine: 
   mainColors: []
   difficultyMin: 2
-  difficultyMax: 6
+  difficultyMax: 5
   enjaillementDecrement: 0.007
   albumImage: {fileID: 21300000, guid: 373e9141ae6f8104c82301d3aca87ee2, type: 3}
   sceneSprite: {fileID: 0}
