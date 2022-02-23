@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+#region Enums
+
 public enum miniGame
 {
     none, simonSays, equalizer//, sinusGame
@@ -13,16 +15,25 @@ public enum colorTint
     red, green, blue, yellow, purple, orange, white
 }
 
+#endregion Enums
+
 public class GameManager : MonoBehaviour
 {
+    #region Variables
+
+    public int simonSaysTemps, equalizerTemps;
+
     public Level_SO currentLevel;
 
-    [SerializeField]
-    private PlayMusic playMusic;
+    public PlayMusic playMusic;
 
     public miniGame currentMiniGame;                        //Mini-jeu actuel. Si vide alors un mini-jeu va être choisir aléatoirement
     public miniGame lastMiniGame;                           //Dernier mini-jeu sélectionné. Empêche d'avoir le même deux fois d'affilé
     public miniGame[] allMiniGames;                         //Array à remplir dans l'inspector. Ce sont les prefabs des mini-jeux
+
+    private bool isAFailure;
+
+    private TimerGauge timerGauge;
 
     public colorTint currentColorTint = colorTint.white;    //Teinte de couleur actuelle
     public colorTint targetColorTint;                       //Teinte de couleur vers laquelle on va se diriger
@@ -34,10 +45,17 @@ public class GameManager : MonoBehaviour
 
     public MiniGameSpawner mgSpawner;                       //Ref au script de spawn de mini-jeux
     public ChangeColorTint[] cct;                           //Scripts pour changer la couleur du niveau entier
-    public SimonSays simonsays;                             //Ref (pour référence) au SimonSays
     public publicMovements[] foules;                        //Ref (pour référence) aux publics
     public TextMeshProUGUI tm;                              //TextMesh du haut, pour dire ce qu'il faut faire
     public TextMeshProUGUI tmGG;                            //TextMesh qui dit Well Done ou autre
+    public TextMeshProUGUI tmTooBad;
+
+    [SerializeField]
+    private Scoring scoring;
+
+    [SerializeField]
+    private AnimTransform animGGOpen, animGGClose, animTooBadOpen, animTooBadClose;
+
     private GameObject spawnedMiniGame;
 
     [SerializeField]
@@ -52,13 +70,21 @@ public class GameManager : MonoBehaviour
     public int nvDifficulte = 1;                            //Niveau de difficulté allant de 1 à 3
     public bool transition = false;                         //Bool pour savoir si la transition est en cours
 
-    //FONCTIONS ------------------------------------
+    [HideInInspector]
+    public int musicDuration;
+
+    public bool levelHasEnded;
+
+    #endregion Variables
+
+    #region Fonctions Primitives
 
     private void Awake()
     {
         mgSpawner = FindObjectOfType<MiniGameSpawner>();
         cct = FindObjectsOfType<ChangeColorTint>();                     //Assigne les variables aux objects de la scène
         TextMeshProUGUI[] _tms = FindObjectsOfType<TextMeshProUGUI>();
+        timerGauge = FindObjectOfType<TimerGauge>();
         foreach (TextMeshProUGUI _tm in _tms)
         {
             /*if (_tm.name == "MiniJeuText")
@@ -75,16 +101,14 @@ public class GameManager : MonoBehaviour
 
         RandomColorTint();                                              //Couleur aléatoire pour le début de la partie
         LerpToColor(targetColorTint, 0);
-    }
 
-    private void Start()
-    {
         AdaptationLevel();
+
+        musicDuration = (int)currentLevel.music.length + 1;
     }
 
     private void Update()
     {
-        NiveauDifficulteChanger();                                      //Change nvDifficulte en fonction de enjaillement
         EnjaillementDecrementation();                                   //enjaillement -= Time.deltaTime * facteur
 
         if (currentMiniGame == miniGame.none && !transition)            //Si aucun mini-jeu n'est sélectionné et la transition n'a pas commencé
@@ -118,7 +142,16 @@ public class GameManager : MonoBehaviour
         {
             LerpToColor(targetColorTint, 1);
         }
+
+        if (levelHasEnded)
+        {
+            mgSpawner.DestroyMiniGame();
+        }
     }
+
+    #endregion Fonctions Primitives
+
+    #region Fonctions Couleurs
 
     public void RandomColorTint()
     {
@@ -154,20 +187,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void PlaySimonSays()
-    {
-        spawnedMiniGame = mgSpawner.SpawnSimonSays();
-    }
+    #endregion Fonctions Couleurs
 
-    private void PlaySinusGame()
-    {
-        spawnedMiniGame = mgSpawner.SpawnSinusGame();
-    }
-
-    private void PlayEqualizer()
-    {
-        spawnedMiniGame = mgSpawner.SpawnEqualizer();
-    }
+    #region Fonctions Autres
 
     public IEnumerator Transition()
     {
@@ -178,26 +200,73 @@ public class GameManager : MonoBehaviour
         if (enjaillement > 0)
         {
             yield return new WaitForSeconds(0.2f);
+            Debug.Log(isAFailure);
 
-            tmGG.text = "WELL DONE !";
+            if (!isAFailure)
+            {
+                animGGOpen.SetCanGo();
+                tmGG.text = "WELL DONE !";
+            }
+        }
+
+        if (isAFailure)
+        {
+            animTooBadOpen.SetCanGo();
+            tmTooBad.text = "Too Bad...";
         }
 
         switch (nvDifficulte)
         {
             case 1:
-                yield return new WaitForSeconds(0.9f);
+                yield return new WaitForSeconds(0.7f);
+                if (!isAFailure)
+                {
+                    animGGClose.SetCanGo();
+                }
+                else
+                {
+                    animTooBadClose.SetCanGo();
+                }
+                yield return new WaitForSeconds(0.2f);
                 break;
 
             case 2:
-                yield return new WaitForSeconds(0.6f);
+                yield return new WaitForSeconds(0.4f);
+                if (!isAFailure)
+                {
+                    animGGClose.SetCanGo();
+                }
+                else
+                {
+                    animTooBadClose.SetCanGo();
+                }
+                yield return new WaitForSeconds(0.2f);
                 break;
 
             case 3:
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(0.2f);
+                if (!isAFailure)
+                {
+                    animGGClose.SetCanGo();
+                }
+                else
+                {
+                    animTooBadClose.SetCanGo();
+                }
+                yield return new WaitForSeconds(0.2f);
                 break;
         }
 
-        tmGG.text = "";
+        if (!isAFailure)
+        {
+            tmGG.text = "";
+        }
+        else
+        {
+            tmTooBad.text = "";
+
+            isAFailure = false;
+        }
 
         yield return new WaitForSeconds(0.2f);
 
@@ -292,7 +361,11 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Win()
     {
+        float tempsQuilReste = timerGauge.TimerStop();
+
         yield return new WaitForSeconds(0.15f);
+
+        ScoreCalculator(tempsQuilReste);
 
         currentMiniGame = miniGame.none;
         enjaillement += 0.1f;
@@ -300,6 +373,9 @@ public class GameManager : MonoBehaviour
         {
             enjaillement = 1;
         }
+
+        NiveauDifficulteChanger();
+
         FouleEnDelire();
         mgSpawner.DestroyMiniGame();
     }
@@ -333,4 +409,85 @@ public class GameManager : MonoBehaviour
         playMusic.audioSource.clip = currentLevel.music;
         enjaDecreFactor = currentLevel.enjaillementDecrement;
     }
+
+    private void ScoreCalculator(float tempsQuilReste)
+    {
+        float score = 0f;
+
+        float baseScoreByMiniGame = 0f;
+
+        switch (currentMiniGame)
+        {
+            case miniGame.simonSays:
+                baseScoreByMiniGame = 1f;
+                break;
+
+            case miniGame.equalizer:
+                baseScoreByMiniGame = 0.85f;
+                break;
+
+            default:
+                Debug.LogError("GameManager.ScoreCalculator - MiniGame non compris dans le switch - " + currentMiniGame.ToString());
+                break;
+        }
+
+        score = (1 + tempsQuilReste) * baseScoreByMiniGame * nvDifficulte * (1 + enjaillement) * 100;
+
+        scoring.AddToScore((int)score);
+    }
+
+    public void EndMiniGame()
+    {
+        mgSpawner.DestroyMiniGame();
+
+        scoring.AddToScore((int)(nvDifficulte * (1 + enjaillement) * -5));
+
+        enjaillement -= .1f;
+        if (enjaillement < 0)
+        {
+            enjaillement = 0;
+        }
+
+        scoring.defaites++;
+
+        isAFailure = true;
+
+        currentMiniGame = miniGame.none;
+    }
+
+    #endregion Fonctions Autres
+
+    #region Fonctions Play
+
+    private void PlaySimonSays()
+    {
+        spawnedMiniGame = mgSpawner.SpawnSimonSays();
+        timerGauge.TimerStart();
+    }
+
+    private void PlaySinusGame()
+    {
+        spawnedMiniGame = mgSpawner.SpawnSinusGame();
+        timerGauge.TimerStart();
+    }
+
+    private void PlayEqualizer()
+    {
+        spawnedMiniGame = mgSpawner.SpawnEqualizer();
+        timerGauge.TimerStart();
+    }
+
+    #endregion Fonctions Play
+
+    #region Fonctions EndLevel
+
+    public void EndLvl()
+    {
+        levelHasEnded = true;
+        playMusic.audioSource.Pause();
+
+        timerGauge.TimerStop();
+    }
+
+    #endregion Fonctions EndLevel
 }

@@ -44,8 +44,6 @@ public class AnimTransform : MonoBehaviour
                 timer += Time.deltaTime;
                 lerpT = (scaleTimes[index] - timer) / (scaleTimes[index] - scaleTimes[index + 1]);
 
-                Debug.Log(lerpT);
-
                 transform.localScale = Vector3.Lerp(squareScales[index], squareScales[index + 1], lerpT);
             }
         }
