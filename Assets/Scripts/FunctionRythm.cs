@@ -20,6 +20,8 @@ public class FunctionRythm : MonoBehaviour
     private float random_diff_timing = 0.7f;
     private float epsilon_input = 0.2f;
 
+    //private GameManager gm;
+
     [SerializeField]
     private GameObject go;
 
@@ -62,6 +64,8 @@ public class FunctionRythm : MonoBehaviour
     private void Awake()
     {
         sprite_ring = Resources.Load<Sprite>("Sprites/sprite_ring");
+
+
     }
 
     private void Start()
