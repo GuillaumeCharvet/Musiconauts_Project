@@ -9,13 +9,13 @@ public class MouvementAiguille : MonoBehaviour
     [SerializeField]
     private GameObject aiguille;
     [SerializeField]
-    private float decroissance = 1f;
+    private float decroissance = 0.05f;
     [SerializeField]
-    private float croissance = 20f;
+    private float croissance = 12f;
     [SerializeField]
     private List<float> boost_list;
 
-    private float angle_limit_inf = 135f;
+    private float angle_limit_inf = 130f;
     private float angle_limit_sup = 170f;
 
     private float duration_in_right_range = 0f;
@@ -23,10 +23,22 @@ public class MouvementAiguille : MonoBehaviour
 
     private Quaternion rotation_aiguille;
 
+    private GameManager game_manager;
+
+    private float difficulty;
+
     [SerializeField]
     private GameObject text;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        game_manager = FindObjectOfType<GameManager>();
+        difficulty = 7;//game_manager.nvDifficulte;
+
+        decroissance = 0.044f + difficulty * 2f / 1000f;
+        Debug.Log(decroissance);
+    }
+
     void Start()
     {
         angle_aiguille = 0;
@@ -57,6 +69,7 @@ public class MouvementAiguille : MonoBehaviour
             {
                 decroissance = 0f;
                 croissance = 0f;
+                game_manager.Win();
                 text.SetActive(true);
             }
         }
