@@ -18,9 +18,10 @@ MonoBehaviour:
   musicName: Will U
   albumName: 
   genre: 
+  origine: 
   mainColors: []
   difficultyMin: 1
-  difficultyMax: 4
+  difficultyMax: 3
   enjaillementDecrement: 0.004
   albumImage: {fileID: 21300000, guid: 6770006dd03c83e4583b1ead844c5294, type: 3}
   sceneSprite: {fileID: 0}

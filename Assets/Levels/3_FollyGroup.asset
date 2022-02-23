@@ -18,9 +18,10 @@ MonoBehaviour:
   musicName: Butt No Rifle
   albumName: Awake and Hungry
   genre: 
+  origine: 
   mainColors: []
   difficultyMin: 2
-  difficultyMax: 6
+  difficultyMax: 5
   enjaillementDecrement: 0.009
   albumImage: {fileID: 21300000, guid: eccbcf8bde9216147955888322e495cf, type: 3}
   sceneSprite: {fileID: 0}
