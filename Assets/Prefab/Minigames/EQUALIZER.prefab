@@ -26,6 +26,51 @@ MonoBehaviour:
   - 0.3
   - 10
   canGo: 0
+--- !u!114 &5851684369044530960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743309569759447133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4449734527445727898}
+        m_TargetAssemblyTypeName: refCursor, Assembly-CSharp
+        m_MethodName: Clicbouton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4692797322999353968}
+        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
+        m_MethodName: SetCanGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onEnterOver:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7103840805290206179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,6 +97,51 @@ MonoBehaviour:
   - 0.3
   - 10
   canGo: 0
+--- !u!114 &3868940895560597247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743309569956696530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4449734527651324693}
+        m_TargetAssemblyTypeName: refCursor, Assembly-CSharp
+        m_MethodName: Clicbouton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7103840805290206179}
+        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
+        m_MethodName: SetCanGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onEnterOver:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2702937670734564824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +168,51 @@ MonoBehaviour:
   - 0.3
   - 10
   canGo: 0
+--- !u!114 &4340809727389787439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743309570164900477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4449734527859536058}
+        m_TargetAssemblyTypeName: refCursor, Assembly-CSharp
+        m_MethodName: Clicbouton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2702937670734564824}
+        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
+        m_MethodName: SetCanGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onEnterOver:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3319190437874268041
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8215879550306240399, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
+    - {fileID: 8215879549721022223, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
 --- !u!4 &2743309569068957670 stripped
 Transform:
@@ -646,6 +782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8215879550306240399, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
+    - {fileID: 8215879549721022223, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
 --- !u!4 &2743309568877653065 stripped
 Transform:
@@ -829,6 +966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8215879550306240399, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
+    - {fileID: 8215879549721022223, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c03b8d23768ec24449be0c0b7f9429b1, type: 3}
 --- !u!4 &2743309568672150982 stripped
 Transform:

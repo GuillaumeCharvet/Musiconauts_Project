@@ -310,9 +310,9 @@ GameObject:
   - component: {fileID: 5946444582637269983}
   - component: {fileID: 5946444582637269981}
   - component: {fileID: 5946444582637269980}
-  - component: {fileID: 5946444582637269794}
   - component: {fileID: 1799013101000402406}
   - component: {fileID: 5463067628886996974}
+  - component: {fileID: 2281172263329266847}
   m_Layer: 0
   m_Name: Bouton2
   m_TagString: Untagged
@@ -402,51 +402,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.48
---- !u!114 &5946444582637269794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5946444582637269982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa0b23295dc8694e8fb0ac3e7dd0725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5589798231925243145}
-        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
-        m_MethodName: AppuiBouton
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: y
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5463067628886996974}
-        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
-        m_MethodName: CheckIfCanPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onEnterOver:
-    m_PersistentCalls:
-      m_Calls: []
-  _onExitOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1799013101000402406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +441,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ss: {fileID: 5589798231925243145}
+--- !u!114 &2281172263329266847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444582637269982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5589798231925243145}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuiBouton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: y
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1799013101000402406}
+        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
+        m_MethodName: SetCanGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onEnterOver:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5946444582717396936
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,9 +497,9 @@ GameObject:
   - component: {fileID: 5946444582717396937}
   - component: {fileID: 5946444582717396943}
   - component: {fileID: 5946444582717396942}
-  - component: {fileID: 5946444582717396940}
   - component: {fileID: 7630817821289110703}
   - component: {fileID: 3503778393666628568}
+  - component: {fileID: 5031372936052590886}
   m_Layer: 0
   m_Name: Bouton4
   m_TagString: Untagged
@@ -589,51 +589,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.48
---- !u!114 &5946444582717396940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5946444582717396936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa0b23295dc8694e8fb0ac3e7dd0725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5589798231925243145}
-        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
-        m_MethodName: AppuiBouton
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: g
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3503778393666628568}
-        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
-        m_MethodName: CheckIfCanPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onEnterOver:
-    m_PersistentCalls:
-      m_Calls: []
-  _onExitOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7630817821289110703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,6 +628,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ss: {fileID: 5589798231925243145}
+--- !u!114 &5031372936052590886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444582717396936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5589798231925243145}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuiBouton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: g
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7630817821289110703}
+        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
+        m_MethodName: SetCanGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onEnterOver:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5946444582770129868
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,9 +768,9 @@ GameObject:
   - component: {fileID: 5946444583157884089}
   - component: {fileID: 5946444583157884095}
   - component: {fileID: 5946444583157884094}
-  - component: {fileID: 5946444583157884092}
   - component: {fileID: 6289029426335552932}
   - component: {fileID: 7625236421338049282}
+  - component: {fileID: 5535839691761682149}
   m_Layer: 0
   m_Name: Bouton3
   m_TagString: Untagged
@@ -860,51 +860,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.48
---- !u!114 &5946444583157884092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5946444583157884088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa0b23295dc8694e8fb0ac3e7dd0725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5589798231925243145}
-        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
-        m_MethodName: AppuiBouton
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: r
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7625236421338049282}
-        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
-        m_MethodName: CheckIfCanPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onEnterOver:
-    m_PersistentCalls:
-      m_Calls: []
-  _onExitOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6289029426335552932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,6 +899,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ss: {fileID: 5589798231925243145}
+--- !u!114 &5535839691761682149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444583157884088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5589798231925243145}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuiBouton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: r
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6289029426335552932}
+        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
+        m_MethodName: SetCanGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onEnterOver:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5946444583395172767
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,9 +955,9 @@ GameObject:
   - component: {fileID: 5946444583395172764}
   - component: {fileID: 5946444583395172765}
   - component: {fileID: 5946444583395172834}
-  - component: {fileID: 5946444583395172835}
   - component: {fileID: 3217975931727373891}
   - component: {fileID: 5480821565596187317}
+  - component: {fileID: 6726501402056967839}
   m_Layer: 0
   m_Name: Bouton1
   m_TagString: Untagged
@@ -1047,51 +1047,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.48
---- !u!114 &5946444583395172835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5946444583395172767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa0b23295dc8694e8fb0ac3e7dd0725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5589798231925243145}
-        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
-        m_MethodName: AppuiBouton
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: b
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5480821565596187317}
-        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
-        m_MethodName: CheckIfCanPress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onEnterOver:
-    m_PersistentCalls:
-      m_Calls: []
-  _onExitOver:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3217975931727373891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,6 +1086,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ss: {fileID: 5589798231925243145}
+--- !u!114 &6726501402056967839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946444583395172767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5589798231925243145}
+        m_TargetAssemblyTypeName: SimonSays, Assembly-CSharp
+        m_MethodName: AppuiBouton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: b
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3217975931727373891}
+        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
+        m_MethodName: SetCanGo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onEnterOver:
+    m_PersistentCalls:
+      m_Calls: []
+  _onExitOver:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5946444584068594543
 GameObject:
   m_ObjectHideFlags: 0
