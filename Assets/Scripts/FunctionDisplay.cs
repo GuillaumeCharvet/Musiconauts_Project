@@ -61,14 +61,17 @@ public class FunctionDisplay : MonoBehaviour
             if (child.name != "background"){GameObject.Destroy(child.gameObject);};
         }
     }
+
     public void Change_Value_a(float button_value)
     {
         if (!game_won) { parameter_a = button_value * 6.28f; }
     }
+
     public void Change_Value_b(float button_value)
     {
         if (!game_won) { parameter_b = 0.1f + button_value * .9f; }
     }
+
     private List<float> CreateList(float parameter_a, float parameter_b)
     {
         List<float> valueList = new List<float>() {};
@@ -81,6 +84,7 @@ public class FunctionDisplay : MonoBehaviour
         }
         return valueList;
     }
+
     /*private GameObject CreateCircle(Vector2 anchoredPosition)
     {
         GameObject gameObject = new GameObject("circle", typeof(Image));
@@ -147,6 +151,7 @@ public class FunctionDisplay : MonoBehaviour
             lastVectorObject = vectorObject;
         }
     }
+
     private void CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB, Color color, float sizeDelta)
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));

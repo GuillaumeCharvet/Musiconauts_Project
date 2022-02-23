@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WinZone
+  - Cursor
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,31 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Scene
+    uniqueID: 3460935517
+    locked: 0
+  - name: Public1
+    uniqueID: 456810577
+    locked: 0
+  - name: Public2
+    uniqueID: 2077965449
+    locked: 0
+  - name: Public3
+    uniqueID: 3602270765
+    locked: 0
+  - name: Public4
+    uniqueID: 1700391629
+    locked: 0
+  - name: EcranMiniJeux
+    uniqueID: 3531522809
+    locked: 0
+  - name: MiniJeu
+    uniqueID: 1199344967
+    locked: 0
+  - name: MiniJeuText
+    uniqueID: 2553055005
+    locked: 0
+  - name: CacheBords
+    uniqueID: 563609779
     locked: 0

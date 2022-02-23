@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Scene_Test.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Final/SplashScreens/SplashScreens.unity
+    guid: dbc133f245544fa449852fefad1fbdea
+  - enabled: 1
+    path: Assets/Scenes/Final/MiniGames/MiniGames.unity
+    guid: 193b68a9731036747beb4d319522ec81
   m_configObjects: {}
