@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2418626334206900923}
   - component: {fileID: 551808460330271897}
-  - component: {fileID: 1685472223235747119}
   - component: {fileID: 2499689526462688693}
   m_Layer: 0
   m_Name: LED_Etat
@@ -82,30 +81,9 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1685472223235747119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8258031269409430935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42739382004f18e4398a50445bbf2e4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  samePot: 0
-  led: {fileID: 551808460330271897}
-  pot1: {fileID: 0}
-  pot2: {fileID: 0}
-  etatpot1: 0
-  etatpot2: 0
-  rouge: {fileID: 21300000, guid: 13b836a9cfe88ca458b207880124f918, type: 3}
-  vert: {fileID: 21300000, guid: 1c81b64a1903f4e4db1419a6f4840389, type: 3}
-  lightup: {fileID: 2499689526462688693}
 --- !u!82 &2499689526462688693
 AudioSource:
   m_ObjectHideFlags: 0

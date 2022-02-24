@@ -5,14 +5,21 @@ public class duos_Manager : MonoBehaviour
 {
     [SerializeField]
     private LED_etat led1, led2, led3;
+
     public potentiometre potentiometre;
+
+    private GameManager gm;
+
+    private void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
 
     private void Update()
     {
-        if (led1.samePot == true && led2.samePot == true && led3.samePot == true)
+        if (led1.samePot && led2.samePot && led3.samePot)
         {
-            //Changement de minijeu
-            Debug.Log("Fin du jeu");
+            StartCoroutine(gm.Win());
         }
     }
 }

@@ -4,11 +4,12 @@ public class potentiometre : MonoBehaviour
 {
     [SerializeField]
     private potentiometre duopot;
+
     private bool changement;
     public bool interactable;
     public int etatPot;
     public SpriteRenderer spritepot;
-    
+
     public Sprite pot1;
     public Sprite pot2;
     public Sprite pot3;
@@ -19,56 +20,27 @@ public class potentiometre : MonoBehaviour
 
     public AudioSource click;
 
-    void Start()
+    private void Start()
     {
         initializePot();
     }
 
-    void Update()
-    {
-        if (etatPot == 1)
-        {
-            spritepot.sprite = pot1;
-            changement = false;
-            verif.verifEtat();
-        }
-        else if (etatPot == 2)
-        {
-            spritepot.sprite = pot2;
-            changement = false;
-            verif.verifEtat();
-        }
-        else if (etatPot == 3)
-        {
-            spritepot.sprite = pot3;
-            changement = false;
-            verif.verifEtat();
-        }
-        else if (etatPot == 4)
-        {
-            spritepot.sprite = pot4;
-            changement = false;
-            verif.verifEtat();
-        }
-        else if (etatPot == 5)
-        {
-            spritepot.sprite = pot5;
-            changement = false;
-            verif.verifEtat();
-        }
-    }
-    
     public void changePot()
     {
         if (changement == false && interactable == true)
         {
-            changement = true;
-            etatPot += 1;
-            click.Play();
-            if (etatPot == 6)
+            //click.Play();
+            if (etatPot == 5)
             {
                 etatPot = 1;
             }
+            else
+            {
+                etatPot++;
+            }
+            changement = true;
+            verif.verifEtat();
+            UpdatePos();
         }
     }
 
@@ -78,6 +50,41 @@ public class potentiometre : MonoBehaviour
         if (etatPot == duopot.etatPot)
         {
             initializePot();
+        }
+        else
+        {
+            UpdatePos();
+        }
+    }
+
+    private void UpdatePos()
+    {
+        switch (etatPot)
+        {
+            case 1:
+                spritepot.sprite = pot1;
+                changement = false;
+                break;
+
+            case 2:
+                spritepot.sprite = pot2;
+                changement = false;
+                break;
+
+            case 3:
+                spritepot.sprite = pot3;
+                changement = false;
+                break;
+
+            case 4:
+                spritepot.sprite = pot4;
+                changement = false;
+                break;
+
+            case 5:
+                spritepot.sprite = pot5;
+                changement = false;
+                break;
         }
     }
 }
