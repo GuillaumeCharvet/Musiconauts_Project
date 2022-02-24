@@ -6,6 +6,7 @@ public class AudioMainMenu : MonoBehaviour
 {
     public AudioSource fondMenu;
     public AudioSource boutonMenu;
+    public AudioSource sonNeon;
     //public AudioSource startNeon;
 
 
@@ -23,6 +24,11 @@ public class AudioMainMenu : MonoBehaviour
     public void MusicFondMenu()
     {
         fondMenu.Play();
+    }
+
+    public void SoundNeonAllumage()
+    {
+        sonNeon.Play();
     }
 
 }

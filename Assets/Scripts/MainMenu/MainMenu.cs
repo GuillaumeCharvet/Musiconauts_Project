@@ -14,10 +14,10 @@ public class MainMenu : MonoBehaviour
     private float timer;
     private float tempsMusique;
 
-    private void Start()
+   /* private void Start()
     {
         LancerMusique();
-    }
+    }*/
 
     private void Update()
     {
