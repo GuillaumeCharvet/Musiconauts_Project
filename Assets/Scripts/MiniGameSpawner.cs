@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MiniGameSpawner : MonoBehaviour
 {
-    public GameObject simonSaysMG, equalizerMG, sinusGameMG, duoMG;
+    public GameObject simonSaysMG, equalizerMG, sinusGameMG, duoMG, spamMG;
     public GameObject spawnedMiniGame;
 
     public GameObject SpawnSimonSays()
@@ -28,6 +28,12 @@ public class MiniGameSpawner : MonoBehaviour
     public GameObject SpawnDuo()
     {
         spawnedMiniGame = Instantiate(duoMG, transform);
+        return spawnedMiniGame;
+    }
+
+    public GameObject SpawnRythm()
+    {
+        spawnedMiniGame = Instantiate(spamMG, transform);
         return spawnedMiniGame;
     }
 

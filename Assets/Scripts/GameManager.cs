@@ -7,7 +7,7 @@ using TMPro;
 
 public enum miniGame
 {
-    none, simonSays, equalizer, duo//, sinusGame
+    none, simonSays, equalizer, duo, spam//, sinusGame
 }
 
 public enum colorTint
@@ -21,7 +21,10 @@ public class GameManager : MonoBehaviour
 {
     #region Variables
 
-    public int simonSaysTemps, equalizerTemps, duoTemps;
+    [Header("----------Temps des Mini-Jeux----------")]
+    public int simonSaysTemps;
+
+    public int equalizerTemps, duoTemps, spamTemps;
 
     public Level_SO currentLevel;
 
