@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TM: {fileID: 3369765019465897826}
+  orderInLayer: 0
   sortingLayer: Public2
 --- !u!1 &8507290027882167361
 GameObject:
@@ -221,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TM: {fileID: 8627916054468937918}
+  orderInLayer: 0
   sortingLayer: Public2
 --- !u!1 &8592467364944137782
 GameObject:
@@ -309,35 +311,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 8592467364944137782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa0b23295dc8694e8fb0ac3e7dd0725, type: 3}
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _onClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ClicInfoMusique, Assembly-CSharp
-        m_MethodName: GetSelectedTruc
-        m_Mode: 3
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InfoMusic, Assembly-CSharp
-        m_MethodName: AfficheInfo
-        m_Mode: 6
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   _onEnterOver:
     m_PersistentCalls:
