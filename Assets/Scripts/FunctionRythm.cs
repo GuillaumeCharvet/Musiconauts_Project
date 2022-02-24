@@ -8,14 +8,14 @@ public class FunctionRythm : MonoBehaviour
     //public List<Cible> listCibles = new List<Cible>();
     public Sprite sprite_ring;
     public float time = 0f;
-    public float reflex_time = 10f;
+    public float reflex_time;
 
     public List<Button> listButtons = new List<Button>();
     public int numberOfButtons;
     public int numberOfColumns;
     private float widthInPixels = 1.2f;
     private float heightInPixels = 1.2f;
-    private int numberOfSwitches = 6;
+    private int numberOfSwitches;
     private float min_diff_timing = 0.5f;
     private float random_diff_timing = 0.7f;
     private float epsilon_input = 0.2f;
@@ -26,6 +26,10 @@ public class FunctionRythm : MonoBehaviour
     private GameObject go;
 
     private float global_timing = 0f;
+
+    private GameManager game_manager;
+
+    private int difficulty;
 
     /*public class Cible
     {
@@ -64,8 +68,11 @@ public class FunctionRythm : MonoBehaviour
     private void Awake()
     {
         sprite_ring = Resources.Load<Sprite>("Sprites/sprite_ring");
+        game_manager = FindObjectOfType<GameManager>();
+        difficulty = game_manager.nvDifficulte;
 
-
+        numberOfSwitches = 3 + difficulty/2;
+        reflex_time = 20f - difficulty;
     }
 
     private void Start()
@@ -84,8 +91,6 @@ public class FunctionRythm : MonoBehaviour
             CopyComponent(comp_boxcollider2d, clickable_button);
             Component comp_onclick = go.GetComponent<OnClick>();
             CopyComponent(comp_onclick, clickable_button);
-
-
 
             /*int x = i;
             clickable_button.onClick.AddListener(delegate { ChangeVictoryValue(x); });*/
@@ -149,6 +154,11 @@ public class FunctionRythm : MonoBehaviour
                 button.isSwitching = false;
                 button.isActive = button.isActive ? false : true;
             }
+        }
+
+        if (time > )
+        {
+
         }
             /*if (button.isActive && time >= button.starting_time)
             {

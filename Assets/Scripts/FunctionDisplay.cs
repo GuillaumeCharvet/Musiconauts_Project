@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class FunctionDisplay : MonoBehaviour
 {
+    private float time;
 
     private float deltaT = 0.2f;
     private int timeStep = 80;
@@ -24,32 +25,44 @@ public class FunctionDisplay : MonoBehaviour
 
     public bool game_won = false;
 
+    private GameManager game_manager;
+
+    private int difficulty;
+
     [SerializeField] private Sprite circleSprite;
     private RectTransform graphContainer;
 
     private void Awake()
     {
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
-        random_start_value_a = Random.Range(0f, 6.28f);
-        random_start_value_b = Random.Range(0.3f, 1f);
+        random_start_value_a = Random.Range(2f, 6.28f);
+        random_start_value_b = Random.Range(0.4f, 1f);
         //List<float> valueList = new List<float>() {5, 98, 56, 45, 30, 22, 14, 10, 15, 13, 12, 11, 37};
 
-        valueList = CreateList(random_start_value_a, random_start_value_b);
+        valueList = CreateList(random_start_value_a, random_start_value_b, time);
         ShowGraph(valueList, color_trace2, 11f);
-        valueList = CreateList(parameter_a, parameter_b);
+        valueList = CreateList(parameter_a, parameter_b, time);
         ShowGraph(valueList, color_trace1, 3f);
+
+        game_manager = FindObjectOfType<GameManager>();
+        //difficulty = game_manager.nvDifficulte;
+        difficulty = 2;
+
+        time = 0f;
     }
 
     private void Update()
     {
-        if (parameter_a0 != parameter_a || parameter_b0 != parameter_b)
-        {
+        time += Time.deltaTime;
+
+        //if (parameter_a0 != parameter_a || parameter_b0 != parameter_b)
+        //{
             Clear();
-            valueList = CreateList(random_start_value_a, random_start_value_b);
+            valueList = CreateList(random_start_value_a, random_start_value_b, time);
             ShowGraph(valueList, color_trace2, 11f);
-            valueList = CreateList(parameter_a, parameter_b);
+            valueList = CreateList(parameter_a, parameter_b, time);
             ShowGraph(valueList, color_trace1, 3f);
-        }
+        //}
         parameter_a0 = parameter_a;
         parameter_b0 = parameter_b;
     }
@@ -72,13 +85,13 @@ public class FunctionDisplay : MonoBehaviour
         if (!game_won) { parameter_b = 0.1f + button_value * .9f; }
     }
 
-    private List<float> CreateList(float parameter_a, float parameter_b)
+    private List<float> CreateList(float parameter_a, float parameter_b, float time)
     {
         List<float> valueList = new List<float>() {};
         for (int i = 0; i < timeStep; i++)
         {
             // Version 1
-            valueList.Add( 50f + 25f * Mathf.Sin((deltaT*80/timeStep) * i + parameter_a) + parameter_b * 16 * Mathf.Sin(2f * (deltaT * 80 / timeStep) * i));
+            valueList.Add( 50f + 25f * Mathf.Sin((deltaT * 80 / timeStep) * i + parameter_a + time * (difficulty - 1f) * 2.5f) + parameter_b * 16 * Mathf.Sin(2f * (deltaT * 80 / timeStep) * i + 2f * time * (difficulty - 1f) * 2.5f));
             // Version 2
             //valueList.Add( 50f + 25f * Mathf.Sin((deltaT * 80f / timeStep) * i + parameter_a) + 16f * Mathf.Sin(2f * (deltaT * 80f / timeStep) * i + 4f * parameter_b));
         }
@@ -172,9 +185,9 @@ public class FunctionDisplay : MonoBehaviour
         random_start_value_a = Random.Range(0f, 6.28f);
         random_start_value_b = Random.Range(0.3f, 1f);
 
-        valueList = CreateList(random_start_value_a, random_start_value_b);
+        valueList = CreateList(random_start_value_a, random_start_value_b, time);
         ShowGraph(valueList, color_trace2, 11f);
-        valueList = CreateList(parameter_a, parameter_b);
+        valueList = CreateList(parameter_a, parameter_b, time);
         ShowGraph(valueList, color_trace1, 3f);
 
         parameter_a = 0f;
