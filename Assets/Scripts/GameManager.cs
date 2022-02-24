@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour
     public MiniGameSpawner mgSpawner;                       //Ref au script de spawn de mini-jeux
     public ChangeColorTint[] cct;                           //Scripts pour changer la couleur du niveau entier
     public publicMovements[] foules;                        //Ref (pour référence) aux publics
-    public TextMeshProUGUI tm;                              //TextMesh du haut, pour dire ce qu'il faut faire
-    public TextMeshProUGUI tmGG;                            //TextMesh qui dit Well Done ou autre
-    public TextMeshProUGUI tmTooBad;
+
+    public SpriteRenderer tmGG;                            //TextMesh qui dit Well Done ou autre
+    public SpriteRenderer tmTooBad;
+
+    [HideInInspector]
+    public int totalScoreSimonSays, totalScoreEQ, totalScoreDuo, SimonSaysReussis, EQreussis, duoReussis;
 
     [SerializeField]
     private Scoring scoring;
@@ -85,18 +88,7 @@ public class GameManager : MonoBehaviour
         cct = FindObjectsOfType<ChangeColorTint>();                     //Assigne les variables aux objects de la scène
         TextMeshProUGUI[] _tms = FindObjectsOfType<TextMeshProUGUI>();
         timerGauge = FindObjectOfType<TimerGauge>();
-        foreach (TextMeshProUGUI _tm in _tms)
-        {
-            /*if (_tm.name == "MiniJeuText")
-            {
-                tm = _tm;
-            }
-            else */
-            if (_tm.name == "MiniJeuTextGG")
-            {
-                tmGG = _tm;
-            }
-        }
+
         foules = FindObjectsOfType<publicMovements>();
 
         RandomColorTint();                                              //Couleur aléatoire pour le début de la partie
@@ -204,15 +196,15 @@ public class GameManager : MonoBehaviour
 
             if (!isAFailure)
             {
+                tmGG.transform.parent.gameObject.SetActive(true);
                 animGGOpen.SetCanGo();
-                tmGG.text = "WELL DONE !";
             }
         }
 
         if (isAFailure)
         {
+            tmTooBad.transform.parent.gameObject.SetActive(true);
             animTooBadOpen.SetCanGo();
-            tmTooBad.text = "Too Bad...";
         }
 
         switch (nvDifficulte)
@@ -259,11 +251,11 @@ public class GameManager : MonoBehaviour
 
         if (!isAFailure)
         {
-            tmGG.text = "";
+            tmGG.transform.parent.gameObject.SetActive(false);
         }
         else
         {
-            tmTooBad.text = "";
+            tmTooBad.transform.parent.gameObject.SetActive(false);
 
             isAFailure = false;
         }
@@ -369,8 +361,25 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.15f);
 
-        ScoreCalculator(tempsQuilReste);
+        scoring.AddToScore(ScoreCalculator(tempsQuilReste));
 
+        switch (currentMiniGame)
+        {
+            case miniGame.simonSays:
+                SimonSaysReussis++;
+                totalScoreSimonSays += ScoreCalculator(tempsQuilReste);
+                break;
+
+            case miniGame.duo:
+                duoReussis++;
+                totalScoreDuo += ScoreCalculator(tempsQuilReste);
+                break;
+
+            case miniGame.equalizer:
+                EQreussis++;
+                totalScoreEQ += ScoreCalculator(tempsQuilReste);
+                break;
+        }
         currentMiniGame = miniGame.none;
         enjaillement += 0.1f;
         if (enjaillement >= 1)
@@ -381,7 +390,29 @@ public class GameManager : MonoBehaviour
         NiveauDifficulteChanger();
 
         FouleEnDelire();
+        scoring.victoires++;
         mgSpawner.DestroyMiniGame();
+        Debug.Log("bah oui");
+    }
+
+    public IEnumerator WinRythm(float value)
+    {
+        yield return new WaitForSeconds(0.15f);
+
+        scoring.AddToScore(ScoreCalculator(value));
+
+        enjaillement += 0.1f;
+        if (enjaillement >= 1)
+        {
+            enjaillement = 1;
+        }
+
+        NiveauDifficulteChanger();
+
+        FouleEnDelire();
+        scoring.victoires++;
+        mgSpawner.DestroyMiniGame();
+        Debug.Log("bah oui");
     }
 
     private void AnimationsManagement()
@@ -414,7 +445,7 @@ public class GameManager : MonoBehaviour
         enjaDecreFactor = currentLevel.enjaillementDecrement;
     }
 
-    private void ScoreCalculator(float tempsQuilReste)
+    private int ScoreCalculator(float tempsQuilReste)
     {
         float score = 0f;
 
@@ -441,7 +472,7 @@ public class GameManager : MonoBehaviour
 
         score = (1 + tempsQuilReste) * baseScoreByMiniGame * nvDifficulte * (1 + enjaillement) * 100;
 
-        scoring.AddToScore((int)score);
+        return (int)score;
     }
 
     public void EndMiniGame()
