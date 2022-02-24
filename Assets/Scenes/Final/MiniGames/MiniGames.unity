@@ -150,8 +150,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 683603967}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,6 +170,7 @@ MonoBehaviour:
   equalizerMG: {fileID: 6059201250803056540, guid: 5a389edc1a8cc4f449236614387f0479, type: 3}
   sinusGameMG: {fileID: 0}
   duoMG: {fileID: 2855090629604910233, guid: bc14be069d12edc4c96afd7943a22be6, type: 3}
+  spamMG: {fileID: 75534110653298394, guid: 9b257a8fa7ce6534fb358ddc8fc8cd60, type: 3}
   spawnedMiniGame: {fileID: 0}
 --- !u!1 &108224594
 GameObject:
@@ -1462,36 +1462,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &683603966
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 683603967}
-  m_Layer: 0
-  m_Name: SINUSGAME
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &683603967
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683603966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6105416}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &755140324
 GameObject:
   m_ObjectHideFlags: 0
@@ -3995,7 +3965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: duoTemps
-      value: 100
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: tmTooBad
