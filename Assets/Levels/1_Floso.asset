@@ -16,14 +16,19 @@ MonoBehaviour:
   music: {fileID: 8300000, guid: 78478ea293e348c40adcf78261b30845, type: 3}
   artistName: Flo/so
   musicName: You
-  albumName: You
-  genre: 
-  origine: 
+  albumName: Flo/so
+  genre: Musiques Electroniques
+  origine: France
   mainColors: []
   difficultyMin: 2
-  difficultyMax: 4
+  difficultyMax: 5
   enjaillementDecrement: 0.0055
   albumImage: {fileID: 21300000, guid: 7229225244dcf334794e420f7fff017d, type: 3}
   sceneSprite: {fileID: 0}
   artistsSprite: {fileID: 0}
-  description: 
+  description: "Install\xE9 \xE0 Londres depuis 2009, l\u2019artiste \nde pop \xE9lectronique
+    Florian Sauvaire exerce \nses nombreux talents :\nBatteur de tourn\xE9e et de
+    studio, membre\ndu duo Deafkid, graphiste, \ndirecteur artistique et DJ.\nFlo/so
+    d\xE9voilera d\u2019ailleurs aux Trans \nses mixes euphoriques qui papillonnent
+    \nde la bass house \xE0 la cumbia digitale en \npassant par une \xE9lectro-pop
+    funky."

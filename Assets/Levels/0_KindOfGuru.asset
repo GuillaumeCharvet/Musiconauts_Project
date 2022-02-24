@@ -14,16 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 0
   music: {fileID: 8300000, guid: 90a0befc122d3944d84494e01042ab36, type: 3}
-  artistName: Kind Of Guru
+  artistName: 'Kind Of
+
+    Guru'
   musicName: Will U
-  albumName: 
-  genre: 
-  origine: 
+  albumName: Kind Of Guru
+  genre: Jazz-Rap
+  origine: France
   mainColors: []
   difficultyMin: 1
-  difficultyMax: 3
+  difficultyMax: 4
   enjaillementDecrement: 0.004
   albumImage: {fileID: 21300000, guid: 6770006dd03c83e4583b1ead844c5294, type: 3}
   sceneSprite: {fileID: 0}
   artistsSprite: {fileID: 0}
-  description: 
+  description: "Cr\xE9\xE9 en f\xE9vrier 2020, ce quintet rennais \ncompos\xE9 d\u2019un
+    soubassophone (Erwan Camper), \nde deux saxophones barytons \n(Fabien Cariou
+    et Marie Juste) et d\u2019un \nbatteur (Denis Poulain) cr\xE9e des compositions
+    \nhybrides entre hip hop, \xE9lectro, jazz et pop. \nJay Ree, ex-chanteur de
+    Zenzile et City Kay,\npose son flow grave sur les musiques de \nces disciples
+    d\u2019un groove f\xE9lin et explosif."
