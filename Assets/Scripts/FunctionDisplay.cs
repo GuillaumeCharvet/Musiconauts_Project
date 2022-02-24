@@ -45,8 +45,7 @@ public class FunctionDisplay : MonoBehaviour
         ShowGraph(valueList, color_trace1, 3f);
 
         game_manager = FindObjectOfType<GameManager>();
-        //difficulty = game_manager.nvDifficulte;
-        difficulty = 2;
+        difficulty = game_manager.nvDifficulte;
 
         time = 0f;
     }

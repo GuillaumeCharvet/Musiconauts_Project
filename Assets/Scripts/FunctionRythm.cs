@@ -282,7 +282,7 @@ public class FunctionRythm : MonoBehaviour
 
     private void Reset()
     {
-        //game_manager.nvDifficulte;
+        difficulty = game_manager.nvDifficulte;
 
         time = 0f;
         global_timing = 0f;
