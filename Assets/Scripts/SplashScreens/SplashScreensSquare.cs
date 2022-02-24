@@ -26,6 +26,9 @@ public class SplashScreensSquare : MonoBehaviour
 
     private float alphaSquare;
 
+    private MainMenu audioSource;
+    public GresillementNeon CoupureNeon;
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -56,7 +59,7 @@ public class SplashScreensSquare : MonoBehaviour
                 timer += Time.deltaTime;
                 lerpT = (scaleTimes[index] - timer) / (scaleTimes[index] - scaleTimes[index + 1]);
 
-                Debug.Log(lerpT);
+                //Debug.Log(lerpT);
 
                 square.localScale = Vector3.Lerp(squareScales[index], squareScales[index + 1], lerpT);
             }
@@ -70,6 +73,15 @@ public class SplashScreensSquare : MonoBehaviour
     private void DissolveSquare()
     {
         _menu.gameObject.SetActive(true);
+
+       /* if(CoupureNeon.diminuedelayNeon == true)
+        {
+            CoupureNeon.delayCoupure = 2;
+            CoupureNeon.diminuedelayNeon = false;
+
+        }*/
+        
+        
 
         alphaSquare -= Time.deltaTime * 0.7f;
 

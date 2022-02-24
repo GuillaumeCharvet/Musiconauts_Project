@@ -8,46 +8,69 @@ public class GresillementNeon : MonoBehaviour
     public SpriteRenderer Neonaffiche;
     public Sprite NeonAllume;
     public Sprite NeonEteint;
-    //public AudioMainMenu amm;
+    public AudioMainMenu amm;
 
-    private float delayCoupure;
+    public float delayCoupure = 0;
+    public bool diminuedelayNeon = true;
+    public float LancementNeon = 2;
+    private bool AfficheNeon = false ;
 
-    public void Start()
-    {
-       
-        delayCoupure = 5;
 
-    }
     public void Update()
     {
-        if (delayCoupure > 0)
+        if(LancementNeon > 0)
         {
-            delayCoupure -= Time.deltaTime;
+            LancementNeon -= Time.deltaTime;
         }
         else
         {
+            LancementNeon = 0;
+        }
+        
 
-            //amm.SoundBoutonMenu();
-            Neonaffiche.sprite = NeonEteint;
-            ExecuteAfterTime();
-            Neonaffiche.sprite = NeonAllume;
-            ExecuteAfterTime();
-            Neonaffiche.sprite = NeonEteint;
-            ExecuteAfterTime();
-            Neonaffiche.sprite = NeonAllume;
 
-            delayCoupure = Random.Range(7, 9);
+        if (delayCoupure <= 0)
+        {
+            LancementNeon = 2;
+            amm.SoundNeonAllumage();
+            delayCoupure = Random.Range(10, 15);
+           
+        }
+        else
+        {
+            delayCoupure -= Time.deltaTime;
         }
 
-         IEnumerator ExecuteAfterTime()
-            {
-                yield return new WaitForSeconds(2);
 
-            }
-
-
-
-
+    
+        if (LancementNeon <= 1.57 && LancementNeon > 1.34)
+        { 
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (LancementNeon <= 1.34 && LancementNeon > 1)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if (LancementNeon <=1 && LancementNeon >0.80)
+        { 
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (LancementNeon <= 0.80 && LancementNeon > 0.56)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if (LancementNeon <= 0.56 && LancementNeon > 0.35)
+        {
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (LancementNeon <= 0.35 && LancementNeon > 0.05)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if(LancementNeon <= 0.05)
+        {
+            Neonaffiche.sprite = NeonAllume;
+        }
 
     }
 }
