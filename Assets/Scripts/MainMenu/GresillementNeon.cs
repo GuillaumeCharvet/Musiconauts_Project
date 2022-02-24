@@ -10,67 +10,100 @@ public class GresillementNeon : MonoBehaviour
     public Sprite NeonEteint;
     public AudioMainMenu amm;
 
-    public float delayCoupure = 0;
+    public float delayCoupure = 10;
     public bool diminuedelayNeon = true;
-    public float LancementNeon = 2;
-    private bool AfficheNeon = false ;
+    public float gresillement = 1.5f;
 
+    public float Timercoupure = 2;
+    private bool startNeon = true;
 
     public void Update()
     {
-        if(LancementNeon > 0)
+
+        if (startNeon)
         {
-            LancementNeon -= Time.deltaTime;
+            startNeon = false;
+            amm.SoundNeonAllumage();
+        }
+
+        if(Timercoupure > 0)
+        {
+           Timercoupure -= Time.deltaTime;
         }
         else
         {
-            LancementNeon = 0;
+           Timercoupure = 0;
         }
-        
+
+
+        if (Timercoupure <= 1.57 && Timercoupure > 1.34)
+        { 
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (Timercoupure <= 1.34 && Timercoupure > 1)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if (Timercoupure <=1 && Timercoupure >0.80)
+        { 
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (Timercoupure <= 0.80 && Timercoupure > 0.56)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if (Timercoupure <= 0.56 && Timercoupure > 0.35)
+        {
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (Timercoupure <= 0.35 && Timercoupure > 0.05)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if(Timercoupure <= 0.05)
+        {
+            Neonaffiche.sprite = NeonAllume;
+        }
+
+
+
+       /* if diminuedelayNeon == true)
+        {
+           delayCoupure = 10;
+           diminuedelayNeon = false;
+
+        }*/
 
 
         if (delayCoupure <= 0)
         {
-            LancementNeon = 2;
-            amm.SoundNeonAllumage();
-            delayCoupure = Random.Range(10, 15);
-           
+            gresillement = 0.3f ;
+            amm.SonNeonBug();
+            delayCoupure = Random.Range(15, 20);
         }
         else
         {
             delayCoupure -= Time.deltaTime;
         }
 
+        if (gresillement > 0)
+        {
+            gresillement -= Time.deltaTime;
+        }
+        else
+        {
+            gresillement = 0;
+        }
 
-    
-        if (LancementNeon <= 1.57 && LancementNeon > 1.34)
-        { 
-            Neonaffiche.sprite = NeonAllume;
-        }
-        if (LancementNeon <= 1.34 && LancementNeon > 1)
+        if (gresillement < 0.3 && gresillement > 0)
         {
             Neonaffiche.sprite = NeonEteint;
         }
-        if (LancementNeon <=1 && LancementNeon >0.80)
-        { 
-            Neonaffiche.sprite = NeonAllume;
-        }
-        if (LancementNeon <= 0.80 && LancementNeon > 0.56)
-        {
-            Neonaffiche.sprite = NeonEteint;
-        }
-        if (LancementNeon <= 0.56 && LancementNeon > 0.35)
-        {
-            Neonaffiche.sprite = NeonAllume;
-        }
-        if (LancementNeon <= 0.35 && LancementNeon > 0.05)
-        {
-            Neonaffiche.sprite = NeonEteint;
-        }
-        if(LancementNeon <= 0.05)
-        {
-            Neonaffiche.sprite = NeonAllume;
-        }
+
+        
+
+
+
 
     }
 }

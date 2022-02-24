@@ -72,15 +72,7 @@ public class SplashScreensSquare : MonoBehaviour
 
     private void DissolveSquare()
     {
-        _menu.gameObject.SetActive(true);
-
-       /* if(CoupureNeon.diminuedelayNeon == true)
-        {
-            CoupureNeon.delayCoupure = 2;
-            CoupureNeon.diminuedelayNeon = false;
-
-        }*/
-        
+        _menu.gameObject.SetActive(true);        
         
 
         alphaSquare -= Time.deltaTime * 0.7f;
