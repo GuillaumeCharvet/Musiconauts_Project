@@ -27,11 +27,19 @@ public class SplashScreens : MonoBehaviour
     [SerializeField]
     private AudioSource audioS;
 
+    private DDOL_Variables ddol;
+
     private float audioVolume = 0;
 
     private void Start()
     {
+        ddol = FindObjectOfType<DDOL_Variables>();
         alphaSpeedFactor = 1 / timeToAlpha;
+
+        if (!ddol.firstLaunch)
+        {
+            chapter = 7;
+        }
     }
 
     private void Update()
@@ -44,6 +52,7 @@ public class SplashScreens : MonoBehaviour
         }
         else
         {
+            audioS.volume = .5f;
             this.enabled = false;
         }
     }

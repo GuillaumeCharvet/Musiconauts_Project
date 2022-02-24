@@ -15,7 +15,7 @@ public class Scoring : MonoBehaviour
     [SerializeField]
     private SpriteRenderer rectangle;
 
-    private int moyenneSimonSays, moyenneEQ, moyenneDuo, moyenneKnob, moyenneSpam;
+    private int moyenneSimonSays, moyenneEQ, moyenneDuo, moyenneKnob, moyenneSpam, moyenneSinus;
 
     private bool isWritten;
 
@@ -77,6 +77,15 @@ public class Scoring : MonoBehaviour
                 moyenneSpam = gm.totalScoreSpam / gm.spamReussis;
             }
 
+            if (gm.sinusReussis == 0)
+            {
+                moyenneSinus = 0;
+            }
+            else
+            {
+                moyenneSinus = gm.totalScoreSinus / gm.sinusReussis;
+            }
+
             txtMeshScore.text = totalScore.ToString();
             txtMeshScoreDetails.text = "Victories : " + victoires + "\nFails : " + defaites;
             txtMeshScoreDetails.text += "\n\nMoyenne score SimonSays : " + moyenneSimonSays;
@@ -84,6 +93,7 @@ public class Scoring : MonoBehaviour
             txtMeshScoreDetails.text += "\nMoyenne score Duo : " + moyenneDuo;
             txtMeshScoreDetails.text += "\nMoyenne score Knob : " + moyenneKnob;
             txtMeshScoreDetails.text += "\nMoyenne score Spam : " + moyenneSpam;
+            txtMeshScoreDetails.text += "\nMoyenne score Sinus : " + moyenneSinus;
             isWritten = true;
         }
     }

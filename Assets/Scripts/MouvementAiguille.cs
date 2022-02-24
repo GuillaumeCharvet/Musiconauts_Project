@@ -21,10 +21,12 @@ public class MouvementAiguille : MonoBehaviour
 
     [SerializeField]
     private GameObject compteur_light;
+
     private SpriteRenderer sr_compteur_light;
 
     [SerializeField]
     private GameObject compteur;
+
     private SpriteRenderer sr_compteur;
 
     [SerializeField]
@@ -61,7 +63,7 @@ public class MouvementAiguille : MonoBehaviour
         game_manager = FindObjectOfType<GameManager>();
         difficulty = game_manager.nvDifficulte;
 
-        decroissance = 0.047f + difficulty * 2f / 1000f;
+        decroissance = 0.047f + difficulty * 4f / 1000f;
 
         sr_compteur = compteur.GetComponent<SpriteRenderer>();
         sr_button = button.GetComponent<SpriteRenderer>();
@@ -81,7 +83,7 @@ public class MouvementAiguille : MonoBehaviour
             angle_aiguille += boost_list[0];
             boost_list.RemoveAt(0);
         }
-        angle_aiguille -= decroissance;
+        angle_aiguille -= Time.deltaTime * decroissance * 650;
         angle_aiguille = Mathf.Min(Mathf.Max(angle_aiguille, 0f), 180f);
         rotation_aiguille.eulerAngles = new Vector3(0, 0, -angle_aiguille);
         aiguille.transform.rotation = rotation_aiguille;
@@ -111,7 +113,6 @@ public class MouvementAiguille : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
     }
 
     public void boost()

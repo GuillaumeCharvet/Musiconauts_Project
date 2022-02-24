@@ -17,8 +17,8 @@ public class FunctionDisplay : MonoBehaviour
     public float parameter_a0 = 0f;
     public float parameter_b0 = 0f;
 
-    private Color color_trace1 = new Color (0,1,0, 1f);
-    private Color color_trace2 = new Color (0.2f,0.35f,0.2f, 1f);
+    private Color color_trace1 = new Color(0, 1, 0, 1f);
+    private Color color_trace2 = new Color(0.2f, 0.35f, 0.2f, 1f);
 
     public float random_start_value_a;
     public float random_start_value_b;
@@ -58,15 +58,14 @@ public class FunctionDisplay : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        Debug.Log("T.I.B.O");
         //if (parameter_a0 != parameter_a || parameter_b0 != parameter_b)
         //{
         Clear();
-            
-            valueList = CreateList(random_start_value_a, random_start_value_b, time);
-            ShowGraph(valueList, color_trace2, 11f);
-            valueList = CreateList(parameter_a, parameter_b, time);
-            ShowGraph(valueList, color_trace1, 3f);
+
+        valueList = CreateList(random_start_value_a, random_start_value_b, time);
+        ShowGraph(valueList, color_trace2, 11f);
+        valueList = CreateList(parameter_a, parameter_b, time);
+        ShowGraph(valueList, color_trace1, 3f);
         //}
         parameter_a0 = parameter_a;
         parameter_b0 = parameter_b;
@@ -76,7 +75,7 @@ public class FunctionDisplay : MonoBehaviour
     {
         foreach (Transform child in graphContainer.transform)
         {
-            if (child.name != "background"){GameObject.Destroy(child.gameObject);};
+            if (child.name != "background") { GameObject.Destroy(child.gameObject); };
         }
     }
 
@@ -92,11 +91,11 @@ public class FunctionDisplay : MonoBehaviour
 
     private List<float> CreateList(float parameter_a, float parameter_b, float time)
     {
-        List<float> valueList = new List<float>() {};
+        List<float> valueList = new List<float>() { };
         for (int i = 0; i < timeStep; i++)
         {
             // Version 1
-            valueList.Add( 50f + 25f * Mathf.Sin((deltaT * 80 / timeStep) * i + parameter_a + time * (difficulty - 1f) * 2.5f) + parameter_b * 16 * Mathf.Sin(2f * (deltaT * 80 / timeStep) * i + 2f * time * (difficulty - 1f) * 2.5f));
+            valueList.Add(50f + 25f * Mathf.Sin((deltaT * 80 / timeStep) * i + parameter_a + time * (difficulty - 1f) * 2.5f) + parameter_b * 16 * Mathf.Sin(2f * (deltaT * 80 / timeStep) * i + 2f * time * (difficulty - 1f) * 2.5f));
             // Version 2
             //valueList.Add( 50f + 25f * Mathf.Sin((deltaT * 80f / timeStep) * i + parameter_a) + 16f * Mathf.Sin(2f * (deltaT * 80f / timeStep) * i + 4f * parameter_b));
         }
@@ -148,6 +147,7 @@ public class FunctionDisplay : MonoBehaviour
         rectTransform.anchoredPosition = dotPositionA + dir * distance * .5f;
         rectTransform.localEulerAngles = new Vector3(0, 0, Vector2.SignedAngle(new Vector2(1, 0), dir));
     }*/
+
     private void ShowGraph(List<float> valueList, Color color, float sizeDelta)
     {
         float graphHeight = graphContainer.sizeDelta.y;
@@ -155,7 +155,7 @@ public class FunctionDisplay : MonoBehaviour
         float graphWidth = graphContainer.sizeDelta.x;
         float xSize = graphWidth / timeStep;
 
-        Vector2 lastVectorObject = new Vector2(-100000f,-100000f);
+        Vector2 lastVectorObject = new Vector2(-100000f, -100000f);
         for (int i = 0; i < valueList.Count; i++)
         {
             float xPosition = (i + 1) * xSize;
