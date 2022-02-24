@@ -7,7 +7,7 @@ public class FunctionRythm : MonoBehaviour
     public int numberOfCircles;
     //public List<Cible> listCibles = new List<Cible>();
     public Sprite sprite_ring;
-    public float time = 0f;
+    public float time;
     public float reflex_time;
 
     public List<Button> listButtons = new List<Button>();
@@ -25,11 +25,13 @@ public class FunctionRythm : MonoBehaviour
     [SerializeField]
     private GameObject go;
 
-    private float global_timing = 0f;
+    private float global_timing;
 
     private GameManager game_manager;
 
     private int difficulty;
+
+    private float score_rythm;
 
     /*public class Cible
     {
@@ -69,14 +71,12 @@ public class FunctionRythm : MonoBehaviour
     {
         sprite_ring = Resources.Load<Sprite>("Sprites/sprite_ring");
         game_manager = FindObjectOfType<GameManager>();
-        difficulty = game_manager.nvDifficulte;
-
-        numberOfSwitches = 3 + difficulty/2;
-        reflex_time = 20f - difficulty;
+        difficulty = 5;
     }
 
     private void Start()
     {
+        Reset();
         numberOfButtons = 9;
         numberOfColumns = 3;
         for(int i = 0; i < numberOfButtons; i++)
@@ -156,9 +156,17 @@ public class FunctionRythm : MonoBehaviour
             }
         }
 
-        if (time > )
+        if (time > 10f)
         {
-
+            if (score_rythm == 0)
+            {
+                game_manager.EndMiniGame();
+            }
+            else
+            {
+                score_rythm /= (float)numberOfButtons;
+                //StartCoroutine(game_manager.WinRythm(score_rythm));
+            }
         }
             /*if (button.isActive && time >= button.starting_time)
             {
@@ -251,6 +259,7 @@ public class FunctionRythm : MonoBehaviour
         float diff = Mathf.Abs((time - listButtons[i].switch_timings) - reflex_time);
         if (diff <= epsilon_input)
         {
+            score_rythm += 1;
             Debug.Log("Oui "+ i +" --- " + diff);
         }
         else
@@ -269,5 +278,18 @@ public class FunctionRythm : MonoBehaviour
                 Debug.Log("Non");
             }
         }*/
+    }
+
+    private void Reset()
+    {
+        //game_manager.nvDifficulte;
+
+        time = 0f;
+        global_timing = 0f;
+
+        numberOfSwitches = 3 + (difficulty + 1) / 2;
+        reflex_time = 20f - difficulty;
+
+        score_rythm = 0f;
     }
 }

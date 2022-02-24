@@ -14,6 +14,8 @@ public class MouvementAiguille : MonoBehaviour
     private float croissance = 12f;
     [SerializeField]
     private List<float> boost_list;
+    [SerializeField]
+    private GameObject compteur;
 
     private float angle_limit_inf = 130f;
     private float angle_limit_sup = 170f;
@@ -26,6 +28,8 @@ public class MouvementAiguille : MonoBehaviour
     private GameManager game_manager;
 
     private float difficulty;
+
+    private float score_aiguille;
 
     [SerializeField]
     private GameObject text;
@@ -41,9 +45,8 @@ public class MouvementAiguille : MonoBehaviour
 
     void Start()
     {
-        angle_aiguille = 0;
-        rotation_aiguille.eulerAngles = new Vector3(0, 0, angle_aiguille);
-        aiguille.transform.rotation = rotation_aiguille;
+        Reset();
+        //compteur.
     }
 
     // Update is called once per frame
@@ -65,11 +68,12 @@ public class MouvementAiguille : MonoBehaviour
         if (angle_aiguille >= angle_limit_inf && angle_aiguille <= angle_limit_sup)
         {
             duration_in_right_range += 1f;
+
             if (duration_in_right_range >= duration_in_right_range_required)
             {
                 decroissance = 0f;
                 croissance = 0f;
-                game_manager.Win();
+                StartCoroutine(game_manager.Win());
                 text.SetActive(true);
             }
         }
@@ -82,5 +86,16 @@ public class MouvementAiguille : MonoBehaviour
     public void boost()
     {
         boost_list.Add(croissance);
+    }
+
+    private void Reset()
+    {
+        //game_manager.nvDifficulte;
+
+        score_aiguille = 0f;
+        angle_aiguille = 0;
+
+        rotation_aiguille.eulerAngles = new Vector3(0, 0, angle_aiguille);
+        aiguille.transform.rotation = rotation_aiguille;
     }
 }

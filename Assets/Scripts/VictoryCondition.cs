@@ -39,7 +39,7 @@ public class VictoryCondition : MonoBehaviour
             {
                 text.enabled = true;
                 child.game_won = true;
-                game_manager.Win();
+                StartCoroutine(game_manager.Win());
                 scrollbar_a.enabled = false;
                 scrollbar_b.enabled = false;
             }
