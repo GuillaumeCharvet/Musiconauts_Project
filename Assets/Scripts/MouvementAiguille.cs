@@ -20,8 +20,11 @@ public class MouvementAiguille : MonoBehaviour
     private List<float> boost_list;
 
     [SerializeField]
-    private GameObject compteur;
+    private GameObject compteur_light;
+    private SpriteRenderer sr_compteur_light;
 
+    [SerializeField]
+    private GameObject compteur;
     private SpriteRenderer sr_compteur;
 
     [SerializeField]
@@ -41,8 +44,8 @@ public class MouvementAiguille : MonoBehaviour
     [SerializeField]
     private Sprite sprite_button_off;
 
-    private float angle_limit_inf = 130f;
-    private float angle_limit_sup = 170f;
+    private float angle_limit_inf = 120f;
+    private float angle_limit_sup = 160f;
 
     private float duration_in_right_range = 0f;
     private float duration_in_right_range_required = 150f;
@@ -53,17 +56,16 @@ public class MouvementAiguille : MonoBehaviour
 
     private float difficulty;
 
-    private float score_aiguille;
-
     private void Awake()
     {
         game_manager = FindObjectOfType<GameManager>();
         difficulty = game_manager.nvDifficulte;
 
-        decroissance = 0.044f + difficulty * 2f / 1000f;
+        decroissance = 0.047f + difficulty * 2f / 1000f;
 
         sr_compteur = compteur.GetComponent<SpriteRenderer>();
         sr_button = button.GetComponent<SpriteRenderer>();
+        sr_compteur_light = compteur_light.GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -90,7 +92,10 @@ public class MouvementAiguille : MonoBehaviour
         if (angle_aiguille >= angle_limit_inf && angle_aiguille <= angle_limit_sup)
         {
             duration_in_right_range += 1f;
-            sr_compteur.sprite = sprite_compteur_on;
+            //sr_compteur_light.enabled = true;
+            //sr_compteur.sprite = sprite_compteur_on;
+            Debug.Log((0.6f + duration_in_right_range) / (0.6f + duration_in_right_range_required));
+            sr_compteur_light.color = new Vector4(sr_compteur_light.color.r, sr_compteur_light.color.g, sr_compteur_light.color.b, (70f + duration_in_right_range) / (70f + duration_in_right_range_required));
 
             if (duration_in_right_range >= duration_in_right_range_required)
             {
@@ -101,6 +106,7 @@ public class MouvementAiguille : MonoBehaviour
         }
         else
         {
+            //sr_compteur_light.enabled = false;
             sr_compteur.sprite = sprite_compteur_off;
             duration_in_right_range = 0f;
         }
@@ -123,9 +129,9 @@ public class MouvementAiguille : MonoBehaviour
 
     private void Reset()
     {
-        //game_manager.nvDifficulte;
+        difficulty = game_manager.nvDifficulte;
 
-        score_aiguille = 0f;
+        //score_aiguille = 0f;
         angle_aiguille = 0;
 
         rotation_aiguille.eulerAngles = new Vector3(0, 0, angle_aiguille);
