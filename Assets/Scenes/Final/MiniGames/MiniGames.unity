@@ -4175,7 +4175,7 @@ PrefabInstance:
       objectReference: {fileID: 519420033}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: spamTemps
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2987286860908991080, guid: c5c88c2451c9ccb49ab702212d5d0e9b, type: 3}
       propertyPath: animGGOpen

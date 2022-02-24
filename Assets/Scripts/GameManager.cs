@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 break;
 
-            case 2:
+            case 3:
                 yield return new WaitForSeconds(0.4f);
                 if (!isAFailure)
                 {
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 break;
 
-            case 3:
+            case 6:
                 yield return new WaitForSeconds(0.2f);
                 if (!isAFailure)
                 {
@@ -302,11 +302,11 @@ public class GameManager : MonoBehaviour
         }
         else if (enjaillement < 0.8f)
         {
-            nvDifficulte = 2;
+            nvDifficulte = 3;
         }
         else
         {
-            nvDifficulte = 3;
+            nvDifficulte = 6;
         }
     }
 
@@ -506,6 +506,7 @@ public class GameManager : MonoBehaviour
         scoring.defaites++;
 
         isAFailure = true;
+        NiveauDifficulteChanger();
 
         currentMiniGame = miniGame.none;
     }

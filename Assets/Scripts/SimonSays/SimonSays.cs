@@ -78,7 +78,7 @@ public class SimonSays : MonoBehaviour
                 }
                 break;
 
-            case 2:
+            case 3:
                 for (int i = 0; i < 4; i++)
                 {
                     int randomIndex = Random.Range(0, System.Enum.GetValues(typeof(colorCombi)).Length);
@@ -86,7 +86,7 @@ public class SimonSays : MonoBehaviour
                 }
                 break;
 
-            case 3:
+            case 6:
                 for (int i = 0; i < 5; i++)
                 {
                     int randomIndex = Random.Range(0, System.Enum.GetValues(typeof(colorCombi)).Length);
@@ -130,13 +130,13 @@ public class SimonSays : MonoBehaviour
                     yield return new WaitForSeconds(.2f);
                     break;
 
-                case 2:
+                case 3:
                     yield return new WaitForSeconds(0.7f);
                     animClose.SetCanGo();
                     yield return new WaitForSeconds(.2f);
                     break;
 
-                case 3:
+                case 6:
                     yield return new WaitForSeconds(0.5f);
                     animClose.SetCanGo();
                     yield return new WaitForSeconds(.2f);
@@ -149,11 +149,11 @@ public class SimonSays : MonoBehaviour
                     yield return new WaitForSeconds(0.3f);
                     break;
 
-                case 2:
+                case 3:
                     yield return new WaitForSeconds(0.2f);
                     break;
 
-                case 3:
+                case 6:
                     yield return new WaitForSeconds(0.1f);
                     break;
             }
