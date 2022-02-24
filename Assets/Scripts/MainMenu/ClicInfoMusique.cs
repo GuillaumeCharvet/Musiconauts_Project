@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class ClicInfoMusique : MonoBehaviour
 {
-    public InfoMusic im;
-
-    [SerializeField]
-    private List<GetLevelInfo> infoLevels;
+   
+   public InfoMusic im;
+   [SerializeField]
+   private List<GetLevelInfo> infoLevels;
 
     [SerializeField]
     private TextMesh nomGroupeDetail;
-
     private string nomDuGroupe;
 
     [SerializeField]
     private TextMesh styleMusiqueDetail;
-
     private string styleMusique;
 
     [SerializeField]
     private TextMesh originDetail;
-
     private string origin;
 
     [SerializeField]
     private TextMesh descriptionDetail;
-
     private string description;
 
     [SerializeField]
@@ -35,9 +31,7 @@ public class ClicInfoMusique : MonoBehaviour
     public void GetSelectedTruc(int i)
     {
         if (im.setInfoMusique == false)
-        {
-            im.lvl = infoLevels[i].lvl;
-
+        { 
             nomDuGroupe = infoLevels[i].lvl.artistName;
             nomGroupeDetail.text = nomDuGroupe;
 
@@ -51,6 +45,9 @@ public class ClicInfoMusique : MonoBehaviour
             descriptionDetail.text = description;
 
             imageAlbum.sprite = infoLevels[i].lvl.albumImage;
+
         }
+       
     }
+
 }

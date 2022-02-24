@@ -15,9 +15,6 @@ public class TimerGauge : MonoBehaviour
 
     private float lerpT;
 
-    [SerializeField]
-    private SpriteRenderer sr;
-
     // Start is called before the first frame update
     private void Start()
     {
@@ -32,18 +29,12 @@ public class TimerGauge : MonoBehaviour
             lerpT += Time.deltaTime / lengthMiniGame;
             float newSecaleX = Mathf.Lerp(1, 0, lerpT);
             gaugeToScale.localScale = new Vector3(newSecaleX, gaugeToScale.localScale.y, gaugeToScale.localScale.z);
-            sr.color = Color.Lerp(Color.green, Color.red, lerpT);
 
             if (lerpT > 1)
             {
                 gm.EndMiniGame();
                 lerpT = 0;
-                canGo = false;
             }
-        }
-        else
-        {
-            gaugeToScale.localScale = new Vector3(0, gaugeToScale.localScale.y, gaugeToScale.localScale.z);
         }
     }
 
@@ -69,10 +60,6 @@ public class TimerGauge : MonoBehaviour
 
             case miniGame.knob:
                 lengthMiniGame = gm.knobTemps;
-                break;
-
-            case miniGame.sinusGame:
-                lengthMiniGame = gm.sinusTemps;
                 break;
 
             default:

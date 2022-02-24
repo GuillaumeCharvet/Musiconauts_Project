@@ -22,7 +22,7 @@ MonoBehaviour:
   mainColors: []
   difficultyMin: 4
   difficultyMax: 8
-  enjaillementDecrement: 0.004
+  enjaillementDecrement: 0.011
   albumImage: {fileID: 21300000, guid: e3b421a548e844f4397e92fb23eb1bd0, type: 3}
   sceneSprite: {fileID: 0}
   artistsSprite: {fileID: 0}

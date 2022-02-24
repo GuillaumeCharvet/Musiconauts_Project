@@ -7,7 +7,7 @@ using TMPro;
 
 public enum miniGame
 {
-    none, simonSays, equalizer, duo, spam, knob, sinusGame
+    none, simonSays, equalizer, duo, spam, knob//, sinusGame
 }
 
 public enum colorTint
@@ -21,18 +21,12 @@ public class GameManager : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField]
-    private Transition trans;
-
-    [SerializeField]
-    private EndButton endButton;
-
     [Header("----------Temps des Mini-Jeux----------")]
     public int simonSaysTemps;
 
-    public int equalizerTemps, duoTemps, spamTemps, knobTemps, sinusTemps;
+    public int equalizerTemps, duoTemps, spamTemps, knobTemps;
 
-    public Level_SO currentLevel = null;
+    public Level_SO currentLevel;
 
     public PlayMusic playMusic;
 
@@ -60,7 +54,7 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer tmTooBad;
 
     [HideInInspector]
-    public int totalScoreSimonSays, totalScoreEQ, totalScoreDuo, totalScoreSpam, totalScoreKnob, totalScoreSinus, SimonSaysReussis, EQreussis, duoReussis, spamReussis, knobReussis, sinusReussis;
+    public int totalScoreSimonSays, totalScoreEQ, totalScoreDuo, totalScoreSpam, totalScoreKnob, SimonSaysReussis, EQreussis, duoReussis, spamReussis, knobReussis;
 
     [SerializeField]
     private Scoring scoring;
@@ -106,8 +100,6 @@ public class GameManager : MonoBehaviour
         AdaptationLevel();
 
         musicDuration = (int)currentLevel.music.length + 1;
-
-        trans.SetCanGo(0, -8.5f);
     }
 
     private void Update()
@@ -279,6 +271,10 @@ public class GameManager : MonoBehaviour
                 PlaySimonSays();
                 break;
 
+            /*case miniGame.sinusGame:
+                PlaySinusGame();
+                break;*/
+
             case miniGame.equalizer:
                 PlayEqualizer();
                 break;
@@ -293,10 +289,6 @@ public class GameManager : MonoBehaviour
 
             case miniGame.knob:
                 PlayKnob();
-                break;
-
-            case miniGame.sinusGame:
-                PlaySinusGame();
                 break;
 
             default:
@@ -408,11 +400,6 @@ public class GameManager : MonoBehaviour
                 knobReussis++;
                 totalScoreKnob += ScoreCalculator(tempsQuilReste);
                 break;
-
-            case miniGame.sinusGame:
-                sinusReussis++;
-                totalScoreSinus += ScoreCalculator(tempsQuilReste);
-                break;
         }
         currentMiniGame = miniGame.none;
         enjaillement += 0.1f;
@@ -475,15 +462,7 @@ public class GameManager : MonoBehaviour
 
     private void AdaptationLevel()
     {
-        DDOL_Variables ddol = FindObjectOfType<DDOL_Variables>();
-
-        if (ddol != null)
-        {
-            currentLevel = ddol.chosen_Level;
-        }
-
         playMusic.audioSource.clip = currentLevel.music;
-        playMusic.audioSource.Play();
         enjaDecreFactor = currentLevel.enjaillementDecrement;
     }
 
@@ -512,10 +491,6 @@ public class GameManager : MonoBehaviour
                 break;
 
             case miniGame.knob:
-                baseScoreByMiniGame = 0.8f;
-                break;
-
-            case miniGame.sinusGame:
                 baseScoreByMiniGame = 0.8f;
                 break;
 
@@ -589,12 +564,6 @@ public class GameManager : MonoBehaviour
         timerGauge.TimerStart();
     }
 
-    private void PlaySinus()
-    {
-        spawnedMiniGame = mgSpawner.SpawnSinusGame();
-        timerGauge.TimerStart();
-    }
-
     #endregion Fonctions Play
 
     #region Fonctions EndLevel
@@ -605,8 +574,6 @@ public class GameManager : MonoBehaviour
         playMusic.audioSource.Pause();
 
         timerGauge.TimerStop();
-
-        endButton.gameObject.SetActive(true);
     }
 
     #endregion Fonctions EndLevel
