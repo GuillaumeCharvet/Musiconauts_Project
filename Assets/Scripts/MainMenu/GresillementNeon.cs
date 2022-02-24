@@ -8,43 +8,92 @@ public class GresillementNeon : MonoBehaviour
     public SpriteRenderer Neonaffiche;
     public Sprite NeonAllume;
     public Sprite NeonEteint;
-    //public AudioMainMenu amm;
+    public AudioMainMenu amm;
 
-    private float delayCoupure;
+    public float delayCoupure = 10;
+    public bool diminuedelayNeon = true;
+    public float gresillement = 1.5f;
 
-    public void Start()
-    {
-       
-        delayCoupure = 5;
+    public float Timercoupure = 2;
+    private bool startNeon = true;
 
-    }
     public void Update()
     {
-        if (delayCoupure > 0)
+
+        if (startNeon)
         {
-            delayCoupure -= Time.deltaTime;
+            startNeon = false;
+            amm.SoundNeonAllumage();
+        }
+
+        if(Timercoupure > 0)
+        {
+           Timercoupure -= Time.deltaTime;
         }
         else
         {
-
-            //amm.SoundBoutonMenu();
-            Neonaffiche.sprite = NeonEteint;
-            ExecuteAfterTime();
-            Neonaffiche.sprite = NeonAllume;
-            ExecuteAfterTime();
-            Neonaffiche.sprite = NeonEteint;
-            ExecuteAfterTime();
-            Neonaffiche.sprite = NeonAllume;
-
-            delayCoupure = Random.Range(7, 9);
+           Timercoupure = 0;
         }
 
-         IEnumerator ExecuteAfterTime()
-            {
-                yield return new WaitForSeconds(2);
 
-            }
+        if (Timercoupure <= 1.57 && Timercoupure > 1.34)
+        { 
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (Timercoupure <= 1.34 && Timercoupure > 1)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if (Timercoupure <=1 && Timercoupure >0.80)
+        { 
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (Timercoupure <= 0.80 && Timercoupure > 0.56)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if (Timercoupure <= 0.56 && Timercoupure > 0.35)
+        {
+            Neonaffiche.sprite = NeonAllume;
+        }
+        if (Timercoupure <= 0.35 && Timercoupure > 0.05)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+        if(Timercoupure <= 0.05)
+        {
+            Neonaffiche.sprite = NeonAllume;
+        }
 
+
+
+    
+        if (delayCoupure <= 0)
+        {
+            gresillement = 0.3f ;
+            amm.SonNeonBug();
+            delayCoupure = Random.Range(15, 20);
+        }
+        else
+        {
+            delayCoupure -= Time.deltaTime;
+        }
+
+        if (gresillement > 0)
+        {
+            gresillement -= Time.deltaTime;
+        }
+        else
+        {
+            gresillement = 0;
+        }
+
+        if (gresillement < 0.3 && gresillement > 0)
+        {
+            Neonaffiche.sprite = NeonEteint;
+        }
+
+        
 
 
 
