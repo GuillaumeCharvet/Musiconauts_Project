@@ -43,20 +43,22 @@ public class FunctionDisplay : MonoBehaviour
         ShowGraph(valueList, color_trace2, 11f);
         valueList = CreateList(parameter_a, parameter_b, time);
         ShowGraph(valueList, color_trace1, 3f);
+    }
 
-        game_manager = FindObjectOfType<GameManager>();
-        difficulty = game_manager.nvDifficulte;
-
-        time = 0f;
+    private void Start()
+    {
+        Reset();
     }
 
     private void Update()
     {
         time += Time.deltaTime;
 
+        Debug.Log("T.I.B.O");
         //if (parameter_a0 != parameter_a || parameter_b0 != parameter_b)
         //{
-            Clear();
+        Clear();
+            
             valueList = CreateList(random_start_value_a, random_start_value_b, time);
             ShowGraph(valueList, color_trace2, 11f);
             valueList = CreateList(parameter_a, parameter_b, time);
@@ -196,5 +198,9 @@ public class FunctionDisplay : MonoBehaviour
 
         game_won = false;
 
+        game_manager = FindObjectOfType<GameManager>();
+        difficulty = game_manager.nvDifficulte;
+
+        time = 0f;
     }
 }

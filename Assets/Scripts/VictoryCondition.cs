@@ -11,7 +11,7 @@ public class VictoryCondition : MonoBehaviour
     public Text text;
     [SerializeField]
     private Scrollbar scrollbar_a, scrollbar_b;
-    private float victory_threshold_a = 0.03f;
+    private float victory_threshold_a = 0.035f;
     private float victory_threshold_b = 0.035f;
 
     private GameManager game_manager;
