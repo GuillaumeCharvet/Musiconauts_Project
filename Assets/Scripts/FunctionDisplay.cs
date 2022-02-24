@@ -29,8 +29,12 @@ public class FunctionDisplay : MonoBehaviour
 
     private int difficulty;
 
-    [SerializeField] private Sprite circleSprite;
+    [SerializeField]
+    private Sprite circleSprite;
     private RectTransform graphContainer;
+
+    [SerializeField]
+    private Sprite dot_connection;
 
     private void Awake()
     {
@@ -170,7 +174,8 @@ public class FunctionDisplay : MonoBehaviour
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
-        gameObject.GetComponent<Image>().color = color;
+        //gameObject.GetComponent<Image>().color = color;
+        gameObject.GetComponent<Image>().sprite = dot_connection;
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         Vector2 dir = (dotPositionB - dotPositionA).normalized;
         float distance = Vector2.Distance(dotPositionA, dotPositionB);

@@ -87,10 +87,10 @@ public class FunctionRythm : MonoBehaviour
             GameObject clickable_button = new GameObject("button"+i);
             SpriteRenderer renderer_cb = clickable_button.AddComponent<SpriteRenderer>();
             //BoxCollider2D box_collider_cb = clickable_button.AddComponent<BoxCollider2D>();
-            Component comp_boxcollider2d = go.GetComponent<BoxCollider2D>();
+            /*Component comp_boxcollider2d = go.GetComponent<BoxCollider2D>();
             CopyComponent(comp_boxcollider2d, clickable_button);
             Component comp_onclick = go.GetComponent<OnClick>();
-            CopyComponent(comp_onclick, clickable_button);
+            CopyComponent(comp_onclick, clickable_button);*/
 
             /*int x = i;
             clickable_button.onClick.AddListener(delegate { ChangeVictoryValue(x); });*/
@@ -160,7 +160,7 @@ public class FunctionRythm : MonoBehaviour
         {
             if (score_rythm == 0)
             {
-                game_manager.EndMiniGame();
+                //game_manager.EndMiniGame();
             }
             else
             {
@@ -282,13 +282,13 @@ public class FunctionRythm : MonoBehaviour
 
     private void Reset()
     {
-        difficulty = game_manager.nvDifficulte;
+        difficulty = 5;// game_manager.nvDifficulte;
 
         time = 0f;
         global_timing = 0f;
 
         numberOfSwitches = 3 + (difficulty + 1) / 2;
-        reflex_time = 20f - difficulty;
+        reflex_time = 7f - difficulty;
 
         score_rythm = 0f;
     }
