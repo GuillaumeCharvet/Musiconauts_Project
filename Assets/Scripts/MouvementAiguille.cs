@@ -6,27 +6,38 @@ public class MouvementAiguille : MonoBehaviour
 {
     [SerializeField]
     private float angle_aiguille;
+
     [SerializeField]
     private GameObject aiguille;
+
     [SerializeField]
     private float decroissance = 0.05f;
+
     [SerializeField]
     private float croissance = 12f;
+
     [SerializeField]
     private List<float> boost_list;
 
     [SerializeField]
     private GameObject compteur;
+
     private SpriteRenderer sr_compteur;
+
     [SerializeField]
     private Sprite sprite_compteur_on;
+
     [SerializeField]
     private Sprite sprite_compteur_off;
+
     [SerializeField]
     private GameObject button;
+
     private SpriteRenderer sr_button;
+
     [SerializeField]
     private Sprite sprite_button_on;
+
     [SerializeField]
     private Sprite sprite_button_off;
 
@@ -44,9 +55,6 @@ public class MouvementAiguille : MonoBehaviour
 
     private float score_aiguille;
 
-    [SerializeField]
-    private GameObject text;
-
     private void Awake()
     {
         game_manager = FindObjectOfType<GameManager>();
@@ -58,13 +66,13 @@ public class MouvementAiguille : MonoBehaviour
         sr_button = button.GetComponent<SpriteRenderer>();
     }
 
-    void Start()
+    private void Start()
     {
         Reset();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (boost_list.Count > 0)
         {
@@ -89,7 +97,6 @@ public class MouvementAiguille : MonoBehaviour
                 decroissance = 0f;
                 croissance = 0f;
                 StartCoroutine(game_manager.Win());
-                text.SetActive(true);
             }
         }
         else
@@ -108,6 +115,7 @@ public class MouvementAiguille : MonoBehaviour
     {
         sr_button.sprite = sprite_button_on;
     }
+
     public void ExitButton()
     {
         sr_button.sprite = sprite_button_off;
