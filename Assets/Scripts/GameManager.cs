@@ -7,7 +7,7 @@ using TMPro;
 
 public enum miniGame
 {
-    none, simonSays, equalizer, duo, spam//, sinusGame
+    none, simonSays, equalizer, duo, spam, knob//, sinusGame
 }
 
 public enum colorTint
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [Header("----------Temps des Mini-Jeux----------")]
     public int simonSaysTemps;
 
-    public int equalizerTemps, duoTemps, spamTemps;
+    public int equalizerTemps, duoTemps, spamTemps, knobTemps;
 
     public Level_SO currentLevel;
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer tmTooBad;
 
     [HideInInspector]
-    public int totalScoreSimonSays, totalScoreEQ, totalScoreDuo, totalScoreSpam, SimonSaysReussis, EQreussis, duoReussis, spamReussis;
+    public int totalScoreSimonSays, totalScoreEQ, totalScoreDuo, totalScoreSpam, totalScoreKnob, SimonSaysReussis, EQreussis, duoReussis, spamReussis, knobReussis;
 
     [SerializeField]
     private Scoring scoring;
@@ -287,6 +287,10 @@ public class GameManager : MonoBehaviour
                 PlaySpam();
                 break;
 
+            case miniGame.knob:
+                PlayKnob();
+                break;
+
             default:
                 Debug.LogWarning("GAMEMANAGER INCORRECT MINIGAME NAME" + currentMiniGame);
                 break;
@@ -391,6 +395,11 @@ public class GameManager : MonoBehaviour
                 spamReussis++;
                 totalScoreSpam += ScoreCalculator(tempsQuilReste);
                 break;
+
+            case miniGame.knob:
+                knobReussis++;
+                totalScoreKnob += ScoreCalculator(tempsQuilReste);
+                break;
         }
         currentMiniGame = miniGame.none;
         enjaillement += 0.1f;
@@ -481,6 +490,10 @@ public class GameManager : MonoBehaviour
                 baseScoreByMiniGame = 0.8f;
                 break;
 
+            case miniGame.knob:
+                baseScoreByMiniGame = 0.8f;
+                break;
+
             default:
                 Debug.LogError("GameManager.ScoreCalculator - MiniGame non compris dans le switch - " + currentMiniGame.ToString());
                 break;
@@ -542,6 +555,12 @@ public class GameManager : MonoBehaviour
     private void PlaySpam()
     {
         spawnedMiniGame = mgSpawner.SpawnSpam();
+        timerGauge.TimerStart();
+    }
+
+    private void PlayKnob()
+    {
+        spawnedMiniGame = mgSpawner.SpawnKnob();
         timerGauge.TimerStart();
     }
 

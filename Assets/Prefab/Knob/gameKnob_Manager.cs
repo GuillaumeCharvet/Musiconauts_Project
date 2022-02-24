@@ -16,11 +16,15 @@ public class gameKnob_Manager : MonoBehaviour
 
     [SerializeField]
     private knob[] knob;
+
     [SerializeField]
     private Leds[] leds;
 
-    void Start()
+    private GameManager gm;
+
+    private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         rounds = 0;
         for (int m = 0; m < leds.Length; m++)
         {
@@ -53,31 +57,29 @@ public class gameKnob_Manager : MonoBehaviour
         }
         else if (rounds == 3)
         {
-            round3.changeRound();
-            //Fin minijeu
-            Debug.Log("fin jeu");
+            StartCoroutine(gm.Win());
         }
     }
 
     public void compareAmpLed()
     {
+        _egaux = 0;
+        for (int l = 0; l < leds.Length; l++)
+        {
+            bool amp = knob[l].etatknob;
+            bool led = leds[l].etatled;
+            if (amp == led)
+            {
+                _egaux += 1;
+            }
+        }
+        if (_egaux == 4)
+        {
             _egaux = 0;
-            for (int l = 0; l < leds.Length; l++)
-            {
-                bool amp = knob[l].etatknob;
-                bool led = leds[l].etatled;
-                if (amp == led)
-                {
-                    _egaux += 1;
-                }
-            }
-            if (_egaux == 4)
-            {
-                _egaux = 0;
-                finround();
-            }
+            finround();
+        }
     }
-    
+
     private void countLeds()
     {
         total_led = 0;

@@ -85,13 +85,10 @@ public class MouvementAiguille : MonoBehaviour
         angle_aiguille = Mathf.Min(Mathf.Max(angle_aiguille, 0f), 180f);
         rotation_aiguille.eulerAngles = new Vector3(0, 0, -angle_aiguille);
         aiguille.transform.rotation = rotation_aiguille;
-    }
 
-    private void FixedUpdate()
-    {
         if (angle_aiguille >= angle_limit_inf && angle_aiguille <= angle_limit_sup)
         {
-            duration_in_right_range += 1f;
+            duration_in_right_range += Time.deltaTime * 50f;
             //sr_compteur_light.enabled = true;
             //sr_compteur.sprite = sprite_compteur_on;
             Debug.Log((0.6f + duration_in_right_range) / (0.6f + duration_in_right_range_required));
@@ -110,6 +107,11 @@ public class MouvementAiguille : MonoBehaviour
             sr_compteur.sprite = sprite_compteur_off;
             duration_in_right_range = 0f;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     public void boost()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4821880251231442612}
   - component: {fileID: 5096701458635288816}
   - component: {fileID: 8443251975157909574}
-  - component: {fileID: 6571561709946863449}
+  - component: {fileID: 4592561254473377389}
   - component: {fileID: 4665832197340196713}
   m_Layer: 0
   m_Name: Knobs
@@ -154,7 +154,7 @@ MonoBehaviour:
   ampoule: {fileID: 0}
   gameManager: {fileID: 1937765868074370547, guid: e3c302463cccbdd4cbb59c6e081d7066, type: 3}
   click: {fileID: 4665832197340196713}
---- !u!114 &6571561709946863449
+--- !u!114 &4592561254473377389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,19 +163,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 3451661198542401859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095c0e55ce1ebf74092f243c0d468ee2, type: 3}
+  m_Script: {fileID: 11500000, guid: da81d0f1b6ef65b4198dd73538a4ab6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8443251975157909574}
-        m_TargetAssemblyTypeName: knob, Assembly-CSharp
-        m_MethodName: changeKnobStatus
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
