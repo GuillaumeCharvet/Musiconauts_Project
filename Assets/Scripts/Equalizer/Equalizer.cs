@@ -36,11 +36,11 @@ public class Equalizer : MonoBehaviour
                 speed = 100;
                 break;
 
-            case 2:
+            case 3:
                 speed = 170;
                 break;
 
-            case 3:
+            case 6:
                 speed = 240;
                 break;
         }

@@ -54,6 +54,10 @@ public class TimerGauge : MonoBehaviour
                 lengthMiniGame = gm.duoTemps;
                 break;
 
+            case miniGame.spam:
+                lengthMiniGame = gm.spamTemps;
+                break;
+
             default:
                 Debug.LogError("TimerGauge.TimerStart() - MiniGame non compris dans le switch - " + gm.currentMiniGame.ToString());
                 break;

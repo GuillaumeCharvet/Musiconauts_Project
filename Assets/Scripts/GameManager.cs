@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer tmTooBad;
 
     [HideInInspector]
-    public int totalScoreSimonSays, totalScoreEQ, totalScoreDuo, SimonSaysReussis, EQreussis, duoReussis;
+    public int totalScoreSimonSays, totalScoreEQ, totalScoreDuo, totalScoreSpam, SimonSaysReussis, EQreussis, duoReussis, spamReussis;
 
     [SerializeField]
     private Scoring scoring;
@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 break;
 
-            case 2:
+            case 3:
                 yield return new WaitForSeconds(0.4f);
                 if (!isAFailure)
                 {
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 break;
 
-            case 3:
+            case 6:
                 yield return new WaitForSeconds(0.2f);
                 if (!isAFailure)
                 {
@@ -283,6 +283,10 @@ public class GameManager : MonoBehaviour
                 PlayDuo();
                 break;
 
+            case miniGame.spam:
+                PlaySpam();
+                break;
+
             default:
                 Debug.LogWarning("GAMEMANAGER INCORRECT MINIGAME NAME" + currentMiniGame);
                 break;
@@ -298,11 +302,11 @@ public class GameManager : MonoBehaviour
         }
         else if (enjaillement < 0.8f)
         {
-            nvDifficulte = 2;
+            nvDifficulte = 3;
         }
         else
         {
-            nvDifficulte = 3;
+            nvDifficulte = 6;
         }
     }
 
@@ -381,6 +385,11 @@ public class GameManager : MonoBehaviour
             case miniGame.equalizer:
                 EQreussis++;
                 totalScoreEQ += ScoreCalculator(tempsQuilReste);
+                break;
+
+            case miniGame.spam:
+                spamReussis++;
+                totalScoreSpam += ScoreCalculator(tempsQuilReste);
                 break;
         }
         currentMiniGame = miniGame.none;
@@ -468,6 +477,10 @@ public class GameManager : MonoBehaviour
                 baseScoreByMiniGame = 0.7f;
                 break;
 
+            case miniGame.spam:
+                baseScoreByMiniGame = 0.8f;
+                break;
+
             default:
                 Debug.LogError("GameManager.ScoreCalculator - MiniGame non compris dans le switch - " + currentMiniGame.ToString());
                 break;
@@ -493,6 +506,7 @@ public class GameManager : MonoBehaviour
         scoring.defaites++;
 
         isAFailure = true;
+        NiveauDifficulteChanger();
 
         currentMiniGame = miniGame.none;
     }
@@ -522,6 +536,12 @@ public class GameManager : MonoBehaviour
     private void PlayDuo()
     {
         spawnedMiniGame = mgSpawner.SpawnDuo();
+        timerGauge.TimerStart();
+    }
+
+    private void PlaySpam()
+    {
+        spawnedMiniGame = mgSpawner.SpawnSpam();
         timerGauge.TimerStart();
     }
 
