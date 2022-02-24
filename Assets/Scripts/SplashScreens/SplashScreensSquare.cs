@@ -27,7 +27,6 @@ public class SplashScreensSquare : MonoBehaviour
     private float alphaSquare;
 
     private MainMenu audioSource;
-    public GresillementNeon CoupureNeon;
 
     private void Start()
     {

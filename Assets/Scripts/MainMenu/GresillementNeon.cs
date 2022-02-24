@@ -67,14 +67,7 @@ public class GresillementNeon : MonoBehaviour
 
 
 
-       /* if diminuedelayNeon == true)
-        {
-           delayCoupure = 10;
-           diminuedelayNeon = false;
-
-        }*/
-
-
+    
         if (delayCoupure <= 0)
         {
             gresillement = 0.3f ;
