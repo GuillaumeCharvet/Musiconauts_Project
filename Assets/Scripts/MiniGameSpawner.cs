@@ -31,7 +31,7 @@ public class MiniGameSpawner : MonoBehaviour
         return spawnedMiniGame;
     }
 
-    public GameObject SpawnRythm()
+    public GameObject SpawnSpam()
     {
         spawnedMiniGame = Instantiate(spamMG, transform);
         return spawnedMiniGame;
