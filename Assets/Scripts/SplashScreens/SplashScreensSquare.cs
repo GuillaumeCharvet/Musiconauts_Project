@@ -24,9 +24,7 @@ public class SplashScreensSquare : MonoBehaviour
 
     public bool canGo;
 
-    private float alphaSquare;
-
-    private MainMenu audioSource;
+    private float alphaSquare = 1;
 
     private void Start()
     {
@@ -58,8 +56,6 @@ public class SplashScreensSquare : MonoBehaviour
                 timer += Time.deltaTime;
                 lerpT = (scaleTimes[index] - timer) / (scaleTimes[index] - scaleTimes[index + 1]);
 
-                //Debug.Log(lerpT);
-
                 square.localScale = Vector3.Lerp(squareScales[index], squareScales[index + 1], lerpT);
             }
         }
@@ -71,11 +67,17 @@ public class SplashScreensSquare : MonoBehaviour
 
     private void DissolveSquare()
     {
-        _menu.gameObject.SetActive(true);        
-        
+        _menu.gameObject.SetActive(true);
 
-        alphaSquare -= Time.deltaTime * 0.7f;
+        if (alphaSquare > 0)
+        {
+            alphaSquare -= Time.deltaTime * 0.4f;
 
-        sr.color = new Vector4(1, 1, 1, alphaSquare);
+            sr.color = new Vector4(1, 1, 1, alphaSquare);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
