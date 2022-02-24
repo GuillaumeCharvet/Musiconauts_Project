@@ -8,11 +8,15 @@ public class rounds : MonoBehaviour
     public Sprite roundallumee;
     public Sprite roundeteinte;
 
+    [SerializeField]
+    private AnimTransform animTransform;
+
     public AudioSource son;
 
     public void changeRound()
     {
         spriteRound.sprite = roundallumee;
+        animTransform.SetCanGo();
         son.Play();
     }
 }

@@ -468,9 +468,9 @@ MonoBehaviour:
           m_StringArgument: y
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1799013101000402406}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 5463067628886996974}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -655,9 +655,9 @@ MonoBehaviour:
           m_StringArgument: g
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7630817821289110703}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 3503778393666628568}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -926,9 +926,9 @@ MonoBehaviour:
           m_StringArgument: r
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6289029426335552932}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 7625236421338049282}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1113,9 +1113,9 @@ MonoBehaviour:
           m_StringArgument: b
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3217975931727373891}
-        m_TargetAssemblyTypeName: AnimTransform, Assembly-CSharp
-        m_MethodName: SetCanGo
+      - m_Target: {fileID: 5480821565596187317}
+        m_TargetAssemblyTypeName: SimonSaysButtonAnimIfPeutAppuyer, Assembly-CSharp
+        m_MethodName: CheckIfCanPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
