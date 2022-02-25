@@ -6,22 +6,30 @@ public class BOUTON_TOURNE : MonoBehaviour
 {
     [SerializeField]
     private GameObject led1, led2, led3;
+
     private SpriteRenderer led1_sprite, led2_sprite, led3_sprite;
+
     [SerializeField]
     private Sprite sprite_on, sprite_off;
+
     [SerializeField]
     private GameObject bouton_g1, bouton_g2, bouton_g3;
+
     [SerializeField]
     private GameObject bouton_d1, bouton_d2, bouton_d3;
+
     [SerializeField]
     public int angle1_cur, angle2_cur, angle3_cur;
+
     private Quaternion angle1_cur_quat, angle2_cur_quat, angle3_cur_quat;
+
     [SerializeField]
     private DUO_MANAGER duo_manager;
+
     private GameManager gm;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         gm = FindObjectOfType<GameManager>();
 
@@ -66,7 +74,7 @@ public class BOUTON_TOURNE : MonoBehaviour
             else
             {
                 angle1_cur += 1;
-            }            
+            }
             angle1_cur_quat.eulerAngles = new Vector3(0, 0, -angle1_cur * 72);
             bouton_d1.transform.rotation = angle1_cur_quat;
             Debug.Log("1");
@@ -88,7 +96,7 @@ public class BOUTON_TOURNE : MonoBehaviour
             else
             {
                 angle2_cur += 1;
-            }            
+            }
             angle2_cur_quat.eulerAngles = new Vector3(0, 0, -angle2_cur * 72);
             bouton_d2.transform.rotation = angle2_cur_quat;
             Debug.Log("2");
@@ -110,7 +118,7 @@ public class BOUTON_TOURNE : MonoBehaviour
             else
             {
                 angle3_cur += 1;
-            }            
+            }
             angle3_cur_quat.eulerAngles = new Vector3(0, 0, -angle3_cur * 72);
             bouton_d3.transform.rotation = angle3_cur_quat;
             Debug.Log("3");
