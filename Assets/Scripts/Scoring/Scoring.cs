@@ -88,12 +88,13 @@ public class Scoring : MonoBehaviour
 
             txtMeshScore.text = totalScore.ToString();
             txtMeshScoreDetails.text = "Victories : " + victoires + "\nFails : " + defaites;
+            /*
             txtMeshScoreDetails.text += "\n\nMoyenne score SimonSays : " + moyenneSimonSays;
             txtMeshScoreDetails.text += "\nMoyenne score EQ : " + moyenneEQ;
             txtMeshScoreDetails.text += "\nMoyenne score Duo : " + moyenneDuo;
             txtMeshScoreDetails.text += "\nMoyenne score Knob : " + moyenneKnob;
             txtMeshScoreDetails.text += "\nMoyenne score Spam : " + moyenneSpam;
-            txtMeshScoreDetails.text += "\nMoyenne score Sinus : " + moyenneSinus;
+            txtMeshScoreDetails.text += "\nMoyenne score Sinus : " + moyenneSinus;*/
             isWritten = true;
         }
     }

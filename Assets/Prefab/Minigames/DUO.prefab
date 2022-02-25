@@ -471,7 +471,7 @@ MonoBehaviour:
   led2: {fileID: 2715261654386495350}
   led3: {fileID: 3430988282924446728}
   bouton_g1: {fileID: 2975848927851695894}
-  bouton_g2: {fileID: 163705056138475514}
+  bouton_g2: {fileID: 4522511942726416647}
   bouton_g3: {fileID: 163705056138475514}
   bouton_d1: {fileID: 7622700154981651048}
   bouton_d2: {fileID: 6287118155200720153}
