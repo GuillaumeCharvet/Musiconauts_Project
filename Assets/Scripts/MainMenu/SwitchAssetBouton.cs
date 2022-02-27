@@ -25,7 +25,6 @@ public class SwitchAssetBouton : MonoBehaviour
 
 
 
-
     public void ActiveButtonTrans()
     {
         if (activeButtonTrans == false)
