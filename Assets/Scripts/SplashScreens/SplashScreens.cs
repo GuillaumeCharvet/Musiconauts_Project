@@ -14,7 +14,9 @@ public class SplashScreens : MonoBehaviour
     private float alphaEtpa, alphaTrans, alphaMusiconauts;
 
     private float timer;
-    private int chapter;
+
+    [HideInInspector]
+    public int chapter = -1;
 
     [SerializeField]
     private float baseTime, timeToTransition, timeToAlpha, timeToStay, timeFactor;

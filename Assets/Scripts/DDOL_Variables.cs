@@ -9,6 +9,8 @@ public class DDOL_Variables : MonoBehaviour
     [HideInInspector]
     public bool firstLaunch = true;
 
+    public bool postProcess;
+
     private void Awake()
     {
         DDOL_Variables[] ddols = GameObject.FindObjectsOfType<DDOL_Variables>();

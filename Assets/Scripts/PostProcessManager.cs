@@ -7,16 +7,25 @@ using UnityEngine.Rendering.Universal;
 public class PostProcessManager : MonoBehaviour
 {
     private GameManager gm;
-    public Volume vol;
+
+    [SerializeField]
+    private Volume vol;
+
     private VolumeProfile vp;
     private ChromaticAberration ca;
     private LensDistortion ld;
     private Bloom b;
 
+    private bool postProcesActivated;
+    private DDOL_Variables ddol;
+
     private float lerpT;
 
-    private void Start()
+    public void Start()
     {
+        ddol = FindObjectOfType<DDOL_Variables>();
+        postProcesActivated = ddol.postProcess;
+
         gm = FindObjectOfType<GameManager>();
         vp = vol.profile;
 
@@ -27,22 +36,34 @@ public class PostProcessManager : MonoBehaviour
 
         vp.TryGet<Bloom>(out b);
 
-        //INITIALISATION VALEURS OVERRIDES
-        ca.intensity.value = 0f;
+        if (postProcesActivated)
+        {
+            vol.enabled = true;
 
-        ld.intensity.value = 0f;
+            //INITIALISATION VALEURS OVERRIDES
+            ca.intensity.value = 0f;
 
-        b.threshold.value = 1.16f;
+            ld.intensity.value = 0f;
+
+            b.threshold.value = 1.16f;
+        }
+        else
+        {
+            vol.enabled = false;
+        }
     }
 
     private void Update()
     {
-        ca.intensity.value = gm.enjaillement / 3;
+        if (postProcesActivated)
+        {
+            ca.intensity.value = gm.enjaillement / 3;
 
-        ld.intensity.value = gm.enjaillement / -8;
+            ld.intensity.value = gm.enjaillement / -8;
 
-        lerpT = (0 - gm.enjaillement) / (0 - 1);
+            lerpT = (0 - gm.enjaillement) / (0 - 1);
 
-        b.threshold.value = Mathf.Lerp(1.16f, 0.95f, lerpT);
+            b.threshold.value = Mathf.Lerp(1.16f, 0.95f, lerpT);
+        }
     }
 }
