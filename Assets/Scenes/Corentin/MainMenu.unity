@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 482661188019065752, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 482661188019065752, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 778165459358458463, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 778165459358458463, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.21
+      objectReference: {fileID: 0}
     - target: {fileID: 2485660067071118446, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -177,6 +193,14 @@ PrefabInstance:
     - target: {fileID: 2485660067071118447, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
       propertyPath: m_Name
       value: MainMenuScenePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433153894756851623, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433153894756851623, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643dca81a595db54f80df0d4f8ff9867, type: 3}
